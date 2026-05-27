@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Val Systems - Appointment Setting for Roofing & Remodeling Contractors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow: #F2B705;
+      --yellow-dark: #d9a204;
+      --black: #1C1C1C;
+      --black-light: #242424;
+      --black-mid: #2e2e2e;
+      --off-white: #F5F5F5;
+      --gray-light: #3a3a3a;
+      --gray-muted: #888;
+      --red-tint: rgba(200, 50, 50, 0.12);
+      --green-tint: rgba(50, 180, 100, 0.12);
+      --red-border: rgba(220, 60, 60, 0.4);
+      --green-border: rgba(50, 200, 100, 0.4);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--black);
+      color: var(--off-white);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2 {
+      font-family: 'Anton', sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+
+    h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      line-height: 1.2;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      border: none;
+      position: relative;
+    }
+
+    @keyframes pulseCta {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(242,183,5,0.45); }
+      55%       { box-shadow: 0 0 0 14px rgba(242,183,5,0); }
+    }
+
+    .btn-yellow {
+      background: var(--yellow);
+      color: var(--black);
+    }
+    .btn-yellow:hover {
+      background: var(--yellow-dark);
+      transform: translateY(-2px);
+      animation: pulseCta 1.5s ease-in-out infinite;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--yellow);
+      border: 2px solid var(--yellow);
+    }
+    .btn-outline:hover { background: var(--yellow); color: var(--black); transform: translateY(-2px); }
+
+    .btn-black {
+      background: var(--black);
+      color: var(--yellow);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .btn-black:hover {
+      background: #111;
+      transform: translateY(-2px);
+      animation: pulseCta 1.5s ease-in-out infinite;
+    }
+
+    /* ─── SECTION LABEL ─── */
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .placeholder-img {
+      background: #2a2a2a;
+      border: 2px dashed #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--gray-muted);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      padding: 16px;
+      border-radius: 4px;
+    }
+
+    /* ─── LOGO ─── */
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .logo-v {
+      width: 36px;
+      height: 22px;
+      position: relative;
+    }
+    .logo-v::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--yellow);
+      clip-path: polygon(0 0, 50% 100%, 100% 0, 85% 0, 50% 76%, 15% 0);
+    }
+
+    .logo-text {
+      font-family: 'Anton', sans-serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      color: var(--yellow);
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(28, 28, 28, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #2e2e2e;
+      padding: 16px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a { color: var(--off-white); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--yellow); }
+
+    /* ─── HERO ─── */
+    #hero {
+      background: var(--black);
+      padding: 100px 0 80px;
+      border-bottom: 1px solid #2e2e2e;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 2px;
+      background: var(--yellow);
+      flex-shrink: 0;
+    }
+
+    .hero-headline {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      color: var(--off-white);
+      margin-bottom: 24px;
+    }
+    .hero-headline span { color: var(--yellow); }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: #aaa;
+      margin-bottom: 36px;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-trust {
+      font-size: 0.78rem;
+      color: #666;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-img-box {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 6px;
+      border: 2px solid #333;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-img-box .placeholder-img {
+      height: 100%;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border-radius: 2px;
+    }
+
+    /* ─── PROBLEM ─── */
+    #problem {
+      background: var(--black-light);
+      padding: 100px 0;
+    }
+
+    .problem-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .problem-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 16px;
+    }
+    .problem-header h2 span { color: var(--yellow); }
+
+    .problem-header p {
+      color: #999;
+      max-width: 580px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      border: 1px solid #333;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .problem-col { padding: 40px 36px; }
+
+    .problem-col.bad {
+      background: var(--red-tint);
+      border-right: 2px solid var(--red-border);
+    }
+
+    .problem-col.good { background: var(--green-tint); }
+
+    .problem-col-label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 0.82rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .problem-col.bad .problem-col-label { color: #e05555; border-color: var(--red-border); }
+    .problem-col.good .problem-col-label { color: #55c87e; border-color: var(--green-border); }
+
+    .problem-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .problem-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    .problem-list li .icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 400;
+      margin-top: 1px;
+    }
+
+    .bad .icon { background: rgba(220,60,60,0.2); color: #e05555; }
+    .good .icon { background: rgba(50,200,100,0.2); color: #55c87e; }
+
+    /* ─── HOW IT WORKS ─── */
+    #how {
+      background: var(--black);
+      padding: 100px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 12px;
+    }
+    .section-header h2 span { color: var(--yellow); }
+
+    .section-header p {
+      color: #999;
+      max-width: 520px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+    }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .step {
+      padding: 36px 28px;
+      background: var(--black-light);
+      border: 1px solid #2e2e2e;
+      position: relative;
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .step:hover {
+      border-color: var(--yellow);
+      transform: translateY(-4px);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.45);
+      z-index: 1;
+    }
+
+    .step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--yellow);
+      font-size: 1.4rem;
+      z-index: 2;
+    }
+
+    .step-num {
+      font-family: 'Anton', sans-serif;
+      font-size: 3.5rem;
+      color: rgba(242, 183, 5, 0.12);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .step-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(242, 183, 5, 0.1);
+      border: 2px solid rgba(242, 183, 5, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 1.4rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .step:hover .step-icon {
+      background: rgba(242, 183, 5, 0.18);
+      border-color: rgba(242, 183, 5, 0.55);
+    }
+
+    .step h3 {
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+      color: var(--yellow);
+    }
+
+    .step p {
+      font-size: 0.85rem;
+      color: #999;
+      line-height: 1.6;
+    }
+
+    /* ─── WHAT YOU GET ─── */
+    #features {
+      background: var(--black-light);
+      padding: 100px 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--black);
+      border: 1px solid #2e2e2e;
+      border-top: 3px solid var(--yellow);
+      padding: 32px 28px;
+      border-radius: 3px;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+      border-color: #444;
+    }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+      font-size: 0.82rem;
+      margin-bottom: 10px;
+      color: var(--off-white);
+    }
+
+    .feature-card p {
+      font-size: 0.84rem;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    /* ─── CALENDAR SECTION ─── */
+    #calendar {
+      background: var(--black);
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .calendar-headline {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      margin-bottom: 10px;
+    }
+
+    .calendar-sub {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--yellow);
+      margin-bottom: 56px;
+    }
+
+    .cal-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--black-light);
+      border: 1px solid #333;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .cal-header {
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 0.88rem;
+      letter-spacing: 0.12em;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cal-header .cal-nav {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+
+    .cal-days-header {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      background: #252525;
+      border-bottom: 1px solid #333;
+    }
+
+    .cal-days-header span {
+      text-align: center;
+      padding: 10px 0;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #777;
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1px;
+      background: #2a2a2a;
+    }
+
+    .cal-cell {
+      background: var(--black-light);
+      padding: 10px 6px;
+      min-height: 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cal-cell.empty { background: #1e1e1e; }
+
+    .cal-date {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: #666;
+    }
+
+    .cal-cell.booked .cal-date { color: var(--off-white); }
+
+    .cal-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 5px;
+      border-radius: 2px;
+      width: 100%;
+      text-align: center;
+      opacity: 0;
+      transform: scale(0.6);
+    }
+
+    .cal-tag.pop {
+      animation: tagPop 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    .tag-booked { background: rgba(50,200,100,0.2); color: #55c87e; border: 1px solid rgba(50,200,100,0.3); }
+    .tag-closed { background: rgba(242,183,5,0.15); color: var(--yellow); border: 1px solid rgba(242,183,5,0.3); }
+    .tag-today  { background: rgba(255,255,255,0.08); color: #aaa; border: 1px solid #444; }
+
+    /* ─── COMPARISON TABLE ─── */
+    #comparison {
+      background: var(--black-light);
+      padding: 100px 0;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .comparison-table thead th {
+      padding: 22px 28px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 0.82rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .comparison-table thead th.col-bad {
+      background: #252525;
+      color: #e05555;
+      border-bottom: 3px solid rgba(220,60,60,0.4);
+    }
+
+    .comparison-table thead th.col-good {
+      background: #1f2218;
+      color: var(--yellow);
+      border-bottom: 3px solid var(--yellow);
+    }
+
+    .comparison-table tbody tr:nth-child(odd) td.col-bad  { background: #222; }
+    .comparison-table tbody tr:nth-child(even) td.col-bad { background: #252525; }
+    .comparison-table tbody tr:nth-child(odd) td.col-good  { background: #1d2115; }
+    .comparison-table tbody tr:nth-child(even) td.col-good { background: #1f2218; }
+
+    .comparison-table tbody td {
+      padding: 18px 28px;
+      font-size: 0.88rem;
+      font-weight: 400;
+      line-height: 1.5;
+      vertical-align: top;
+    }
+
+    .comparison-table tbody td.col-bad { color: #999; }
+    .comparison-table tbody td.col-good { color: #ccc; border-left: 3px solid var(--yellow); }
+
+    .comparison-table tbody td.col-good .check { color: var(--yellow); font-weight: 400; margin-right: 8px; }
+    .comparison-table tbody td.col-bad .cross  { color: #e05555; font-weight: 400; margin-right: 8px; }
+
+    /* ─── ABOUT ─── */
+    #about {
+      background: var(--black);
+      padding: 100px 0;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .about-img .placeholder-img { height: 100%; border-radius: 4px; }
+
+    .about-img-badge {
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      padding: 10px 14px;
+      text-transform: uppercase;
+    }
+
+    .about-content h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 28px; }
+    .about-content h2 span { color: var(--yellow); }
+
+    .about-content p {
+      font-size: 0.95rem;
+      color: #bbb;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .about-content strong { color: var(--off-white); }
+
+    .about-divider { width: 48px; height: 3px; background: var(--yellow); margin: 28px 0; }
+
+    .about-signature {
+      font-family: 'Anton', sans-serif;
+      font-weight: 400;
+      font-size: 1.2rem;
+      letter-spacing: 0.02em;
+      color: var(--yellow);
+    }
+
+    .about-title {
+      font-size: 0.8rem;
+      color: #666;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ─── OFFER BANNER ─── */
+    #offer {
+      background: var(--yellow);
+      padding: 80px 0;
+    }
+
+    .offer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    #offer h2 {
+      font-family: 'Anton', sans-serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--black);
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .offer-tagline {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: rgba(28,28,28,0.65);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+
+    .offer-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .offer-list li {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .offer-list li .tick { font-size: 1rem; color: var(--black); }
+
+    .offer-note {
+      font-size: 0.84rem;
+      color: rgba(28,28,28,0.7);
+      line-height: 1.7;
+      border-top: 1px solid rgba(28,28,28,0.2);
+      padding-top: 20px;
+      font-style: italic;
+    }
+
+    /* ─── VIDEOS ─── */
+    #videos {
+      background: var(--black-light);
+      padding: 100px 0;
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .video-box {
+      background: #000;
+      border: 1px solid #2e2e2e;
+      border-radius: 6px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .video-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+    }
+
+    .video-thumb {
+      aspect-ratio: 16/9;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .video-thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+    }
+
+    .play-btn {
+      position: relative;
+      z-index: 2;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 3px solid var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, background 0.2s;
+      cursor: pointer;
+    }
+
+    .play-btn:hover { background: var(--yellow); transform: scale(1.1); }
+
+    .play-btn::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 18px solid var(--yellow);
+      margin-left: 4px;
+      transition: border-color 0.2s;
+    }
+
+    .play-btn:hover::after { border-left-color: var(--black); }
+
+    .video-caption {
+      padding: 16px 20px;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #bbb;
+      letter-spacing: 0.05em;
+      border-top: 1px solid #2e2e2e;
+    }
+
+    /* ─── FAQ ─── */
+    #faq {
+      background: var(--black);
+      padding: 100px 0;
+    }
+
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .faq-item {
+      background: var(--black-light);
+      border: 1px solid #2e2e2e;
+      border-radius: 3px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .faq-item:hover { border-color: #444; }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: var(--off-white);
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .faq-question:hover { color: var(--yellow); }
+    .faq-question.open { color: var(--yellow); }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid #444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+      font-size: 1rem;
+      font-weight: 300;
+      transition: border-color 0.2s, color 0.2s, transform 0.3s;
+    }
+
+    .faq-question.open .faq-icon {
+      border-color: var(--yellow);
+      color: var(--yellow);
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 28px;
+    }
+
+    .faq-answer.open { max-height: 300px; padding: 0 28px 22px; }
+
+    .faq-answer p {
+      font-size: 0.88rem;
+      color: #999;
+      line-height: 1.75;
+      border-top: 1px solid #2e2e2e;
+      padding-top: 16px;
+    }
+
+    /* ─── FINAL CTA ─── */
+    #cta {
+      background: var(--black-light);
+      padding: 110px 0;
+      text-align: center;
+      border-top: 1px solid #2e2e2e;
+    }
+
+    .cta-inner h2 { font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 20px; }
+    .cta-inner h2 span { color: var(--yellow); }
+
+    .cta-inner p {
+      color: #888;
+      font-size: 0.9rem;
+      margin-top: 20px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .cta-inner .btn-yellow { font-size: 1rem; padding: 18px 44px; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid #252525;
+      padding: 48px 0 32px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-tagline { font-size: 0.8rem; color: #555; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 8px; }
+
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #555;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--yellow); }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: #444;
+      text-align: center;
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid #252525;
+    }
+
+    /* ─── SCROLL REVEAL ANIMATIONS ─── */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes tagPop {
+      0%   { opacity: 0; transform: scale(0.5); }
+      65%  { transform: scale(1.15); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Steps: override transition so hover stays snappy after reveal */
+    .step.reveal {
+      transition: opacity 0.55s ease, transform 0.55s ease, border-color 0.2s, box-shadow 0.2s;
+    }
+    .step.reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .step.reveal.visible:hover {
+      transform: translateY(-4px);
+      transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    /* Feature cards: same pattern */
+    .feature-card.reveal {
+      transition: opacity 0.55s ease, transform 0.55s ease, border-color 0.2s, box-shadow 0.2s;
+    }
+    .feature-card.reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .feature-card.reveal.visible:hover {
+      transform: translateY(-4px);
+      transition: transform 0.2s ease, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    /* Stagger delays - steps */
+    .step.reveal:nth-child(1) { transition-delay: 0s; }
+    .step.reveal:nth-child(2) { transition-delay: 0.12s; }
+    .step.reveal:nth-child(3) { transition-delay: 0.24s; }
+    .step.reveal:nth-child(4) { transition-delay: 0.36s; }
+
+    /* Stagger delays - feature cards */
+    .feature-card.reveal:nth-child(1) { transition-delay: 0s; }
+    .feature-card.reveal:nth-child(2) { transition-delay: 0.08s; }
+    .feature-card.reveal:nth-child(3) { transition-delay: 0.16s; }
+    .feature-card.reveal:nth-child(4) { transition-delay: 0.24s; }
+    .feature-card.reveal:nth-child(5) { transition-delay: 0.32s; }
+    .feature-card.reveal:nth-child(6) { transition-delay: 0.40s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-img-box { max-width: 480px; }
+      .steps-row { grid-template-columns: repeat(2, 1fr); }
+      .step:nth-child(2)::after { display: none; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-img { max-width: 320px; }
+      .offer-inner { grid-template-columns: 1fr; gap: 36px; }
+      .videos-grid { grid-template-columns: 1fr; }
+      .footer-inner { justify-content: center; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .steps-row { grid-template-columns: 1fr; }
+      .step::after { display: none; }
+      .features-grid { grid-template-columns: 1fr; }
+      .comparison-table thead th, .comparison-table tbody td { padding: 14px 16px; font-size: 0.82rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .cal-tag { opacity: 1; transform: none; }
+      .cal-tag.pop { animation: none; }
+      .btn-yellow:hover, .btn-black:hover { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════ -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <div class="logo">
+        <div class="logo-v"></div>
+        <span class="logo-text">VAL SYSTEMS</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#features">What You Get</a></li>
+        <li><a href="#offer">Offer</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="#cta" class="btn btn-yellow">Check Your Eligibility</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="hero-eyebrow">🏗️ Appointment Setting for Contractors</div>
+        <h1 class="hero-headline">
+          YOUR CALENDAR<br>
+          SHOULD BE <span>FULL.</span><br>
+          OURS IS THE SYSTEM<br>
+          THAT <span>FILLS IT.</span>
+        </h1>
+        <p class="hero-sub">
+          We don't sell leads. We book qualified homeowners directly into your calendar - pre-screened, ready to move forward, in your area.
+        </p>
+        <div class="hero-cta-row">
+          <a href="#how" class="btn btn-yellow">See How It Works</a>
+          <a href="#offer" class="btn btn-outline">See the Offer</a>
+        </div>
+        <p class="hero-trust" style="margin-top: 20px;">No contracts &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; First 2 months - <em>almost</em> zero risk</p>
+      </div>
+      <div class="hero-img-box reveal">
+        <div class="placeholder-img" style="flex-direction: column; gap: 12px;">
+          <span style="font-size: 2rem;">📋</span>
+          <span>[Photo: Valeria with calendar]</span>
+          <span style="font-size: 0.72rem; color: #555;">Woman holding laptop - full calendar visible</span>
+        </div>
+        <div class="hero-badge">Calendars Full. Deals Closed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PROBLEM
+═══════════════════════════════════════════════ -->
+<section id="problem">
+  <div class="container">
+    <div class="problem-header reveal">
+      <span class="section-label">🔨 The Real Problem</span>
+      <h2>LEADS <span>≠</span> APPOINTMENTS.</h2>
+      <p>Chasing leads wastes your time, drains your money, and kills your close rate. There's a better way.</p>
+    </div>
+    <div class="problem-grid reveal">
+      <div class="problem-col bad">
+        <div class="problem-col-label">
+          <span>✕</span> What Lead Agencies Give You
+        </div>
+        <ul class="problem-list">
+          <li><span class="icon">✕</span><span>Missed calls from people who submitted a form and moved on</span></li>
+          <li><span class="icon">✕</span><span>No-shows who never intended to commit in the first place</span></li>
+          <li><span class="icon">✕</span><span>Leads outside your service area wasting your drive time</span></li>
+          <li><span class="icon">✕</span><span>Homeowners with no budget, no timeline, no seriousness</span></li>
+          <li><span class="icon">✕</span><span>The same lead sold to 4 other contractors simultaneously</span></li>
+          <li><span class="icon">✕</span><span>Hours of chasing, qualifying, and following up - yourself</span></li>
+        </ul>
+      </div>
+      <div class="problem-col good">
+        <div class="problem-col-label">
+          <span>✓</span> What Val Systems Gives You
+        </div>
+        <ul class="problem-list">
+          <li><span class="icon">✓</span><span><strong>Qualified homeowners</strong> who've been screened for budget, location, and timeline</span></li>
+          <li><span class="icon">✓</span><span>People who are <strong>ready to move forward</strong> and expecting your call</span></li>
+          <li><span class="icon">✓</span><span>Appointments <strong>booked directly</strong> into your calendar - zero chasing</span></li>
+          <li><span class="icon">✓</span><span>Exclusive to you - <strong>never shared</strong> with a competitor</span></li>
+          <li><span class="icon">✓</span><span>Your time spent <strong>closing deals</strong>, not filtering garbage</span></li>
+          <li><span class="icon">✓</span><span>Full transparency - you see every step of the process</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════════════════ -->
+<section id="how">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">⛑️ The Process</span>
+      <h2>THE <span>VAL SYSTEMS</span> PROCESS.</h2>
+      <p>Four steps. One outcome: your calendar full of people who are actually ready to buy.</p>
+    </div>
+    <div class="steps-row">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-icon">🏠</div>
+        <h3>Targeted Ads</h3>
+        <p>We run precision Meta ads to homeowners in your exact service area who need roofing or remodeling work.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <div class="step-icon">🔧</div>
+        <h3>Lead Filtering</h3>
+        <p>Our team manually filters every single lead - verifying location, budget, timeline, and seriousness before anyone advances.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <div class="step-icon">📋</div>
+        <h3>Direct Booking</h3>
+        <p>Only qualified homeowners get booked. Appointments land directly in your calendar - confirmed, ready, and expecting you.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <div class="step-icon">⛑️</div>
+        <h3>You Close</h3>
+        <p>Show up. Pitch your work. Close the deal. Everything before this step is already handled. That's it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     WHAT YOU GET
+═══════════════════════════════════════════════ -->
+<section id="features">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">📋 Included in Every Engagement</span>
+      <h2>WHAT <span>YOU GET</span> WITH VAL SYSTEMS.</h2>
+      <p>Everything you need to fill your calendar - nothing you don't.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">🔒</div>
+        <h3>EXCLUSIVE APPOINTMENTS</h3>
+        <p>Every appointment is yours alone. We never share leads or bookings with competing contractors in your area.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">⛑️</div>
+        <h3>PRE-QUALIFIED HOMEOWNERS</h3>
+        <p>Only people who match your criteria - right location, right budget, right timeline - ever reach your calendar.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📋</div>
+        <h3>BOOKED INTO YOUR CALENDAR</h3>
+        <p>Appointments appear directly in your scheduling system. No leads to chase, no calls to make, no follow-up required.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🔧</div>
+        <h3>DEDICATED FILTERING TEAM</h3>
+        <p>A real team handles every inquiry. We qualify, verify, and confirm - so you never have to deal with a bad lead again.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🏗️</div>
+        <h3>FULL TRANSPARENCY</h3>
+        <p>You see exactly what we're running, who we're targeting, and how every appointment was qualified. No black box.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🏠</div>
+        <h3>CANCEL ANYTIME</h3>
+        <p>No long-term contracts. No lock-ins. No cancellation fees. If it's not working, you can walk. Simple as that.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CALENDAR VISUAL
+═══════════════════════════════════════════════ -->
+<section id="calendar">
+  <div class="container">
+    <span class="section-label reveal" style="display:block; text-align:center;">🏠 Your Month, Fully Booked</span>
+    <h2 class="calendar-headline reveal">IS YOUR CALENDAR FULL?</h2>
+    <p class="calendar-sub reveal">OURS <span style="color: var(--off-white);">FILLS</span> THEM.</p>
+    <div class="cal-wrapper" id="calWrapper">
+      <div class="cal-header">
+        <span class="cal-nav">‹</span>
+        <span>JUNE 2026</span>
+        <span class="cal-nav">›</span>
+      </div>
+      <div class="cal-days-header">
+        <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
+      </div>
+      <div class="cal-grid">
+        <div class="cal-cell empty"></div>
+        <div class="cal-cell booked"><span class="cal-date">1</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">2</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">3</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">4</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">5</span><span class="cal-tag tag-closed">CLOSED</span></div>
+        <div class="cal-cell"><span class="cal-date">6</span></div>
+        <div class="cal-cell"><span class="cal-date">7</span></div>
+        <div class="cal-cell booked"><span class="cal-date">8</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">9</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">10</span><span class="cal-tag tag-closed">CLOSED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">11</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">12</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell"><span class="cal-date">13</span></div>
+        <div class="cal-cell"><span class="cal-date">14</span></div>
+        <div class="cal-cell booked"><span class="cal-date">15</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">16</span><span class="cal-tag tag-closed">CLOSED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">17</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">18</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">19</span><span class="cal-tag tag-closed">CLOSED</span></div>
+        <div class="cal-cell"><span class="cal-date">20</span></div>
+        <div class="cal-cell"><span class="cal-date">21</span></div>
+        <div class="cal-cell booked"><span class="cal-date">22</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">23</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">24</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">25</span><span class="cal-tag tag-closed">CLOSED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">26</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell"><span class="cal-date">27</span></div>
+        <div class="cal-cell"><span class="cal-date">28</span></div>
+        <div class="cal-cell booked"><span class="cal-date">29</span><span class="cal-tag tag-booked">BOOKED</span></div>
+        <div class="cal-cell booked"><span class="cal-date">30</span><span class="cal-tag tag-closed">CLOSED</span></div>
+        <div class="cal-cell empty"></div>
+        <div class="cal-cell empty"></div>
+        <div class="cal-cell empty"></div>
+        <div class="cal-cell empty"></div>
+      </div>
+    </div>
+    <p style="margin-top: 24px; font-size: 0.82rem; color: #555; letter-spacing: 0.06em;">
+      <span style="color: #55c87e; font-weight: 400;">BOOKED</span> - Appointment confirmed &nbsp;&nbsp;
+      <span style="color: var(--yellow); font-weight: 400;">CLOSED</span> - Deal won
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     COMPARISON TABLE
+═══════════════════════════════════════════════ -->
+<section id="comparison">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">🏗️ Side by Side</span>
+      <h2>WHY <span>THIS SYSTEM</span> IS DIFFERENT.</h2>
+      <p>This isn't a lead agency. It's a system built specifically to put qualified appointments on your calendar.</p>
+    </div>
+    <div class="reveal">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th class="col-bad">✕ &nbsp; What Lead Agencies Give You</th>
+            <th class="col-good">✓ &nbsp; What Val Systems Gives You</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-bad"><span class="cross">✕</span> Random, unfiltered leads - anyone who clicked an ad</td>
+            <td class="col-good"><span class="check">✓</span> Qualified appointments - screened, confirmed, ready</td>
+          </tr>
+          <tr>
+            <td class="col-bad"><span class="cross">✕</span> Shared with 4–5 competing contractors simultaneously</td>
+            <td class="col-good"><span class="check">✓</span> 100% exclusive to you - never shared with anyone</td>
+          </tr>
+          <tr>
+            <td class="col-bad"><span class="cross">✕</span> No filtering - you qualify every single lead yourself</td>
+            <td class="col-good"><span class="check">✓</span> Our team filters, verifies, and confirms before booking</td>
+          </tr>
+          <tr>
+            <td class="col-bad"><span class="cross">✕</span> Pay per lead - bad leads still cost you money</td>
+            <td class="col-good"><span class="check">✓</span> Flat monthly retainer - predictable, no per-lead fees</td>
+          </tr>
+          <tr>
+            <td class="col-bad"><span class="cross">✕</span> Zero accountability - bad leads? "That's the business."</td>
+            <td class="col-good"><span class="check">✓</span> Full transparency - you see every step of what we do</td>
+          </tr>
+          <tr>
+            <td class="col-bad"><span class="cross">✕</span> Long-term contracts locking you in for 6–12 months</td>
+            <td class="col-good"><span class="check">✓</span> Cancel anytime - no contracts, no pressure, no games</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-inner reveal">
+      <div style="position: relative;">
+        <div class="about-img">
+          <div class="placeholder-img" style="height: 100%; flex-direction: column; gap: 12px;">
+            <span style="font-size: 2.5rem;">👤</span>
+            <span>[Photo: Valeria]</span>
+          </div>
+        </div>
+        <div class="about-img-badge">Founder - Val Systems</div>
+      </div>
+      <div class="about-content">
+        <span class="section-label">🔧 Why Val Systems Exists</span>
+        <h2>WHY I ONLY WORK WITH THE <span>RIGHT CONTRACTORS.</span></h2>
+        <div class="about-divider"></div>
+        <p>
+          I know how broken the leads market is. I've seen contractors <strong>waste thousands of dollars</strong> chasing garbage leads - unqualified homeowners, wrong areas, dead numbers, no-shows. It's not just frustrating. It destroys momentum and burns out good people.
+        </p>
+        <p>
+          I built Val Systems because I've seen firsthand what a <strong>real appointment-setting system</strong> does to a contractor's business. The close rate changes. The revenue changes. The stress level changes.
+        </p>
+        <p>
+          And I only want to work with people who are serious about growing. <strong>I don't take every client. I take the right ones.</strong> Because this only works when both sides are committed to making it work.
+        </p>
+        <p>
+          This isn't a transaction. <strong>It's a long-term partnership.</strong> And I treat it that way.
+        </p>
+        <div class="about-divider"></div>
+        <div class="about-signature">- Val</div>
+        <div class="about-title">Founder, Val Systems</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SPECIAL OFFER
+═══════════════════════════════════════════════ -->
+<section id="offer">
+  <div class="container">
+    <div class="offer-inner reveal">
+      <div>
+        <p class="offer-tagline">Limited Availability</p>
+        <h2>FIRST 2 MONTHS -<br><em>almost</em> ZERO RISK.</h2>
+        <p style="margin-top: 14px; font-size: 0.82rem; font-weight: 400; color: rgba(28,28,28,0.6); letter-spacing: 0.04em;">We work with a limited number of contractors per area - spots fill fast.</p>
+      </div>
+      <div>
+        <ul class="offer-list">
+          <li><span class="tick">✓</span> No retainer for the first 2 months</li>
+          <li><span class="tick">✓</span> No management costs</li>
+          <li><span class="tick">✓</span> No setup fees</li>
+          <li><span class="tick">✓</span> Cancel anytime</li>
+          <li><span class="tick">✓</span> No long-term contracts</li>
+        </ul>
+        <p class="offer-note">
+          "I do this because I believe in what I've built. And I want you to see it work before you commit to anything."
+        </p>
+        <div style="margin-top: 28px;">
+          <a href="#cta" class="btn-black">Apply Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     VIDEOS
+═══════════════════════════════════════════════ -->
+<section id="videos">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">🎬 See It In Action</span>
+      <h2>WATCH <span>HOW IT WORKS.</span></h2>
+      <p>Hear directly from Val and from contractors who've used the system.</p>
+    </div>
+    <div class="videos-grid reveal">
+      <div class="video-box">
+        <div class="video-thumb">
+          <div class="play-btn"></div>
+        </div>
+        <div class="video-caption">▶ &nbsp; How the Val Systems process works - end to end</div>
+      </div>
+      <div class="video-box">
+        <div class="video-thumb">
+          <div class="play-btn"></div>
+        </div>
+        <div class="video-caption">▶ &nbsp; Real results - what contractors say after 60 days</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FAQ
+═══════════════════════════════════════════════ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">⛑️ Common Questions</span>
+      <h2>FREQUENTLY ASKED <span>QUESTIONS.</span></h2>
+      <p>Everything you need to know before booking a call.</p>
+    </div>
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How is this different from buying leads?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Lead agencies sell you contact information - a name and a phone number from someone who filled out a form online. You still have to call them, qualify them, and deal with the ones who aren't serious. Val Systems handles all of that. We only put people on your calendar after they've been verified for location, budget, timeline, and genuine intent. You skip straight to the appointment. No chasing. No filtering yourself.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What does the filtering process look like?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>After a homeowner responds to one of our ads, our team reaches out to verify key details: Are they in your service area? Do they have a realistic budget for the type of work you do? Do they have a timeline in mind? Are they the decision-maker? Only homeowners who pass every check get moved forward. The ones who don't make the cut never reach your calendar - period.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How many appointments per month can I expect?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The volume depends on your market, your service area, and the type of work you do. We set realistic expectations upfront based on your specific situation - we don't promise numbers we can't deliver. What we can promise is that every appointment that lands on your calendar has been properly qualified. Quality over quantity, always.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What do I need to get started?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Very little. We start with a strategy call to understand your business, your service area, your ideal client, and what "qualified" means for you specifically. From there, we set up the ad campaigns and the filtering workflow - you don't need to do anything technical. You need an active calendar link (like Calendly) and a working phone. That's it.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What if I want to cancel?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>You can cancel anytime with no penalties, no fees, and no drama. We don't believe in trapping people in contracts. If the system isn't working for you - or if your situation changes - you're free to walk away. We'd rather you stay because the results are there, not because you're locked in.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FINAL CTA
+═══════════════════════════════════════════════ -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <span class="section-label" style="display:block; text-align:center;">🏗️ Take the First Step</span>
+      <h2>READY TO STOP <span>CHASING</span><br>AND START <span>CLOSING?</span></h2>
+      <div style="margin-top: 36px;">
+        <a href="#" class="btn btn-yellow">Apply to Work With Us</a>
+      </div>
+      <p>No commitment. No pressure. Just a real conversation about whether this is the right fit for you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="logo">
+          <div class="logo-v"></div>
+          <span class="logo-text">VAL SYSTEMS</span>
+        </div>
+        <p class="footer-tagline">Built for contractors. Focused on results.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#features">What You Get</a></li>
+        <li><a href="#offer">The Offer</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#cta">Apply Now</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">© 2026 Val Systems. All rights reserved. &nbsp;·&nbsp; Appointment Setting for U.S. Roofing & Remodeling Contractors.</p>
+  </div>
+</footer>
+
+<script>
+  /* ── FAQ accordion ── */
+  function toggleFaq(btn) {
+    var answer = btn.nextElementSibling;
+    var isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-question.open').forEach(function(b) {
+      b.classList.remove('open');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) {
+      btn.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+
+  /* ── Active nav highlight on scroll ── */
+  var sections  = document.querySelectorAll('section[id]');
+  var navLinks  = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', function() {
+    var current = '';
+    sections.forEach(function(s) {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(function(a) {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--yellow)' : '';
+    });
+  }, { passive: true });
+
+  /* ── Scroll reveal (Intersection Observer) ── */
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    revealObserver.observe(el);
+  });
+
+  /* ── Calendar BOOKED tag pop-in ── */
+  var calWrapper = document.getElementById('calWrapper');
+  var calTriggered = false;
+
+  var calObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !calTriggered) {
+        calTriggered = true;
+        var tags = calWrapper.querySelectorAll('.cal-tag');
+        tags.forEach(function(tag, i) {
+          setTimeout(function() {
+            tag.classList.add('pop');
+          }, i * 55);
+        });
+        calObserver.unobserve(calWrapper);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  calObserver.observe(calWrapper);
+</script>
+
+</body>
+</html>
