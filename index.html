@@ -82,10 +82,7 @@
       55%       { box-shadow: 0 0 0 14px rgba(242,183,5,0); }
     }
 
-    .btn-yellow {
-      background: var(--yellow);
-      color: var(--black);
-    }
+    .btn-yellow { background: var(--yellow); color: var(--black); }
     .btn-yellow:hover {
       background: var(--yellow-dark);
       transform: translateY(-2px);
@@ -315,10 +312,7 @@
       margin-bottom: 60px;
     }
 
-    .problem-header h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 16px;
-    }
+    .problem-header h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
     .problem-header h2 span { color: var(--yellow); }
 
     .problem-header p {
@@ -338,12 +332,7 @@
     }
 
     .problem-col { padding: 40px 36px; }
-
-    .problem-col.bad {
-      background: var(--red-tint);
-      border-right: 2px solid var(--red-border);
-    }
-
+    .problem-col.bad { background: var(--red-tint); border-right: 2px solid var(--red-border); }
     .problem-col.good { background: var(--green-tint); }
 
     .problem-col-label {
@@ -363,12 +352,7 @@
     .problem-col.bad .problem-col-label { color: #e05555; border-color: var(--red-border); }
     .problem-col.good .problem-col-label { color: #55c87e; border-color: var(--green-border); }
 
-    .problem-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+    .problem-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
 
     .problem-list li {
       display: flex;
@@ -395,29 +379,68 @@
     .bad .icon { background: rgba(220,60,60,0.2); color: #e05555; }
     .good .icon { background: rgba(50,200,100,0.2); color: #55c87e; }
 
-    /* ─── HOW IT WORKS ─── */
-    #how {
+    /* ─── COMPARISON TABLE ─── */
+    #comparison {
       background: var(--black);
       padding: 100px 0;
     }
 
-    .section-header {
-      text-align: center;
-      margin-bottom: 64px;
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 6px;
+      overflow: hidden;
     }
 
-    .section-header h2 {
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      margin-bottom: 12px;
+    .comparison-table thead th {
+      padding: 22px 28px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 0.82rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
     }
+
+    .comparison-table thead th.col-bad {
+      background: #252525;
+      color: #e05555;
+      border-bottom: 3px solid rgba(220,60,60,0.4);
+    }
+
+    .comparison-table thead th.col-good {
+      background: #1f2218;
+      color: var(--yellow);
+      border-bottom: 3px solid var(--yellow);
+    }
+
+    .comparison-table tbody tr:nth-child(odd) td.col-bad   { background: #222; }
+    .comparison-table tbody tr:nth-child(even) td.col-bad  { background: #252525; }
+    .comparison-table tbody tr:nth-child(odd) td.col-good  { background: #1d2115; }
+    .comparison-table tbody tr:nth-child(even) td.col-good { background: #1f2218; }
+
+    .comparison-table tbody td {
+      padding: 18px 28px;
+      font-size: 0.88rem;
+      font-weight: 400;
+      line-height: 1.5;
+      vertical-align: top;
+    }
+
+    .comparison-table tbody td.col-bad { color: #999; }
+    .comparison-table tbody td.col-good { color: #ccc; border-left: 3px solid var(--yellow); }
+    .comparison-table tbody td.col-good .check { color: var(--yellow); font-weight: 400; margin-right: 8px; }
+    .comparison-table tbody td.col-bad .cross  { color: #e05555; font-weight: 400; margin-right: 8px; }
+
+    /* ─── HOW IT WORKS ─── */
+    #how {
+      background: var(--black-light);
+      padding: 100px 0;
+    }
+
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-header h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 12px; }
     .section-header h2 span { color: var(--yellow); }
-
-    .section-header p {
-      color: #999;
-      max-width: 520px;
-      margin: 0 auto;
-      font-size: 0.95rem;
-    }
+    .section-header p { color: #999; max-width: 520px; margin: 0 auto; font-size: 0.95rem; }
 
     .steps-row {
       display: grid;
@@ -428,7 +451,7 @@
 
     .step {
       padding: 36px 28px;
-      background: var(--black-light);
+      background: var(--black);
       border: 1px solid #2e2e2e;
       position: relative;
       text-align: center;
@@ -480,21 +503,12 @@
       border-color: rgba(242, 183, 5, 0.55);
     }
 
-    .step h3 {
-      font-size: 0.78rem;
-      margin-bottom: 10px;
-      color: var(--yellow);
-    }
-
-    .step p {
-      font-size: 0.85rem;
-      color: #999;
-      line-height: 1.6;
-    }
+    .step h3 { font-size: 0.78rem; margin-bottom: 10px; color: var(--yellow); }
+    .step p { font-size: 0.85rem; color: #999; line-height: 1.6; }
 
     /* ─── WHAT YOU GET ─── */
     #features {
-      background: var(--black-light);
+      background: var(--black);
       padding: 100px 0;
     }
 
@@ -505,7 +519,7 @@
     }
 
     .feature-card {
-      background: var(--black);
+      background: var(--black-light);
       border: 1px solid #2e2e2e;
       border-top: 3px solid var(--yellow);
       padding: 32px 28px;
@@ -519,190 +533,126 @@
       border-color: #444;
     }
 
-    .feature-icon {
-      font-size: 1.8rem;
-      margin-bottom: 16px;
+    .feature-icon { font-size: 1.8rem; margin-bottom: 16px; }
+    .feature-card h3 { font-size: 0.82rem; margin-bottom: 10px; color: var(--off-white); }
+    .feature-card p { font-size: 0.84rem; color: #888; line-height: 1.6; }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials {
+      background: var(--black-light);
+      padding: 100px 0;
+      overflow: hidden;
     }
 
-    .feature-card h3 {
-      font-size: 0.82rem;
-      margin-bottom: 10px;
-      color: var(--off-white);
+    .testimonials-viewport { overflow: hidden; }
+
+    .testimonials-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .feature-card p {
-      font-size: 0.84rem;
-      color: #888;
-      line-height: 1.6;
-    }
-
-    /* ─── CALENDAR SECTION ─── */
-    #calendar {
+    .tcard {
+      flex-shrink: 0;
+      width: calc(33.333% - 16px);
       background: var(--black);
-      padding: 100px 0;
-      text-align: center;
-    }
-
-    .calendar-headline {
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
-      margin-bottom: 10px;
-    }
-
-    .calendar-sub {
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      color: var(--yellow);
-      margin-bottom: 56px;
-    }
-
-    .cal-wrapper {
-      max-width: 720px;
-      margin: 0 auto;
-      background: var(--black-light);
-      border: 1px solid #333;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .cal-header {
-      background: var(--yellow);
-      color: var(--black);
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 0.88rem;
-      letter-spacing: 0.12em;
-      padding: 18px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .cal-header .cal-nav {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 400;
-      cursor: pointer;
-      opacity: 0.7;
-    }
-
-    .cal-days-header {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      background: #252525;
-      border-bottom: 1px solid #333;
-    }
-
-    .cal-days-header span {
-      text-align: center;
-      padding: 10px 0;
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #777;
-    }
-
-    .cal-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 1px;
-      background: #2a2a2a;
-    }
-
-    .cal-cell {
-      background: var(--black-light);
-      padding: 10px 6px;
-      min-height: 64px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .cal-cell.empty { background: #1e1e1e; }
-
-    .cal-date {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 400;
-      color: #666;
-    }
-
-    .cal-cell.booked .cal-date { color: var(--off-white); }
-
-    .cal-tag {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.58rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 3px 5px;
-      border-radius: 2px;
-      width: 100%;
-      text-align: center;
-      opacity: 0;
-      transform: scale(0.6);
-    }
-
-    .cal-tag.pop {
-      animation: tagPop 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    }
-
-    .tag-booked { background: rgba(50,200,100,0.2); color: #55c87e; border: 1px solid rgba(50,200,100,0.3); }
-    .tag-closed { background: rgba(242,183,5,0.15); color: var(--yellow); border: 1px solid rgba(242,183,5,0.3); }
-    .tag-today  { background: rgba(255,255,255,0.08); color: #aaa; border: 1px solid #444; }
-
-    /* ─── COMPARISON TABLE ─── */
-    #comparison {
-      background: var(--black-light);
-      padding: 100px 0;
-    }
-
-    .comparison-table {
-      width: 100%;
-      border-collapse: collapse;
+      border: 1px solid rgba(242,183,5,0.3);
       border-radius: 6px;
-      overflow: hidden;
+      padding: 32px 28px;
+      transition: border-color 0.2s, transform 0.2s;
     }
 
-    .comparison-table thead th {
-      padding: 22px 28px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 0.82rem;
-      letter-spacing: 0.07em;
+    .tcard:hover {
+      border-color: var(--yellow);
+      transform: translateY(-3px);
+    }
+
+    .tcard-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .tcard-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Anton', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      color: #fff;
+      flex-shrink: 0;
+      letter-spacing: 0.05em;
+    }
+
+    .tcard-meta { flex: 1; }
+
+    .tcard-name {
+      font-family: 'Anton', sans-serif;
+      font-weight: 400;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      color: var(--off-white);
+      line-height: 1.2;
       text-transform: uppercase;
     }
 
-    .comparison-table thead th.col-bad {
-      background: #252525;
-      color: #e05555;
-      border-bottom: 3px solid rgba(220,60,60,0.4);
-    }
-
-    .comparison-table thead th.col-good {
-      background: #1f2218;
+    .tcard-stars {
       color: var(--yellow);
-      border-bottom: 3px solid var(--yellow);
+      font-size: 0.82rem;
+      letter-spacing: 2px;
+      margin-top: 4px;
     }
 
-    .comparison-table tbody tr:nth-child(odd) td.col-bad  { background: #222; }
-    .comparison-table tbody tr:nth-child(even) td.col-bad { background: #252525; }
-    .comparison-table tbody tr:nth-child(odd) td.col-good  { background: #1d2115; }
-    .comparison-table tbody tr:nth-child(even) td.col-good { background: #1f2218; }
-
-    .comparison-table tbody td {
-      padding: 18px 28px;
-      font-size: 0.88rem;
-      font-weight: 400;
-      line-height: 1.5;
-      vertical-align: top;
+    .tcard p {
+      font-size: 0.87rem;
+      color: #aaa;
+      line-height: 1.75;
     }
 
-    .comparison-table tbody td.col-bad { color: #999; }
-    .comparison-table tbody td.col-good { color: #ccc; border-left: 3px solid var(--yellow); }
+    .tcarousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 44px;
+    }
 
-    .comparison-table tbody td.col-good .check { color: var(--yellow); font-weight: 400; margin-right: 8px; }
-    .comparison-table tbody td.col-bad .cross  { color: #e05555; font-weight: 400; margin-right: 8px; }
+    .tcarousel-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid #333;
+      background: none;
+      color: var(--off-white);
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .tcarousel-btn:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    .tcarousel-dots { display: flex; gap: 8px; align-items: center; }
+
+    .tcarousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #444;
+      transition: background 0.25s, transform 0.25s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .tcarousel-dot.active { background: var(--yellow); transform: scale(1.35); }
 
     /* ─── ABOUT ─── */
     #about {
@@ -717,13 +667,7 @@
       align-items: start;
     }
 
-    .about-img {
-      width: 100%;
-      aspect-ratio: 3/4;
-      border-radius: 4px;
-      position: relative;
-    }
-
+    .about-img { width: 100%; aspect-ratio: 3/4; border-radius: 4px; position: relative; }
     .about-img .placeholder-img { height: 100%; border-radius: 4px; }
 
     .about-img-badge {
@@ -751,7 +695,6 @@
     }
 
     .about-content strong { color: var(--off-white); }
-
     .about-divider { width: 48px; height: 3px; background: var(--yellow); margin: 28px 0; }
 
     .about-signature {
@@ -762,19 +705,10 @@
       color: var(--yellow);
     }
 
-    .about-title {
-      font-size: 0.8rem;
-      color: #666;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
+    .about-title { font-size: 0.8rem; color: #666; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
 
     /* ─── OFFER BANNER ─── */
-    #offer {
-      background: var(--yellow);
-      padding: 80px 0;
-    }
+    #offer { background: var(--yellow); padding: 80px 0; }
 
     .offer-inner {
       display: grid;
@@ -802,13 +736,7 @@
       margin-bottom: 0;
     }
 
-    .offer-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
+    .offer-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
 
     .offer-list li {
       font-size: 0.95rem;
@@ -830,102 +758,13 @@
       font-style: italic;
     }
 
-    /* ─── VIDEOS ─── */
-    #videos {
-      background: var(--black-light);
-      padding: 100px 0;
-    }
-
-    .videos-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-    }
-
-    .video-box {
-      background: #000;
-      border: 1px solid #2e2e2e;
-      border-radius: 6px;
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .video-box:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
-    }
-
-    .video-thumb {
-      aspect-ratio: 16/9;
-      background: #111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      cursor: pointer;
-    }
-
-    .video-thumb::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
-    }
-
-    .play-btn {
-      position: relative;
-      z-index: 2;
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      border: 3px solid var(--yellow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.2s, background 0.2s;
-      cursor: pointer;
-    }
-
-    .play-btn:hover { background: var(--yellow); transform: scale(1.1); }
-
-    .play-btn::after {
-      content: '';
-      width: 0;
-      height: 0;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-left: 18px solid var(--yellow);
-      margin-left: 4px;
-      transition: border-color 0.2s;
-    }
-
-    .play-btn:hover::after { border-left-color: var(--black); }
-
-    .video-caption {
-      padding: 16px 20px;
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: #bbb;
-      letter-spacing: 0.05em;
-      border-top: 1px solid #2e2e2e;
-    }
-
     /* ─── FAQ ─── */
-    #faq {
-      background: var(--black);
-      padding: 100px 0;
-    }
+    #faq { background: var(--black-light); padding: 100px 0; }
 
-    .faq-list {
-      max-width: 760px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 2px; }
 
     .faq-item {
-      background: var(--black-light);
+      background: var(--black);
       border: 1px solid #2e2e2e;
       border-radius: 3px;
       overflow: hidden;
@@ -994,28 +833,135 @@
       padding-top: 16px;
     }
 
-    /* ─── FINAL CTA ─── */
-    #cta {
-      background: var(--black-light);
-      padding: 110px 0;
-      text-align: center;
+    /* ─── CONTACT FORM ─── */
+    #contact {
+      background: var(--black);
+      padding: 100px 0;
       border-top: 1px solid #2e2e2e;
     }
 
-    .cta-inner h2 { font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 20px; }
-    .cta-inner h2 span { color: var(--yellow); }
-
-    .cta-inner p {
-      color: #888;
-      font-size: 0.9rem;
-      margin-top: 20px;
-      max-width: 440px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.7;
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
     }
 
-    .cta-inner .btn-yellow { font-size: 1rem; padding: 18px 44px; }
+    .contact-headline h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 16px; }
+    .contact-headline h2 span { color: var(--yellow); }
+
+    .contact-headline > p {
+      color: #999;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .contact-trust { display: flex; flex-direction: column; gap: 10px; }
+
+    .contact-trust span {
+      font-size: 0.84rem;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .contact-trust span::before {
+      content: '✓';
+      color: var(--yellow);
+      font-weight: 700;
+    }
+
+    .contact-form-wrap {
+      background: var(--black-light);
+      border: 1px solid #2e2e2e;
+      border-radius: 6px;
+      padding: 40px 36px;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 20px; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    .form-group input,
+    .form-group select {
+      background: var(--black);
+      border: 1px solid #333;
+      border-radius: 3px;
+      padding: 12px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--off-white);
+      transition: border-color 0.2s;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+    }
+
+    .form-group input::placeholder { color: #555; }
+
+    .form-group input:focus,
+    .form-group select:focus { border-color: var(--yellow); }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      cursor: pointer;
+    }
+
+    .form-group select option { background: var(--black); color: var(--off-white); }
+
+    .form-submit {
+      margin-top: 8px;
+      width: 100%;
+      font-size: 0.92rem;
+      padding: 16px;
+      text-align: center;
+      letter-spacing: 0.1em;
+    }
+
+    .form-success {
+      text-align: center;
+      padding: 48px 24px;
+    }
+
+    .form-success-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: rgba(50,200,100,0.12);
+      border: 2px solid #55c87e;
+      color: #55c87e;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .form-success h3 {
+      font-family: 'Anton', sans-serif;
+      font-weight: 400;
+      font-size: 1.2rem;
+      letter-spacing: 0.06em;
+      color: var(--off-white);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .form-success p { color: #888; font-size: 0.9rem; }
 
     /* ─── FOOTER ─── */
     footer {
@@ -1033,7 +979,6 @@
     }
 
     .footer-tagline { font-size: 0.8rem; color: #555; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 8px; }
-
     .footer-links { display: flex; gap: 28px; list-style: none; }
 
     .footer-links a {
@@ -1073,32 +1018,21 @@
       transition: opacity 0.65s ease, transform 0.65s ease;
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* Steps: override transition so hover stays snappy after reveal */
     .step.reveal {
       transition: opacity 0.55s ease, transform 0.55s ease, border-color 0.2s, box-shadow 0.2s;
     }
-    .step.reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .step.reveal.visible { opacity: 1; transform: translateY(0); }
     .step.reveal.visible:hover {
       transform: translateY(-4px);
       transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.2s;
     }
 
-    /* Feature cards: same pattern */
     .feature-card.reveal {
       transition: opacity 0.55s ease, transform 0.55s ease, border-color 0.2s, box-shadow 0.2s;
     }
-    .feature-card.reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .feature-card.reveal.visible { opacity: 1; transform: translateY(0); }
     .feature-card.reveal.visible:hover {
       transform: translateY(-4px);
       transition: transform 0.2s ease, box-shadow 0.2s, border-color 0.2s;
@@ -1125,10 +1059,12 @@
       .steps-row { grid-template-columns: repeat(2, 1fr); }
       .step:nth-child(2)::after { display: none; }
       .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .tcard { width: calc(50% - 12px); }
       .about-inner { grid-template-columns: 1fr; gap: 40px; }
       .about-img { max-width: 320px; }
       .offer-inner { grid-template-columns: 1fr; gap: 36px; }
-      .videos-grid { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .contact-form-wrap { padding: 28px 24px; }
       .footer-inner { justify-content: center; text-align: center; }
       .footer-links { justify-content: center; }
     }
@@ -1142,13 +1078,12 @@
       .steps-row { grid-template-columns: 1fr; }
       .step::after { display: none; }
       .features-grid { grid-template-columns: 1fr; }
+      .tcard { width: 100%; }
       .comparison-table thead th, .comparison-table tbody td { padding: 14px 16px; font-size: 0.82rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
-      .cal-tag { opacity: 1; transform: none; }
-      .cal-tag.pop { animation: none; }
       .btn-yellow:hover, .btn-black:hover { animation: none; }
     }
   </style>
@@ -1172,7 +1107,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <a href="#cta" class="btn btn-yellow">Check Your Eligibility</a>
+      <a href="#contact" class="btn btn-yellow">Check Your Eligibility</a>
     </div>
   </div>
 </nav>
@@ -1189,7 +1124,7 @@
           YOUR CALENDAR SHOULD BE <span>FULL.</span> OURS IS THE SYSTEM THAT <span>FILLS IT.</span>
         </h1>
         <p class="hero-sub">
-          We don't sell leads. We book qualified homeowners directly into your calendar - pre-screened, ready to move forward, in your area.
+          You've chased enough bad leads. It's time your calendar filled itself - with pre-screened homeowners who are ready to move forward, in your area, exclusive to you.
         </p>
         <div class="hero-cta-row">
           <a href="#how" class="btn btn-yellow">See How It Works</a>
@@ -1221,9 +1156,7 @@
     </div>
     <div class="problem-grid reveal">
       <div class="problem-col bad">
-        <div class="problem-col-label">
-          <span>✕</span> What Lead Agencies Give You
-        </div>
+        <div class="problem-col-label"><span>✕</span> What Lead Agencies Give You</div>
         <ul class="problem-list">
           <li><span class="icon">✕</span><span>Missed calls from people who submitted a form and moved on</span></li>
           <li><span class="icon">✕</span><span>No-shows who never intended to commit in the first place</span></li>
@@ -1234,9 +1167,7 @@
         </ul>
       </div>
       <div class="problem-col good">
-        <div class="problem-col-label">
-          <span>✓</span> What Val Systems Gives You
-        </div>
+        <div class="problem-col-label"><span>✓</span> What Val Systems Gives You</div>
         <ul class="problem-list">
           <li><span class="icon">✓</span><span><strong>Qualified homeowners</strong> who've been screened for budget, location, and timeline</span></li>
           <li><span class="icon">✓</span><span>People who are <strong>ready to move forward</strong> and expecting your call</span></li>
@@ -1246,6 +1177,55 @@
           <li><span class="icon">✓</span><span>Full transparency - you see every step of the process</span></li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     COMPARISON TABLE
+═══════════════════════════════════════════════ -->
+<section id="comparison">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">🏗️ Side by Side</span>
+      <h2>WHY <span>THIS SYSTEM</span> IS DIFFERENT.</h2>
+      <p>This isn't a lead agency. It's a system built specifically to put qualified appointments on your calendar.</p>
+    </div>
+    <div class="reveal">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th class="col-bad">✕ &nbsp; What Lead Agencies Give You</th>
+            <th class="col-good">✓ &nbsp; What Val Systems Gives You</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-bad"><span class="cross">✕</span> Random, unfiltered leads - anyone who clicked an ad</td>
+            <td class="col-good"><span class="check">✓</span> Qualified appointments - screened, confirmed, ready</td>
+          </tr>
+          <tr>
+            <td class="col-bad"><span class="cross">✕</span> Shared with 4-5 competing contractors simultaneously</td>
+            <td class="col-good"><span class="check">✓</span> 100% exclusive to you - never shared with anyone</td>
+          </tr>
+          <tr>
+            <td class="col-bad"><span class="cross">✕</span> No filtering - you qualify every single lead yourself</td>
+            <td class="col-good"><span class="check">✓</span> Our team filters, verifies, and confirms before booking</td>
+          </tr>
+          <tr>
+            <td class="col-bad"><span class="cross">✕</span> Pay per lead - bad leads still cost you money</td>
+            <td class="col-good"><span class="check">✓</span> Flat monthly retainer - predictable, no per-lead fees</td>
+          </tr>
+          <tr>
+            <td class="col-bad"><span class="cross">✕</span> Zero accountability - bad leads? "That's the business."</td>
+            <td class="col-good"><span class="check">✓</span> Full transparency - you see every step of what we do</td>
+          </tr>
+          <tr>
+            <td class="col-bad"><span class="cross">✕</span> Long-term contracts locking you in for 6-12 months</td>
+            <td class="col-good"><span class="check">✓</span> Cancel anytime - no contracts, no pressure, no games</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -1335,112 +1315,90 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════
-     CALENDAR VISUAL
+     TESTIMONIALS
 ═══════════════════════════════════════════════ -->
-<section id="calendar">
-  <div class="container">
-    <span class="section-label reveal" style="display:block; text-align:center;">🏠 Your Month, Fully Booked</span>
-    <h2 class="calendar-headline reveal">IS YOUR CALENDAR FULL?</h2>
-    <p class="calendar-sub reveal">OURS <span style="color: var(--off-white);">FILLS</span> THEM.</p>
-    <div class="cal-wrapper" id="calWrapper">
-      <div class="cal-header">
-        <span class="cal-nav">‹</span>
-        <span>JUNE 2026</span>
-        <span class="cal-nav">›</span>
-      </div>
-      <div class="cal-days-header">
-        <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
-      </div>
-      <div class="cal-grid">
-        <div class="cal-cell empty"></div>
-        <div class="cal-cell booked"><span class="cal-date">1</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">2</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">3</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">4</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">5</span><span class="cal-tag tag-closed">CLOSED</span></div>
-        <div class="cal-cell"><span class="cal-date">6</span></div>
-        <div class="cal-cell"><span class="cal-date">7</span></div>
-        <div class="cal-cell booked"><span class="cal-date">8</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">9</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">10</span><span class="cal-tag tag-closed">CLOSED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">11</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">12</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell"><span class="cal-date">13</span></div>
-        <div class="cal-cell"><span class="cal-date">14</span></div>
-        <div class="cal-cell booked"><span class="cal-date">15</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">16</span><span class="cal-tag tag-closed">CLOSED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">17</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">18</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">19</span><span class="cal-tag tag-closed">CLOSED</span></div>
-        <div class="cal-cell"><span class="cal-date">20</span></div>
-        <div class="cal-cell"><span class="cal-date">21</span></div>
-        <div class="cal-cell booked"><span class="cal-date">22</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">23</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">24</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">25</span><span class="cal-tag tag-closed">CLOSED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">26</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell"><span class="cal-date">27</span></div>
-        <div class="cal-cell"><span class="cal-date">28</span></div>
-        <div class="cal-cell booked"><span class="cal-date">29</span><span class="cal-tag tag-booked">BOOKED</span></div>
-        <div class="cal-cell booked"><span class="cal-date">30</span><span class="cal-tag tag-closed">CLOSED</span></div>
-        <div class="cal-cell empty"></div>
-        <div class="cal-cell empty"></div>
-        <div class="cal-cell empty"></div>
-        <div class="cal-cell empty"></div>
-      </div>
-    </div>
-    <p style="margin-top: 24px; font-size: 0.82rem; color: #555; letter-spacing: 0.06em;">
-      <span style="color: #55c87e; font-weight: 400;">BOOKED</span> - Appointment confirmed &nbsp;&nbsp;
-      <span style="color: var(--yellow); font-weight: 400;">CLOSED</span> - Deal won
-    </p>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════
-     COMPARISON TABLE
-═══════════════════════════════════════════════ -->
-<section id="comparison">
+<section id="testimonials">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">🏗️ Side by Side</span>
-      <h2>WHY <span>THIS SYSTEM</span> IS DIFFERENT.</h2>
-      <p>This isn't a lead agency. It's a system built specifically to put qualified appointments on your calendar.</p>
+      <span class="section-label">⭐ Real Results</span>
+      <h2>WHAT <span>CONTRACTORS SAY.</span></h2>
+      <p>Placeholder testimonials - replace with real quotes from your clients.</p>
     </div>
-    <div class="reveal">
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th class="col-bad">✕ &nbsp; What Lead Agencies Give You</th>
-            <th class="col-good">✓ &nbsp; What Val Systems Gives You</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="col-bad"><span class="cross">✕</span> Random, unfiltered leads - anyone who clicked an ad</td>
-            <td class="col-good"><span class="check">✓</span> Qualified appointments - screened, confirmed, ready</td>
-          </tr>
-          <tr>
-            <td class="col-bad"><span class="cross">✕</span> Shared with 4–5 competing contractors simultaneously</td>
-            <td class="col-good"><span class="check">✓</span> 100% exclusive to you - never shared with anyone</td>
-          </tr>
-          <tr>
-            <td class="col-bad"><span class="cross">✕</span> No filtering - you qualify every single lead yourself</td>
-            <td class="col-good"><span class="check">✓</span> Our team filters, verifies, and confirms before booking</td>
-          </tr>
-          <tr>
-            <td class="col-bad"><span class="cross">✕</span> Pay per lead - bad leads still cost you money</td>
-            <td class="col-good"><span class="check">✓</span> Flat monthly retainer - predictable, no per-lead fees</td>
-          </tr>
-          <tr>
-            <td class="col-bad"><span class="cross">✕</span> Zero accountability - bad leads? "That's the business."</td>
-            <td class="col-good"><span class="check">✓</span> Full transparency - you see every step of what we do</td>
-          </tr>
-          <tr>
-            <td class="col-bad"><span class="cross">✕</span> Long-term contracts locking you in for 6–12 months</td>
-            <td class="col-good"><span class="check">✓</span> Cancel anytime - no contracts, no pressure, no games</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="testimonials-viewport reveal">
+      <div class="testimonials-track" id="testimonialsTrack">
+
+        <div class="tcard">
+          <div class="tcard-header">
+            <div class="tcard-avatar" style="background: #2563EB;">MR</div>
+            <div class="tcard-meta">
+              <div class="tcard-name">Mike R. - Texas</div>
+              <div class="tcard-stars">★★★★★</div>
+            </div>
+          </div>
+          <p>Running a roofing company in Texas is competitive. Before Val Systems, I was spending hours chasing leads that went nowhere. In the first month, I had 8 qualified appointments on my calendar. Closed 4 of them. That kind of ROI speaks for itself.</p>
+        </div>
+
+        <div class="tcard">
+          <div class="tcard-header">
+            <div class="tcard-avatar" style="background: #16A34A;">JK</div>
+            <div class="tcard-meta">
+              <div class="tcard-name">Jason K. - Florida</div>
+              <div class="tcard-stars">★★★★★</div>
+            </div>
+          </div>
+          <p>I was skeptical at first - I'd been burned by lead agencies before. But this was different. Every appointment I got was a homeowner who actually needed the work done and had the budget for it. No time wasters, no chasing, no games.</p>
+        </div>
+
+        <div class="tcard">
+          <div class="tcard-header">
+            <div class="tcard-avatar" style="background: #7C3AED;">DM</div>
+            <div class="tcard-meta">
+              <div class="tcard-name">Dave M. - Georgia</div>
+              <div class="tcard-stars">★★★★★</div>
+            </div>
+          </div>
+          <p>The filtering process is what sets Val Systems apart. By the time someone hits my calendar, they've already been checked for location, budget, and timeline. I just show up and do what I do best - close the deal.</p>
+        </div>
+
+        <div class="tcard">
+          <div class="tcard-header">
+            <div class="tcard-avatar" style="background: #EA580C;">CB</div>
+            <div class="tcard-meta">
+              <div class="tcard-name">Chris B. - Ohio</div>
+              <div class="tcard-stars">★★★★★</div>
+            </div>
+          </div>
+          <p>I've tried every lead generation service out there. Nothing comes close to having actual appointments booked for you. My close rate went from 20% to over 40% because I'm only talking to people who are ready to move forward.</p>
+        </div>
+
+        <div class="tcard">
+          <div class="tcard-header">
+            <div class="tcard-avatar" style="background: #DC2626;">TL</div>
+            <div class="tcard-meta">
+              <div class="tcard-name">Tony L. - Arizona</div>
+              <div class="tcard-stars">★★★★★</div>
+            </div>
+          </div>
+          <p>Val is responsive, transparent, and genuinely invested in your success. She doesn't just set appointments and disappear. She follows up, adjusts the system, and makes sure it's working for your specific market and service area.</p>
+        </div>
+
+        <div class="tcard">
+          <div class="tcard-header">
+            <div class="tcard-avatar" style="background: #0891B2;">SH</div>
+            <div class="tcard-meta">
+              <div class="tcard-name">Steve H. - North Carolina</div>
+              <div class="tcard-stars">★★★★★</div>
+            </div>
+          </div>
+          <p>In the remodeling business, your time is money. Val Systems gave me back my time. I'm not on the phone chasing cold leads anymore - I'm on job sites closing deals. That's exactly where I need to be.</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="tcarousel-controls">
+      <button class="tcarousel-btn" id="tPrev" aria-label="Previous">&#8592;</button>
+      <div class="tcarousel-dots" id="tDots"></div>
+      <button class="tcarousel-btn" id="tNext" aria-label="Next">&#8594;</button>
     </div>
   </div>
 </section>
@@ -1507,35 +1465,8 @@
           "I do this because I believe in what I've built. And I want you to see it work before you commit to anything."
         </p>
         <div style="margin-top: 28px;">
-          <a href="#cta" class="btn-black">Apply Now</a>
+          <a href="#contact" class="btn-black">Apply Now</a>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════
-     VIDEOS
-═══════════════════════════════════════════════ -->
-<section id="videos">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-label">🎬 See It In Action</span>
-      <h2>WATCH <span>HOW IT WORKS.</span></h2>
-      <p>Hear directly from Val and from contractors who've used the system.</p>
-    </div>
-    <div class="videos-grid reveal">
-      <div class="video-box">
-        <div class="video-thumb">
-          <div class="play-btn"></div>
-        </div>
-        <div class="video-caption">▶ &nbsp; How the Val Systems process works - end to end</div>
-      </div>
-      <div class="video-box">
-        <div class="video-thumb">
-          <div class="play-btn"></div>
-        </div>
-        <div class="video-caption">▶ &nbsp; Real results - what contractors say after 60 days</div>
       </div>
     </div>
   </div>
@@ -1549,7 +1480,7 @@
     <div class="section-header reveal">
       <span class="section-label">⛑️ Common Questions</span>
       <h2>FREQUENTLY ASKED <span>QUESTIONS.</span></h2>
-      <p>Everything you need to know before booking a call.</p>
+      <p>Everything you need to know before applying.</p>
     </div>
     <div class="faq-list reveal">
 
@@ -1608,17 +1539,58 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════
-     FINAL CTA
+     CONTACT FORM
 ═══════════════════════════════════════════════ -->
-<section id="cta">
+<section id="contact">
   <div class="container">
-    <div class="cta-inner reveal">
-      <span class="section-label" style="display:block; text-align:center;">🏗️ Take the First Step</span>
-      <h2>READY TO STOP <span>CHASING</span><br>AND START <span>CLOSING?</span></h2>
-      <div style="margin-top: 36px;">
-        <a href="#" class="btn btn-yellow">Apply to Work With Us</a>
+    <div class="contact-inner">
+      <div class="contact-headline reveal">
+        <span class="section-label">🏗️ Take the First Step</span>
+        <h2>READY TO STOP <span>CHASING</span> AND START <span>CLOSING?</span></h2>
+        <p>Fill out the form and we'll get back to you within 24 hours to see if you're a good fit for the system.</p>
+        <div class="contact-trust">
+          <span>No commitment required</span>
+          <span>No pressure, no sales pitch</span>
+          <span>Response within 24 hours</span>
+          <span>Limited spots per area</span>
+        </div>
       </div>
-      <p>No commitment. No pressure. Just a real conversation about whether this is the right fit for you.</p>
+      <div class="contact-form-wrap reveal">
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="form-group">
+            <label for="f-name">Full Name</label>
+            <input type="text" id="f-name" name="name" placeholder="John Smith" required />
+          </div>
+          <div class="form-group">
+            <label for="f-business">Business Name</label>
+            <input type="text" id="f-business" name="business" placeholder="Smith Roofing LLC" required />
+          </div>
+          <div class="form-group">
+            <label for="f-phone">Phone Number</label>
+            <input type="tel" id="f-phone" name="phone" placeholder="(555) 000-0000" required />
+          </div>
+          <div class="form-group">
+            <label for="f-area">Service Area (City, State)</label>
+            <input type="text" id="f-area" name="area" placeholder="Dallas, TX" required />
+          </div>
+          <div class="form-group">
+            <label for="f-jobs">How many jobs do you close per month?</label>
+            <select id="f-jobs" name="jobs" required>
+              <option value="" disabled selected>Select...</option>
+              <option value="1-3">1-3 jobs</option>
+              <option value="4-8">4-8 jobs</option>
+              <option value="9-15">9-15 jobs</option>
+              <option value="15+">15+ jobs</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-yellow form-submit">Apply Now &rarr;</button>
+        </form>
+        <div id="formSuccess" class="form-success" style="display:none;">
+          <div class="form-success-icon">✓</div>
+          <h3>Application Received</h3>
+          <p>We'll be in touch within 24 hours.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1641,7 +1613,7 @@
         <li><a href="#features">What You Get</a></li>
         <li><a href="#offer">The Offer</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#cta">Apply Now</a></li>
+        <li><a href="#contact">Apply Now</a></li>
       </ul>
     </div>
     <p class="footer-copy">© 2026 Val Systems. All rights reserved. &nbsp;·&nbsp; Appointment Setting for U.S. Roofing & Remodeling Contractors.</p>
@@ -1657,15 +1629,12 @@
       b.classList.remove('open');
       b.nextElementSibling.classList.remove('open');
     });
-    if (!isOpen) {
-      btn.classList.add('open');
-      answer.classList.add('open');
-    }
+    if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
   }
 
   /* ── Active nav highlight on scroll ── */
-  var sections  = document.querySelectorAll('section[id]');
-  var navLinks  = document.querySelectorAll('.nav-links a');
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', function() {
     var current = '';
     sections.forEach(function(s) {
@@ -1676,7 +1645,7 @@
     });
   }, { passive: true });
 
-  /* ── Scroll reveal (Intersection Observer) ── */
+  /* ── Scroll reveal ── */
   var revealObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
@@ -1690,26 +1659,94 @@
     revealObserver.observe(el);
   });
 
-  /* ── Calendar BOOKED tag pop-in ── */
-  var calWrapper = document.getElementById('calWrapper');
-  var calTriggered = false;
+  /* ── Testimonials carousel ── */
+  (function() {
+    var track  = document.getElementById('testimonialsTrack');
+    var cards  = track.querySelectorAll('.tcard');
+    var dotsEl = document.getElementById('tDots');
+    var total  = cards.length;
+    var current = 0;
+    var autoTimer = null;
+    var dots = [];
 
-  var calObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting && !calTriggered) {
-        calTriggered = true;
-        var tags = calWrapper.querySelectorAll('.cal-tag');
-        tags.forEach(function(tag, i) {
-          setTimeout(function() {
-            tag.classList.add('pop');
-          }, i * 55);
-        });
-        calObserver.unobserve(calWrapper);
+    function getVisible() {
+      if (window.innerWidth >= 900) return 3;
+      if (window.innerWidth >= 640) return 2;
+      return 1;
+    }
+
+    function buildDots() {
+      dotsEl.innerHTML = '';
+      dots = [];
+      var count = total - getVisible() + 1;
+      for (var i = 0; i < count; i++) {
+        var d = document.createElement('button');
+        d.className = 'tcarousel-dot' + (i === current ? ' active' : '');
+        d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        (function(idx) { d.addEventListener('click', function() { goTo(idx); resetAuto(); }); })(i);
+        dotsEl.appendChild(d);
+        dots.push(d);
       }
-    });
-  }, { threshold: 0.25 });
+    }
 
-  calObserver.observe(calWrapper);
+    function updateDots() {
+      dots.forEach(function(d, i) {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    function goTo(n) {
+      var visible = getVisible();
+      var max = total - visible;
+      current = Math.max(0, Math.min(n, max));
+      var cardW = cards[0].getBoundingClientRect().width;
+      var gap = 24;
+      track.style.transform = 'translateX(' + (-(current * (cardW + gap))) + 'px)';
+      updateDots();
+    }
+
+    function next() {
+      var max = total - getVisible();
+      goTo(current >= max ? 0 : current + 1);
+    }
+
+    function prev() {
+      var max = total - getVisible();
+      goTo(current <= 0 ? max : current - 1);
+    }
+
+    function startAuto() {
+      autoTimer = setInterval(next, 4000);
+    }
+
+    function resetAuto() {
+      clearInterval(autoTimer);
+      startAuto();
+    }
+
+    document.getElementById('tPrev').addEventListener('click', function() { prev(); resetAuto(); });
+    document.getElementById('tNext').addEventListener('click', function() { next(); resetAuto(); });
+
+    var viewport = document.querySelector('.testimonials-viewport');
+    viewport.addEventListener('mouseenter', function() { clearInterval(autoTimer); });
+    viewport.addEventListener('mouseleave', startAuto);
+
+    window.addEventListener('resize', function() {
+      buildDots();
+      goTo(current);
+    });
+
+    buildDots();
+    goTo(0);
+    startAuto();
+  })();
+
+  /* ── Contact form submit ── */
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  });
 </script>
 
 </body>
