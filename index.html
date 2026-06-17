@@ -999,6 +999,25 @@
 
     .offer-list li .tick { font-size: 1rem; color: var(--black); }
 
+    .offer-result-note {
+      font-size: 0.84rem;
+      color: rgba(28,28,28,0.85);
+      line-height: 1.7;
+      margin-top: 18px;
+      padding: 14px 16px;
+      background: rgba(0,0,0,0.08);
+      border-radius: 6px;
+      border-left: 3px solid rgba(0,0,0,0.25);
+    }
+
+    .offer-result-note strong {
+      color: var(--black);
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-color: rgba(0,0,0,0.35);
+      text-underline-offset: 3px;
+    }
+
     .offer-note {
       font-size: 0.84rem;
       color: rgba(28,28,28,0.7);
@@ -1081,6 +1100,133 @@
       line-height: 1.75;
       border-top: 1px solid #2e2e2e;
       padding-top: 16px;
+    }
+
+    /* ─── SPOT RESERVATION ─── */
+    #reserve {
+      background: var(--black-light);
+      padding: 80px 0;
+    }
+
+    .reserve-inner {
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .reserve-badge {
+      display: inline-block;
+      background: rgba(242,183,5,0.15);
+      border: 1px solid rgba(242,183,5,0.4);
+      color: var(--yellow);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    .reserve-title {
+      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .reserve-title span { color: var(--yellow); }
+
+    .reserve-sub {
+      color: #999;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .reserve-sub strong { color: var(--off-white); }
+
+    .reserve-card {
+      background: var(--black);
+      border: 1px solid #2a2a2a;
+      border-top: 3px solid var(--yellow);
+      border-radius: 8px;
+      padding: 36px 32px;
+      text-align: left;
+    }
+
+    .reserve-card-top {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .reserve-price {
+      font-family: 'Anton', sans-serif;
+      font-size: 3rem;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .reserve-price-label {
+      font-size: 0.8rem;
+      color: #666;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .reserve-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .reserve-list li {
+      font-size: 0.88rem;
+      color: var(--off-white);
+      display: flex;
+      gap: 10px;
+    }
+
+    .reserve-disclaimer {
+      font-size: 0.78rem;
+      color: #666;
+      line-height: 1.65;
+      border-top: 1px solid #222;
+      padding-top: 16px;
+      margin-bottom: 28px;
+    }
+
+    .reserve-disclaimer em {
+      color: #999;
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .reserve-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .reserve-btn-main { flex: 1; text-align: center; min-width: 200px; }
+    .reserve-btn-secondary { flex: 1; text-align: center; min-width: 180px; }
+
+    .stripe-trust {
+      font-size: 0.72rem;
+      color: #444;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    .stripe-pay-btn { display: flex; align-items: center; justify-content: center; }
+
+    @media (max-width: 640px) {
+      .reserve-card { padding: 24px 20px; }
+      .reserve-btns { flex-direction: column; }
+      .reserve-btn-main, .reserve-btn-secondary { width: 100%; }
     }
 
     /* ─── CONTACT FORM ─── */
@@ -1228,39 +1374,69 @@
 
     /* ─── FOOTER ─── */
     footer {
-      background: var(--black);
-      border-top: 1px solid #252525;
-      padding: 48px 0 32px;
+      background: #0a0a0a;
+      border-top: 1px solid #1e1e1e;
+      padding: 56px 0 0;
     }
 
     .footer-inner {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 24px;
     }
 
-    .footer-tagline { font-size: 0.8rem; color: #555; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 8px; }
-    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-tagline { font-size: 0.78rem; color: #444; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 8px; }
+    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
 
     .footer-links a {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 400;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
       color: #555;
       transition: color 0.2s;
     }
     .footer-links a:hover { color: var(--yellow); }
 
-    .footer-copy {
-      font-size: 0.78rem;
-      color: #444;
-      text-align: center;
+    .footer-legal-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
       margin-top: 36px;
       padding-top: 24px;
-      border-top: 1px solid #252525;
+      border-top: 1px solid #1e1e1e;
+    }
+
+    .footer-legal-links a {
+      font-size: 0.72rem;
+      color: #3a3a3a;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-legal-links a:hover { color: #666; }
+
+    .footer-disclaimer {
+      font-size: 0.7rem;
+      color: #2e2e2e;
+      text-align: center;
+      line-height: 1.7;
+      margin-top: 16px;
+      padding: 0 16px;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: #333;
+      text-align: center;
+      margin-top: 16px;
+      padding: 20px 0;
+      border-top: 1px solid #161616;
     }
 
     /* ─── SCROLL REVEAL ANIMATIONS ─── */
@@ -1810,96 +1986,6 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════
-     TESTIMONIALS 2
-═══════════════════════════════════════════════ -->
-<section id="testimonials2" style="background: var(--black); padding: 80px 0;">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-label">⭐ More Results</span>
-      <h2>MORE OF WHAT <span>CONTRACTORS SAY.</span></h2>
-    </div>
-    <div class="testimonials-clip">
-    <div class="testimonials-viewport reveal">
-      <div class="testimonials-track" id="testimonialsTrack2">
-
-        <div class="tcard">
-          <div class="tcard-header">
-            <div class="tcard-avatar" style="background: #2563EB;">MR</div>
-            <div class="tcard-meta">
-              <div class="tcard-name">Mike R. - Texas</div>
-              <div class="tcard-stars">★★★★★</div>
-            </div>
-          </div>
-          <p>Running a roofing company in Texas is competitive. Before Val Systems, I was spending hours chasing leads that went nowhere. In the first month, I had 8 qualified appointments on my calendar. Closed 4 of them. That kind of ROI speaks for itself.</p>
-        </div>
-
-        <div class="tcard">
-          <div class="tcard-header">
-            <div class="tcard-avatar" style="background: #16A34A;">JK</div>
-            <div class="tcard-meta">
-              <div class="tcard-name">Jason K. - Florida</div>
-              <div class="tcard-stars">★★★★★</div>
-            </div>
-          </div>
-          <p>I was skeptical at first - I'd been burned by lead agencies before. But this was different. Every appointment I got was a homeowner who actually needed the work done and had the budget for it. No time wasters, no chasing, no games.</p>
-        </div>
-
-        <div class="tcard">
-          <div class="tcard-header">
-            <div class="tcard-avatar" style="background: #7C3AED;">DM</div>
-            <div class="tcard-meta">
-              <div class="tcard-name">Dave M. - Georgia</div>
-              <div class="tcard-stars">★★★★★</div>
-            </div>
-          </div>
-          <p>The filtering process is what sets Val Systems apart. By the time someone hits my calendar, they've already been checked for location, budget, and timeline. I just show up and do what I do best - close the deal.</p>
-        </div>
-
-        <div class="tcard">
-          <div class="tcard-header">
-            <div class="tcard-avatar" style="background: #EA580C;">CB</div>
-            <div class="tcard-meta">
-              <div class="tcard-name">Chris B. - Ohio</div>
-              <div class="tcard-stars">★★★★★</div>
-            </div>
-          </div>
-          <p>I've tried every lead generation service out there. Nothing comes close to having actual appointments booked for you. My close rate went from 20% to over 40% because I'm only talking to people who are ready to move forward.</p>
-        </div>
-
-        <div class="tcard">
-          <div class="tcard-header">
-            <div class="tcard-avatar" style="background: #DC2626;">TL</div>
-            <div class="tcard-meta">
-              <div class="tcard-name">Tony L. - Arizona</div>
-              <div class="tcard-stars">★★★★★</div>
-            </div>
-          </div>
-          <p>Val is responsive, transparent, and genuinely invested in your success. She doesn't just set appointments and disappear. She follows up, adjusts the system, and makes sure it's working for your specific market and service area.</p>
-        </div>
-
-        <div class="tcard">
-          <div class="tcard-header">
-            <div class="tcard-avatar" style="background: #0891B2;">SH</div>
-            <div class="tcard-meta">
-              <div class="tcard-name">Steve H. - North Carolina</div>
-              <div class="tcard-stars">★★★★★</div>
-            </div>
-          </div>
-          <p>In the remodeling business, your time is money. Val Systems gave me back my time. I'm not on the phone chasing cold leads anymore - I'm on job sites closing deals. That's exactly where I need to be.</p>
-        </div>
-
-      </div>
-    </div>
-    </div><!-- /.testimonials-clip -->
-    <div class="tcarousel-controls">
-      <button class="tcarousel-btn" id="tPrev2" aria-label="Previous">&#8592;</button>
-      <div class="tcarousel-dots" id="tDots2"></div>
-      <button class="tcarousel-btn" id="tNext2" aria-label="Next">&#8594;</button>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════
      ABOUT
 ═══════════════════════════════════════════════ -->
 <section id="about">
@@ -1912,7 +1998,7 @@
         <div class="about-img-badge">Founder - Val Systems</div>
       </div>
       <div class="about-content">
-        <span class="section-label">🔧 Why Val Systems Exists</span>
+        <span class="section-label">💡 למה חשבנו על סיסטם כזה</span>
         <h2>WHY I ONLY WORK WITH THE <span>RIGHT CONTRACTORS.</span></h2>
         <div class="about-divider"></div>
         <p>
@@ -1957,6 +2043,11 @@
           <li><span class="tick">✓</span> No long-term contracts</li>
           <li><span class="tick">✓</span> No management costs</li>
         </ul>
+        <p class="offer-result-note">
+          In the first month, our fee is tied to <strong>actual results only</strong> —
+          meaning we get paid only when a qualified, exclusive appointment lands in your calendar.
+          No appointments, no fee.
+        </p>
         <p class="offer-note">
           "I do this because I believe in what I've built. And I want you to see it work before you commit to anything."
         </p>
@@ -2035,6 +2126,54 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════
+     SPOT RESERVATION
+═══════════════════════════════════════════════ -->
+<section id="reserve">
+  <div class="container">
+    <div class="reserve-inner reveal">
+
+      <div class="reserve-badge">⚠️ LIMITED SPOTS PER AREA</div>
+
+      <h2 class="reserve-title">DON'T LET ANOTHER CONTRACTOR<br><span>TAKE YOUR TERRITORY.</span></h2>
+
+      <p class="reserve-sub">
+        We work with a <strong>limited number of contractors per area</strong> — by design.
+        When your area fills up, it's closed. No exceptions.
+      </p>
+
+      <div class="reserve-card">
+        <div class="reserve-card-top">
+          <span class="reserve-price">$25</span>
+          <span class="reserve-price-label">one-time spot hold</span>
+        </div>
+        <ul class="reserve-list">
+          <li>✓ Locks your area exclusively while we verify fit</li>
+          <li>✓ No one else from your area can claim your spot</li>
+          <li>✓ Full refund if we determine you're not a match</li>
+          <li>✓ Applied toward your first month if you move forward</li>
+        </ul>
+        <p class="reserve-disclaimer">
+          This is a <em>spot reservation only</em> — not a service commitment.
+          If after our eligibility review it's not the right fit, you get every dollar back. No questions asked.
+        </p>
+        <div class="reserve-btns">
+          <a href="https://buy.stripe.com/5kQeVdfVWaMZ8e0fpt4ZG00" target="_blank" class="btn btn-yellow reserve-btn-main stripe-pay-btn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="display:inline;vertical-align:middle;margin-right:6px;"><rect width="14" height="14" rx="3" fill="#635BFF"/><path d="M5.8 5.2c0-.4.3-.5.8-.5.7 0 1.5.2 2.2.6V3.5C8.1 3.2 7.4 3 6.6 3 4.9 3 3.8 3.9 3.8 5.3c0 2.2 3 1.8 3 2.8 0 .4-.4.6-.9.6-.8 0-1.7-.3-2.4-.8v1.9c.7.3 1.5.5 2.4.5 1.7 0 2.9-.9 2.9-2.3C8.8 5.7 5.8 6.2 5.8 5.2z" fill="white"/></svg>
+            Pay Securely — $25
+          </a>
+          <a href="#contact" class="btn btn-black reserve-btn-secondary">I Need More Info First</a>
+        </div>
+        <p class="stripe-trust">
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none" style="vertical-align:middle;margin-right:4px;"><rect width="14" height="14" rx="3" fill="#635BFF"/><path d="M5.8 5.2c0-.4.3-.5.8-.5.7 0 1.5.2 2.2.6V3.5C8.1 3.2 7.4 3 6.6 3 4.9 3 3.8 3.9 3.8 5.3c0 2.2 3 1.8 3 2.8 0 .4-.4.6-.9.6-.8 0-1.7-.3-2.4-.8v1.9c.7.3 1.5.5 2.4.5 1.7 0 2.9-.9 2.9-2.3C8.8 5.7 5.8 6.2 5.8 5.2z" fill="white"/></svg>
+          Secured &amp; processed by Stripe. Your card info never touches our servers.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
      CONTACT FORM
 ═══════════════════════════════════════════════ -->
 <section id="contact">
@@ -2073,6 +2212,9 @@
               <option value="15+">15+ jobs</option>
             </select>
           </div>
+          <p style="font-size:0.68rem;color:#555;line-height:1.6;margin-bottom:12px;">
+            By submitting this form, I agree to the <a href="privacy-policy.html" style="color:#666;">Privacy Policy</a> and <a href="terms-of-service.html" style="color:#666;">Terms of Service</a> and consent to receive phone calls, text messages, and emails from Val Systems regarding my inquiry, eligibility review, appointment scheduling, and services. Message and data rates may apply. Consent is not a condition of purchase.
+          </p>
           <button type="submit" class="btn btn-yellow form-submit">Apply Now &rarr;</button>
         </form>
         <div id="formSuccess" class="form-success" style="display:none;">
@@ -2096,17 +2238,32 @@
           <div class="logo-v"></div>
           <span class="logo-text">VAL SYSTEMS</span>
         </div>
-        <p class="footer-tagline">Built for contractors. Focused on results.</p>
+        <p class="footer-tagline">Appointment Setting for Contractors.</p>
+        <p style="font-size:0.75rem;color:#333;margin-top:10px;max-width:220px;line-height:1.6;">Serving roofing &amp; remodeling contractors across the United States.</p>
       </div>
       <ul class="footer-links">
         <li><a href="#how">How It Works</a></li>
         <li><a href="#features">What You Get</a></li>
         <li><a href="#offer">The Offer</a></li>
+        <li><a href="#reserve">Reserve a Spot</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Apply Now</a></li>
       </ul>
     </div>
-    <p class="footer-copy">© 2026 Val Systems. All rights reserved. &nbsp;·&nbsp; Appointment Setting for U.S. Roofing & Remodeling Contractors.</p>
+
+    <div class="footer-legal-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+      <a href="refund-policy.html">Refund Policy</a>
+    </div>
+
+    <p class="footer-disclaimer">
+      Results shared on this page reflect individual client experiences and are not a guarantee of future outcomes. Results vary based on market, service area, budget, and other factors.
+      The $25 spot reservation is fully refundable if you are determined not to be a fit after our eligibility review.
+      Val Systems is not affiliated with Meta, Google, or any third-party platform mentioned.
+    </p>
+
+    <p class="footer-copy">© 2026 Val Systems. All rights reserved.</p>
   </div>
 </footer>
 
@@ -2410,6 +2567,26 @@
       alert('Something went wrong. Please try again.');
     }
   });
+</script>
+
+<!-- ── Cookie Banner ── -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#0a0a0a;border-top:1px solid #222;padding:16px 24px;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+  <p style="font-size:0.72rem;color:#666;line-height:1.6;max-width:720px;margin:0;">
+    This website uses cookies and similar technologies to improve your experience, analyze traffic, measure advertising performance, and support our marketing efforts. By continuing to use this website, you consent to our use of cookies.
+    <a href="privacy-policy.html" style="color:#888;text-decoration:underline;">Privacy Policy</a>
+  </p>
+  <button id="cookieAccept" style="background:var(--yellow);color:#111;border:none;padding:10px 24px;font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.06em;border-radius:4px;cursor:pointer;flex-shrink:0;">Accept</button>
+</div>
+<script>
+  (function() {
+    if (!localStorage.getItem('cookiesAccepted')) {
+      document.getElementById('cookieBanner').style.display = 'flex';
+    }
+    document.getElementById('cookieAccept').addEventListener('click', function() {
+      localStorage.setItem('cookiesAccepted', '1');
+      document.getElementById('cookieBanner').style.display = 'none';
+    });
+  })();
 </script>
 
 </body>
