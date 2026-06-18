@@ -664,6 +664,50 @@
       line-height: 1.75;
     }
 
+    /* ─── CONTRACTOR BANNER ─── */
+    #contractor-banner {
+      background-image: url('images/bg-contractor.png');
+      background-size: cover;
+      background-position: center 30%;
+      background-attachment: fixed;
+      position: relative;
+    }
+    .contractor-overlay {
+      background: rgba(0,0,0,0.72);
+      padding: 100px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .contractor-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--yellow);
+      font-weight: 600;
+    }
+    .contractor-headline {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      color: var(--off-white);
+      line-height: 1.1;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+    }
+    .contractor-headline span { color: var(--yellow); }
+    .contractor-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 400px;
+      line-height: 1.7;
+    }
+    @media (max-width: 640px) {
+      #contractor-banner { background-attachment: scroll; }
+      .contractor-overlay { padding: 70px 24px; }
+    }
+
     /* ─── CALENDAR SECTION ─── */
     .cal-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; }
     .cal-svg {
@@ -1812,6 +1856,17 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CONTRACTOR BANNER
+═══════════════════════════════════════════════ -->
+<section id="contractor-banner">
+  <div class="contractor-overlay">
+    <p class="contractor-eyebrow">FOR THE ONES WHO BUILD</p>
+    <h2 class="contractor-headline">BUILT BY HAND.<br><span>SOLD BY SYSTEM.</span></h2>
+    <p class="contractor-sub">You do the work. We make sure the phone doesn't stop ringing.</p>
   </div>
 </section>
 
