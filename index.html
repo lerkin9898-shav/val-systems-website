@@ -664,6 +664,16 @@
       line-height: 1.75;
     }
 
+    .ps-calendar {
+      width: 110px;
+      margin-bottom: 14px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #2a2a2a;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+    }
+    .ps-calendar svg { display: block; width: 100%; height: auto; }
+
     @media (max-width: 600px) {
       .process-step { grid-template-columns: 40px 1fr; gap: 0 18px; }
       .ps-num { width: 38px; height: 38px; font-size: 0.85rem; }
@@ -1760,7 +1770,37 @@
       <div class="process-step">
         <div class="ps-left"><div class="ps-num">03</div><div class="ps-line"></div></div>
         <div class="ps-content">
-          <span class="ps-tool">📐</span>
+          <div class="ps-calendar">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="7" width="60" height="56" rx="5" fill="#1a1a1a" stroke="#2e2e2e" stroke-width="1.5"/>
+              <rect x="2" y="7" width="60" height="15" rx="5" fill="#252525"/>
+              <rect x="2" y="18" width="60" height="4" fill="#252525"/>
+              <rect x="15" y="4" width="4" height="8" rx="2" fill="#444"/>
+              <rect x="45" y="4" width="4" height="8" rx="2" fill="#444"/>
+              <text x="32" y="18" font-family="Arial,sans-serif" font-size="6" font-weight="700" fill="#F2B705" text-anchor="middle">MAY</text>
+              <text x="6.3" y="28" font-size="4" fill="#555" text-anchor="middle" font-family="Arial,sans-serif">S</text><text x="14.9" y="28" font-size="4" fill="#555" text-anchor="middle" font-family="Arial,sans-serif">M</text><text x="23.4" y="28" font-size="4" fill="#555" text-anchor="middle" font-family="Arial,sans-serif">T</text><text x="32" y="28" font-size="4" fill="#555" text-anchor="middle" font-family="Arial,sans-serif">W</text><text x="40.6" y="28" font-size="4" fill="#555" text-anchor="middle" font-family="Arial,sans-serif">T</text><text x="49.1" y="28" font-size="4" fill="#555" text-anchor="middle" font-family="Arial,sans-serif">F</text><text x="57.7" y="28" font-size="4" fill="#555" text-anchor="middle" font-family="Arial,sans-serif">S</text>
+              <text x="6.3" y="35" font-size="4.5" fill="#555" text-anchor="middle">1</text><text x="14.9" y="35" font-size="4.5" fill="#555" text-anchor="middle">2</text>
+              <rect x="20" y="29.5" width="7" height="7" rx="1.5" fill="#22c55e"/><text x="23.4" y="35" font-size="4.5" fill="white" text-anchor="middle">3</text>
+              <text x="32" y="35" font-size="4.5" fill="#555" text-anchor="middle">4</text>
+              <rect x="37.1" y="29.5" width="7" height="7" rx="1.5" fill="#F2B705"/><text x="40.6" y="35" font-size="4.5" fill="#1a1a1a" text-anchor="middle">5</text>
+              <text x="49.1" y="35" font-size="4.5" fill="#555" text-anchor="middle">6</text><text x="57.7" y="35" font-size="4.5" fill="#555" text-anchor="middle">7</text>
+              <text x="6.3" y="42" font-size="4.5" fill="#555" text-anchor="middle">8</text>
+              <rect x="11.4" y="36.5" width="7" height="7" rx="1.5" fill="#22c55e"/><text x="14.9" y="42" font-size="4.5" fill="white" text-anchor="middle">9</text>
+              <text x="23.4" y="42" font-size="4.5" fill="#555" text-anchor="middle">10</text><text x="32" y="42" font-size="4.5" fill="#555" text-anchor="middle">11</text>
+              <rect x="37.1" y="36.5" width="7" height="7" rx="1.5" fill="#F2B705"/><text x="40.6" y="42" font-size="4.5" fill="#1a1a1a" text-anchor="middle">12</text>
+              <text x="49.1" y="42" font-size="4.5" fill="#555" text-anchor="middle">13</text><text x="57.7" y="42" font-size="4.5" fill="#555" text-anchor="middle">14</text>
+              <rect x="2.8" y="43.5" width="7" height="7" rx="1.5" fill="#22c55e"/><text x="6.3" y="49" font-size="4.5" fill="white" text-anchor="middle">15</text>
+              <text x="14.9" y="49" font-size="4.5" fill="#555" text-anchor="middle">16</text><text x="23.4" y="49" font-size="4.5" fill="#555" text-anchor="middle">17</text>
+              <rect x="28.5" y="43.5" width="7" height="7" rx="1.5" fill="#F2B705"/><text x="32" y="49" font-size="4.5" fill="#1a1a1a" text-anchor="middle">18</text>
+              <rect x="37.1" y="43.5" width="7" height="7" rx="1.5" fill="#22c55e"/><text x="40.6" y="49" font-size="4.5" fill="white" text-anchor="middle">19</text>
+              <text x="49.1" y="49" font-size="4.5" fill="#555" text-anchor="middle">20</text><text x="57.7" y="49" font-size="4.5" fill="#555" text-anchor="middle">21</text>
+              <text x="6.3" y="56" font-size="4.5" fill="#555" text-anchor="middle">22</text>
+              <rect x="11.4" y="50.5" width="7" height="7" rx="1.5" fill="#22c55e"/><text x="14.9" y="56" font-size="4.5" fill="white" text-anchor="middle">23</text>
+              <text x="23.4" y="56" font-size="4.5" fill="#555" text-anchor="middle">24</text>
+              <rect x="28.5" y="50.5" width="7" height="7" rx="1.5" fill="#F2B705"/><text x="32" y="56" font-size="4.5" fill="#1a1a1a" text-anchor="middle">25</text>
+              <text x="40.6" y="56" font-size="4.5" fill="#555" text-anchor="middle">26</text><text x="49.1" y="56" font-size="4.5" fill="#555" text-anchor="middle">27</text><text x="57.7" y="56" font-size="4.5" fill="#555" text-anchor="middle">28</text>
+            </svg>
+          </div>
           <div class="ps-title">We Build Your Campaign Around You</div>
           <p class="ps-text">Send us your content - photos, past jobs, videos, anything. We use it to build a campaign that shows clients exactly what you do and creates real trust. Trust is what gets people to say yes. Once an appointment is confirmed, it lands straight in your calendar.</p>
         </div>
