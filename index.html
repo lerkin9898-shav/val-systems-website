@@ -343,6 +343,7 @@
       max-width: 800px;
       margin: 0 auto;
     }
+    .hero-copy { width: 100%; text-align: center; }
 
     .hero-eyebrow {
       font-size: 0.75rem;
@@ -408,6 +409,7 @@
       display: flex;
       gap: 16px;
       align-items: center;
+      justify-content: center;
       flex-wrap: wrap;
     }
 
@@ -985,6 +987,7 @@
       text-transform: uppercase;
     }
 
+    .about-content { width: 100%; max-width: 680px; text-align: center; }
     .about-content h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 28px; }
     .about-content h2 span { color: var(--yellow); }
 
@@ -1786,7 +1789,7 @@
     <div class="section-header reveal" style="margin-bottom:40px;">
       <span class="section-label">📅 The Result</span>
       <h2>YOUR CALENDAR <span>CAN LOOK LIKE THIS TOO.</span></h2>
-      <p>After working with Val Systems, your calendar doesn't have empty days. It has confirmed appointments with real homeowners who are already expecting your call.</p>
+
     </div>
     <div class="cal-wrap reveal">
       <img src="images/calendar-ready.jpeg" class="cal-svg" alt="Real booked appointment calendar">
@@ -1985,7 +1988,7 @@
     <div class="offer-inner reveal">
       <div>
         <span class="offer-badge">Limited Availability</span>
-        <h2>FIRST MONTHS —<br>FREE SERVICE</h2>
+        <h2>FIRST MONTH —<br>FREE SERVICE</h2>
         <div class="offer-pills">
           <span>No Retainer</span>
           <span>No Setup Fees</span>
@@ -1995,7 +1998,7 @@
       <div>
         <ul class="offer-list">
           <li><span class="tick">✓</span> Cancel anytime</li>
-          <li><span class="tick">✓</span> No retainer for the first 2 months</li>
+          <li><span class="tick">✓</span> No retainer for the first 30 days</li>
           <li><span class="tick">✓</span> No long-term contracts</li>
           <li><span class="tick">✓</span> No management costs</li>
         </ul>
@@ -2141,7 +2144,7 @@
         <p class="contact-availability">We work each time with a limited number of contractors. Apply to see if your area is still available.</p>
       </div>
       <div class="contact-form-wrap reveal">
-        <form id="contactForm" class="contact-form" novalidate>
+        <form id="contactForm" class="contact-form" action="https://formspree.io/f/mgobjavj" method="POST" novalidate>
           <div class="form-group">
             <label for="f-name">Full Name</label>
             <input type="text" id="f-name" name="name" placeholder="John Smith" required />
@@ -2515,7 +2518,7 @@
     const data = new FormData(form);
 
     try {
-      const res = await fetch('https://formspree.io/lerkin9898@gmail.com', {
+      const res = await fetch('https://formspree.io/f/mgobjavj', {
         method: 'POST',
         body: data,
         headers: { 'Accept': 'application/json' }
