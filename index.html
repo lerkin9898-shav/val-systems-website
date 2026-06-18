@@ -664,15 +664,43 @@
       line-height: 1.75;
     }
 
-    .ps-calendar {
-      width: 110px;
-      margin-bottom: 14px;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid #2a2a2a;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+    /* ─── CALENDAR SECTION ─── */
+    .cal-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    .cal-svg {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid #2e2e2e;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
     }
-    .ps-calendar svg { display: block; width: 100%; height: auto; }
+    .cal-legend {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cal-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: #777;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .cal-dot {
+      width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex-shrink: 0;
+    }
+    .cal-dot.green { background: #22c55e; }
+    .cal-dot.yellow { background: #F2B705; }
+    .cal-caption {
+      font-size: 0.82rem;
+      color: #555;
+      max-width: 420px;
+      text-align: center;
+      line-height: 1.6;
+      font-family: 'Montserrat', sans-serif;
+    }
 
     @media (max-width: 600px) {
       .process-step { grid-template-columns: 40px 1fr; gap: 0 18px; }
@@ -1769,37 +1797,7 @@
       <div class="process-step">
         <div class="ps-left"><div class="ps-num">03</div><div class="ps-line"></div></div>
         <div class="ps-content">
-          <div class="ps-calendar">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="2" y="7" width="60" height="56" rx="5" fill="#1a1a1a" stroke="#2e2e2e" stroke-width="1.5"/>
-              <rect x="2" y="7" width="60" height="15" rx="5" fill="#252525"/>
-              <rect x="2" y="18" width="60" height="4" fill="#252525"/>
-              <rect x="15" y="4" width="4" height="8" rx="2" fill="#444"/>
-              <rect x="45" y="4" width="4" height="8" rx="2" fill="#444"/>
-              <text x="32" y="18" font-family="Arial,sans-serif" font-size="6" font-weight="700" fill="#F2B705" text-anchor="middle">MAY</text>
-              <text x="6.3" y="28" font-size="4" fill="#555" text-anchor="middle" font-family="Arial,sans-serif">S</text><text x="14.9" y="28" font-size="4" fill="#555" text-anchor="middle" font-family="Arial,sans-serif">M</text><text x="23.4" y="28" font-size="4" fill="#555" text-anchor="middle" font-family="Arial,sans-serif">T</text><text x="32" y="28" font-size="4" fill="#555" text-anchor="middle" font-family="Arial,sans-serif">W</text><text x="40.6" y="28" font-size="4" fill="#555" text-anchor="middle" font-family="Arial,sans-serif">T</text><text x="49.1" y="28" font-size="4" fill="#555" text-anchor="middle" font-family="Arial,sans-serif">F</text><text x="57.7" y="28" font-size="4" fill="#555" text-anchor="middle" font-family="Arial,sans-serif">S</text>
-              <text x="6.3" y="35" font-size="4.5" fill="#555" text-anchor="middle">1</text><text x="14.9" y="35" font-size="4.5" fill="#555" text-anchor="middle">2</text>
-              <rect x="20" y="29.5" width="7" height="7" rx="1.5" fill="#22c55e"/><text x="23.4" y="35" font-size="4.5" fill="white" text-anchor="middle">3</text>
-              <text x="32" y="35" font-size="4.5" fill="#555" text-anchor="middle">4</text>
-              <rect x="37.1" y="29.5" width="7" height="7" rx="1.5" fill="#F2B705"/><text x="40.6" y="35" font-size="4.5" fill="#1a1a1a" text-anchor="middle">5</text>
-              <text x="49.1" y="35" font-size="4.5" fill="#555" text-anchor="middle">6</text><text x="57.7" y="35" font-size="4.5" fill="#555" text-anchor="middle">7</text>
-              <text x="6.3" y="42" font-size="4.5" fill="#555" text-anchor="middle">8</text>
-              <rect x="11.4" y="36.5" width="7" height="7" rx="1.5" fill="#22c55e"/><text x="14.9" y="42" font-size="4.5" fill="white" text-anchor="middle">9</text>
-              <text x="23.4" y="42" font-size="4.5" fill="#555" text-anchor="middle">10</text><text x="32" y="42" font-size="4.5" fill="#555" text-anchor="middle">11</text>
-              <rect x="37.1" y="36.5" width="7" height="7" rx="1.5" fill="#F2B705"/><text x="40.6" y="42" font-size="4.5" fill="#1a1a1a" text-anchor="middle">12</text>
-              <text x="49.1" y="42" font-size="4.5" fill="#555" text-anchor="middle">13</text><text x="57.7" y="42" font-size="4.5" fill="#555" text-anchor="middle">14</text>
-              <rect x="2.8" y="43.5" width="7" height="7" rx="1.5" fill="#22c55e"/><text x="6.3" y="49" font-size="4.5" fill="white" text-anchor="middle">15</text>
-              <text x="14.9" y="49" font-size="4.5" fill="#555" text-anchor="middle">16</text><text x="23.4" y="49" font-size="4.5" fill="#555" text-anchor="middle">17</text>
-              <rect x="28.5" y="43.5" width="7" height="7" rx="1.5" fill="#F2B705"/><text x="32" y="49" font-size="4.5" fill="#1a1a1a" text-anchor="middle">18</text>
-              <rect x="37.1" y="43.5" width="7" height="7" rx="1.5" fill="#22c55e"/><text x="40.6" y="49" font-size="4.5" fill="white" text-anchor="middle">19</text>
-              <text x="49.1" y="49" font-size="4.5" fill="#555" text-anchor="middle">20</text><text x="57.7" y="49" font-size="4.5" fill="#555" text-anchor="middle">21</text>
-              <text x="6.3" y="56" font-size="4.5" fill="#555" text-anchor="middle">22</text>
-              <rect x="11.4" y="50.5" width="7" height="7" rx="1.5" fill="#22c55e"/><text x="14.9" y="56" font-size="4.5" fill="white" text-anchor="middle">23</text>
-              <text x="23.4" y="56" font-size="4.5" fill="#555" text-anchor="middle">24</text>
-              <rect x="28.5" y="50.5" width="7" height="7" rx="1.5" fill="#F2B705"/><text x="32" y="56" font-size="4.5" fill="#1a1a1a" text-anchor="middle">25</text>
-              <text x="40.6" y="56" font-size="4.5" fill="#555" text-anchor="middle">26</text><text x="49.1" y="56" font-size="4.5" fill="#555" text-anchor="middle">27</text><text x="57.7" y="56" font-size="4.5" fill="#555" text-anchor="middle">28</text>
-            </svg>
-          </div>
+          <span class="ps-tool">📐</span>
           <div class="ps-title">We Build Your Campaign Around You</div>
           <p class="ps-text">Send us your content - photos, past jobs, videos, anything. We use it to build a campaign that shows clients exactly what you do and creates real trust. Trust is what gets people to say yes. Once an appointment is confirmed, it lands straight in your calendar.</p>
         </div>
@@ -1814,6 +1812,93 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CALENDAR SECTION
+═══════════════════════════════════════════════ -->
+<section id="calendar-preview" style="background:#111; padding:80px 0; text-align:center;">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:40px;">
+      <span class="section-label">📅 The Result</span>
+      <h2>THIS IS WHAT YOUR <span>SCHEDULE LOOKS LIKE.</span></h2>
+      <p>After working with Val Systems, your calendar doesn't have empty days. It has confirmed appointments with real homeowners who are already expecting your call.</p>
+    </div>
+    <div class="cal-wrap reveal">
+      <svg class="cal-svg" viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Calendar frame -->
+        <rect x="0" y="0" width="420" height="300" rx="14" fill="#1a1a1a" stroke="#2e2e2e" stroke-width="1.5"/>
+        <!-- Header -->
+        <rect x="0" y="0" width="420" height="52" rx="14" fill="#222"/>
+        <rect x="0" y="38" width="420" height="14" fill="#222"/>
+        <!-- Hooks -->
+        <rect x="110" y="0" width="8" height="18" rx="4" fill="#444"/>
+        <rect x="302" y="0" width="8" height="18" rx="4" fill="#444"/>
+        <!-- Month -->
+        <text x="210" y="32" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#F2B705" text-anchor="middle">MAY</text>
+        <!-- Day labels -->
+        <text x="30" y="72" font-size="11" fill="#444" text-anchor="middle" font-family="Arial,sans-serif">SUN</text>
+        <text x="90" y="72" font-size="11" fill="#444" text-anchor="middle" font-family="Arial,sans-serif">MON</text>
+        <text x="150" y="72" font-size="11" fill="#444" text-anchor="middle" font-family="Arial,sans-serif">TUE</text>
+        <text x="210" y="72" font-size="11" fill="#444" text-anchor="middle" font-family="Arial,sans-serif">WED</text>
+        <text x="270" y="72" font-size="11" fill="#444" text-anchor="middle" font-family="Arial,sans-serif">THU</text>
+        <text x="330" y="72" font-size="11" fill="#444" text-anchor="middle" font-family="Arial,sans-serif">FRI</text>
+        <text x="390" y="72" font-size="11" fill="#444" text-anchor="middle" font-family="Arial,sans-serif">SAT</text>
+        <!-- Row 1 -->
+        <text x="30" y="105" font-size="13" fill="#444" text-anchor="middle">1</text>
+        <text x="90" y="105" font-size="13" fill="#444" text-anchor="middle">2</text>
+        <rect x="123" y="88" width="54" height="26" rx="6" fill="#22c55e"/>
+        <text x="150" y="106" font-size="13" fill="white" text-anchor="middle" font-weight="700">3</text>
+        <text x="210" y="105" font-size="13" fill="#444" text-anchor="middle">4</text>
+        <rect x="243" y="88" width="54" height="26" rx="6" fill="#F2B705"/>
+        <text x="270" y="106" font-size="13" fill="#111" text-anchor="middle" font-weight="700">5</text>
+        <text x="330" y="105" font-size="13" fill="#444" text-anchor="middle">6</text>
+        <text x="390" y="105" font-size="13" fill="#444" text-anchor="middle">7</text>
+        <!-- Row 2 -->
+        <text x="30" y="147" font-size="13" fill="#444" text-anchor="middle">8</text>
+        <rect x="63" y="130" width="54" height="26" rx="6" fill="#22c55e"/>
+        <text x="90" y="148" font-size="13" fill="white" text-anchor="middle" font-weight="700">9</text>
+        <text x="150" y="147" font-size="13" fill="#444" text-anchor="middle">10</text>
+        <text x="210" y="147" font-size="13" fill="#444" text-anchor="middle">11</text>
+        <rect x="243" y="130" width="54" height="26" rx="6" fill="#F2B705"/>
+        <text x="270" y="148" font-size="13" fill="#111" text-anchor="middle" font-weight="700">12</text>
+        <text x="330" y="147" font-size="13" fill="#444" text-anchor="middle">13</text>
+        <text x="390" y="147" font-size="13" fill="#444" text-anchor="middle">14</text>
+        <!-- Row 3 -->
+        <rect x="3" y="172" width="54" height="26" rx="6" fill="#22c55e"/>
+        <text x="30" y="190" font-size="13" fill="white" text-anchor="middle" font-weight="700">15</text>
+        <text x="90" y="189" font-size="13" fill="#444" text-anchor="middle">16</text>
+        <text x="150" y="189" font-size="13" fill="#444" text-anchor="middle">17</text>
+        <rect x="183" y="172" width="54" height="26" rx="6" fill="#F2B705"/>
+        <text x="210" y="190" font-size="13" fill="#111" text-anchor="middle" font-weight="700">18</text>
+        <rect x="243" y="172" width="54" height="26" rx="6" fill="#22c55e"/>
+        <text x="270" y="190" font-size="13" fill="white" text-anchor="middle" font-weight="700">19</text>
+        <text x="330" y="189" font-size="13" fill="#444" text-anchor="middle">20</text>
+        <text x="390" y="189" font-size="13" fill="#444" text-anchor="middle">21</text>
+        <!-- Row 4 -->
+        <text x="30" y="231" font-size="13" fill="#444" text-anchor="middle">22</text>
+        <rect x="63" y="214" width="54" height="26" rx="6" fill="#22c55e"/>
+        <text x="90" y="232" font-size="13" fill="white" text-anchor="middle" font-weight="700">23</text>
+        <text x="150" y="231" font-size="13" fill="#444" text-anchor="middle">24</text>
+        <rect x="183" y="214" width="54" height="26" rx="6" fill="#F2B705"/>
+        <text x="210" y="232" font-size="13" fill="#111" text-anchor="middle" font-weight="700">25</text>
+        <text x="270" y="231" font-size="13" fill="#444" text-anchor="middle">26</text>
+        <text x="330" y="231" font-size="13" fill="#444" text-anchor="middle">27</text>
+        <text x="390" y="231" font-size="13" fill="#444" text-anchor="middle">28</text>
+        <!-- Row 5 -->
+        <rect x="3" y="256" width="54" height="26" rx="6" fill="#22c55e"/>
+        <text x="30" y="274" font-size="13" fill="white" text-anchor="middle" font-weight="700">29</text>
+        <rect x="63" y="256" width="54" height="26" rx="6" fill="#F2B705"/>
+        <text x="90" y="274" font-size="13" fill="#111" text-anchor="middle" font-weight="700">30</text>
+        <text x="150" y="273" font-size="13" fill="#444" text-anchor="middle">31</text>
+      </svg>
+      <div class="cal-legend">
+        <span class="cal-legend-item"><span class="cal-dot green"></span> Confirmed appointment</span>
+        <span class="cal-legend-item"><span class="cal-dot yellow"></span> Appointment pending</span>
+      </div>
+      <p class="cal-caption">Green days = booked appointments already in your calendar. This is what month one looks like for our contractors.</p>
+    </div>
   </div>
 </section>
 
