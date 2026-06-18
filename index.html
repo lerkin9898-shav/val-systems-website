@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -61,7 +61,7 @@
       padding: 0 24px;
     }
 
-    /* ─── BUTTONS ─── */
+    /* â”€â”€â”€ BUTTONS â”€â”€â”€ */
     .btn {
       display: inline-block;
       font-family: 'Montserrat', sans-serif;
@@ -118,7 +118,7 @@
       animation: pulseCta 1.5s ease-in-out infinite;
     }
 
-    /* ─── SECTION LABEL ─── */
+    /* â”€â”€â”€ SECTION LABEL â”€â”€â”€ */
     .section-label {
       font-family: 'Montserrat', sans-serif;
       font-size: 0.72rem;
@@ -146,7 +146,7 @@
       border-radius: 4px;
     }
 
-    /* ─── LOGO ─── */
+    /* â”€â”€â”€ LOGO â”€â”€â”€ */
     .logo {
       display: flex;
       flex-direction: column;
@@ -177,7 +177,7 @@
       color: var(--yellow);
     }
 
-    /* ─── NAVBAR ─── */
+    /* â”€â”€â”€ NAVBAR â”€â”€â”€ */
     nav {
       position: sticky;
       top: 0;
@@ -209,7 +209,7 @@
 
     .nav-inner .btn { font-size: 0.75rem; padding: 11px 20px; letter-spacing: 0.06em; }
 
-    /* ─── SINGLE REVIEW ─── */
+    /* â”€â”€â”€ SINGLE REVIEW â”€â”€â”€ */
     #single-review {
       background: var(--black);
       padding: 60px 0;
@@ -301,7 +301,7 @@
       text-align: center;
     }
 
-    /* ─── DIFFERENTIATOR ─── */
+    /* â”€â”€â”€ DIFFERENTIATOR â”€â”€â”€ */
     .problem-main-title {
       font-family: 'Anton', sans-serif;
       font-weight: 400;
@@ -327,7 +327,7 @@
       display: inline-block;
     }
 
-    /* ─── HERO ─── */
+    /* â”€â”€â”€ HERO â”€â”€â”€ */
     #hero {
       background: var(--black);
       padding: 100px 0 80px;
@@ -448,7 +448,7 @@
       border-radius: 2px;
     }
 
-    /* ─── PROBLEM ─── */
+    /* â”€â”€â”€ PROBLEM â”€â”€â”€ */
     #problem {
       background: var(--black-light);
       padding: 48px 0 80px;
@@ -469,55 +469,53 @@
       overflow: hidden;
     }
 
-    .problem-col { padding: 40px 36px; }
-    .problem-col.good { background: var(--green-tint); border-right: 2px solid var(--green-border); }
-    .problem-col.bad { background: var(--red-tint); }
-
-    .problem-col-label {
+    .problem-col-header {
       font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 0.82rem;
-      letter-spacing: 0.07em;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 28px;
-      padding-bottom: 14px;
-      border-bottom: 2px solid;
+      padding: 18px 24px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      border-bottom: 2px solid;
     }
 
-    .problem-col.bad .problem-col-label { color: #e05555; border-color: var(--red-border); }
-    .problem-col.good .problem-col-label { color: #55c87e; border-color: var(--green-border); }
+    .problem-col-header.bad { color: #e05555; border-color: var(--red-border); background: var(--red-tint); }
+    .problem-col-header.good { color: #55c87e; border-color: var(--green-border); background: var(--green-tint); }
 
-    .problem-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-
-    .problem-list li {
+    .problem-row-cell {
       display: flex;
       align-items: flex-start;
       gap: 12px;
-      font-size: 0.92rem;
+      padding: 16px 24px;
+      font-size: 0.88rem;
       color: #ccc;
-      line-height: 1.5;
+      line-height: 1.55;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
     }
 
-    .problem-list li .icon {
+    .problem-row-cell.last { border-bottom: none; }
+    .problem-row-cell.good { background: var(--green-tint); border-right: 2px solid var(--green-border); }
+    .problem-row-cell.bad { background: var(--red-tint); }
+
+    .problem-row-cell .icon {
       flex-shrink: 0;
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.7rem;
-      font-weight: 400;
-      margin-top: 1px;
+      font-size: 0.65rem;
+      margin-top: 2px;
     }
 
-    .bad .icon { background: rgba(220,60,60,0.2); color: #e05555; }
-    .good .icon { background: rgba(50,200,100,0.2); color: #55c87e; }
+    .problem-row-cell.bad .icon { background: rgba(220,60,60,0.2); color: #e05555; }
+    .problem-row-cell.good .icon { background: rgba(50,200,100,0.2); color: #55c87e; }
 
-    /* ─── COMPARISON TABLE ─── */
+    /* â”€â”€â”€ COMPARISON TABLE â”€â”€â”€ */
     #comparison {
       background: var(--black);
       padding: 100px 0;
@@ -560,7 +558,7 @@
     .tour-cell .cross { color: #e05555; margin-right: 8px; font-weight: 700; }
     .tour-cell .check { color: var(--yellow); margin-right: 8px; font-weight: 700; }
 
-    /* ─── HOW IT WORKS ─── */
+    /* â”€â”€â”€ HOW IT WORKS â”€â”€â”€ */
     #how {
       background: var(--black-light);
       padding: 60px 0;
@@ -600,7 +598,7 @@
     }
 
     .step:not(:last-child)::after {
-      content: '→';
+      content: 'â†’';
       position: absolute;
       right: -14px;
       top: 50%;
@@ -640,7 +638,7 @@
     .step h3 { font-size: 0.78rem; margin-bottom: 10px; color: var(--yellow); }
     .step p { font-size: 0.85rem; color: #999; line-height: 1.6; }
 
-    /* ─── WHAT YOU GET ─── */
+    /* â”€â”€â”€ WHAT YOU GET â”€â”€â”€ */
     #features {
       background: var(--black);
       padding: 60px 0;
@@ -673,7 +671,7 @@
     .feature-card h3 { font-size: 0.78rem; margin-bottom: 4px; color: var(--off-white); }
     .feature-card p { font-size: 0.78rem; color: #777; line-height: 1.5; margin: 0; }
 
-    /* ─── TESTIMONIALS ─── */
+    /* â”€â”€â”€ TESTIMONIALS â”€â”€â”€ */
     #testimonials {
       background: var(--black-light);
       padding: 100px 0;
@@ -792,7 +790,7 @@
 
     .tcarousel-dot.active { background: var(--yellow); width: 24px; }
 
-    /* ─── CAMPAIGNS STRIP ─── */
+    /* â”€â”€â”€ CAMPAIGNS STRIP â”€â”€â”€ */
     #campaigns {
       background: var(--black);
       padding: 80px 0 0;
@@ -876,7 +874,7 @@
       .campaigns-fade-right { width: 60px; }
     }
 
-    /* ─── ABOUT ─── */
+    /* â”€â”€â”€ ABOUT â”€â”€â”€ */
     #about {
       background: var(--black);
       padding: 100px 0;
@@ -932,7 +930,7 @@
 
     .about-title { font-size: 0.8rem; color: #666; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
 
-    /* ─── OFFER BANNER ─── */
+    /* â”€â”€â”€ OFFER BANNER â”€â”€â”€ */
     #offer { background: var(--yellow); padding: 80px 0; }
 
     .offer-inner {
@@ -1027,7 +1025,7 @@
       font-style: italic;
     }
 
-    /* ─── FAQ ─── */
+    /* â”€â”€â”€ FAQ â”€â”€â”€ */
     #faq { background: var(--black-light); padding: 100px 0; }
 
     .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 2px; }
@@ -1102,7 +1100,7 @@
       padding-top: 16px;
     }
 
-    /* ─── SPOT RESERVATION ─── */
+    /* â”€â”€â”€ SPOT RESERVATION â”€â”€â”€ */
     #reserve {
       background: var(--black-light);
       padding: 80px 0;
@@ -1229,7 +1227,7 @@
       .reserve-btn-main, .reserve-btn-secondary { width: 100%; }
     }
 
-    /* ─── CONTACT FORM ─── */
+    /* â”€â”€â”€ CONTACT FORM â”€â”€â”€ */
     #contact {
       background: var(--black);
       padding: 100px 0;
@@ -1277,7 +1275,7 @@
     }
 
     .contact-trust span::before {
-      content: '✓';
+      content: 'âœ“';
       color: var(--yellow);
       font-weight: 700;
     }
@@ -1372,7 +1370,7 @@
 
     .form-success p { color: #888; font-size: 0.9rem; }
 
-    /* ─── FOOTER ─── */
+    /* â”€â”€â”€ FOOTER â”€â”€â”€ */
     footer {
       background: #0a0a0a;
       border-top: 1px solid #1e1e1e;
@@ -1439,7 +1437,7 @@
       border-top: 1px solid #161616;
     }
 
-    /* ─── SCROLL REVEAL ANIMATIONS ─── */
+    /* â”€â”€â”€ SCROLL REVEAL ANIMATIONS â”€â”€â”€ */
     @keyframes fadeSlideUp {
       from { opacity: 0; transform: translateY(28px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -1491,7 +1489,7 @@
     .feature-card.reveal:nth-child(5) { transition-delay: 0.32s; }
     .feature-card.reveal:nth-child(6) { transition-delay: 0.40s; }
 
-    /* ─── RESPONSIVE ─── */
+    /* â”€â”€â”€ RESPONSIVE â”€â”€â”€ */
     @media (max-width: 900px) {
       .hero-inner { grid-template-columns: 1fr; }
       .hero-img-box { max-width: 480px; }
@@ -1542,9 +1540,9 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      NAVIGATION
-═══════════════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <nav>
   <div class="container">
     <div class="nav-inner">
@@ -1564,14 +1562,14 @@
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      HERO
-═══════════════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="hero">
   <div class="container">
     <div class="hero-inner">
       <div class="hero-copy">
-        <div class="hero-eyebrow">🏗️ Appointment Setting for Contractors</div>
+        <div class="hero-eyebrow">ðŸ-ï¸ Appointment Setting for Contractors</div>
         <h1 class="hero-headline">
           YOUR CALENDAR SHOULD BE <span>FULL.</span><br>
           <span class="hero-mark">Here's how it works:</span>
@@ -1583,17 +1581,17 @@
           Video Placeholder
         </div>
         <div class="hero-cta-row">
-          <a href="#contact" class="btn btn-yellow">Get More Info</a>
+          <a href="#contact" class="btn btn-yellow">I Want a Full Calendar â†’</a>
         </div>
-        <p class="hero-trust" style="margin-top: 20px;">First 2 months - PAY ONLY PER RESULT<br>No shared leads &nbsp;·&nbsp; Cancel anytime</p>
+        <p class="hero-trust" style="margin-top: 20px;">In the first 30 days - PAY ONLY PER RESULT<br>No shared leads &nbsp;Â·&nbsp; Cancel anytime</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      SINGLE REVIEW
-═══════════════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="single-review">
   <div class="container">
     <div class="review-card reveal">
@@ -1601,27 +1599,27 @@
         <div class="review-avatar">JM</div>
         <div class="review-meta">
           <div class="review-title">8 BOOKED APPOINTMENTS IN THE FIRST 30 DAYS</div>
-          <div class="review-stars">★★★★★</div>
+          <div class="review-stars">â˜…â˜…â˜…â˜…â˜…</div>
         </div>
       </div>
       <p class="review-quote">"Val and her team had our calendar booked solid with appointments, setup and everything included, we were up and running within 6 weeks. Closed 4 remodeling jobs straight from those appointments, didn't have to go out hunting for a single lead. Straight to the point, no fluff. Solid service."</p>
       <div class="review-footer">
         <span class="review-name">Jake M.</span>
-        <span class="review-badge">✓ VERIFIED CLIENT</span>
+        <span class="review-badge">âœ“ VERIFIED CLIENT</span>
       </div>
     </div>
     <a href="#contact" class="btn btn-yellow review-cta">Get More Info</a>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      HERO IMAGE
-═══════════════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="hero-image" style="display: none;">
   <div class="container" style="display: flex; justify-content: center;">
     <div class="hero-img-box reveal" style="max-width: 560px; width: 100%;">
       <div class="placeholder-img" style="flex-direction: column; gap: 12px;">
-        <span style="font-size: 2rem;">📋</span>
+        <span style="font-size: 2rem;">ðŸ“‹</span>
         <span>[Photo: Valeria with calendar]</span>
         <span style="font-size: 0.72rem; color: #555;">Woman holding laptop - full calendar visible</span>
       </div>
@@ -1630,81 +1628,64 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      DIFFERENTIATOR
-═══════════════════════════════════════════════ -->
-<!-- ═══════════════════════════════════════════════
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      PROBLEM
-═══════════════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="problem">
   <div class="container">
     <div class="problem-header reveal">
-      <h2 class="problem-main-title">LEADS <span>≠</span> APPOINTMENTS.</h2>
+      <h2 class="problem-main-title">LEADS <span>â‰ </span> APPOINTMENTS.</h2>
       <p class="problem-subtitle">Why is it different from what you've tried before?</p>
     </div>
     <div class="problem-grid reveal">
-      <div class="problem-col good">
-        <div class="problem-col-label"><span>✓</span> What Val Systems Gives You</div>
-        <ul class="problem-list">
-          <li><span class="icon">✓</span><span><strong>Qualified homeowners</strong> who've been screened for budget, location, and timeline</span></li>
-          <li><span class="icon">✓</span><span>People who are <strong>ready to move forward</strong> and expecting your call</span></li>
-          <li><span class="icon">✓</span><span>Appointments <strong>booked directly</strong> into your calendar - zero chasing</span></li>
-          <li><span class="icon">✓</span><span>Exclusive to you - <strong>never shared</strong> with a competitor</span></li>
-          <li><span class="icon">✓</span><span>Your time spent <strong>closing deals</strong>, not filtering garbage</span></li>
-          <li><span class="icon">✓</span><span>Full transparency - you see every step of the process</span></li>
-        </ul>
-      </div>
-      <div class="problem-col bad">
-        <div class="problem-col-label"><span>✕</span> What Lead Agencies Give You</div>
-        <ul class="problem-list">
-          <li><span class="icon">✕</span><span>Missed calls from people who submitted a form and moved on</span></li>
-          <li><span class="icon">✕</span><span>No-shows who never intended to commit in the first place</span></li>
-          <li><span class="icon">✕</span><span>Leads outside your service area wasting your drive time</span></li>
-          <li><span class="icon">✕</span><span>Homeowners with no budget, no timeline, no seriousness</span></li>
-          <li><span class="icon">✕</span><span>The same lead sold to 4 other contractors simultaneously</span></li>
-          <li><span class="icon">✕</span><span>Hours of chasing, qualifying, and following up - yourself</span></li>
-        </ul>
-      </div>
+
+      <!-- Headers -->
+      <div class="problem-col-header good"><span>âœ“</span> Val Systems</div>
+      <div class="problem-col-header bad"><span>âœ•</span> Lead Agencies</div>
+
+      <!-- Row 1 -->
+      <div class="problem-row-cell good"><span class="icon">âœ“</span><span><strong>Qualified homeowners</strong> screened for budget, location &amp; timeline</span></div>
+      <div class="problem-row-cell bad"><span class="icon">âœ•</span><span>Homeowners with <strong>no budget, no timeline,</strong> no seriousness</span></div>
+
+      <!-- Row 2 -->
+      <div class="problem-row-cell good"><span class="icon">âœ“</span><span>People <strong>ready to move forward</strong> and expecting your call</span></div>
+      <div class="problem-row-cell bad"><span class="icon">âœ•</span><span>No-shows who <strong>never intended to commit</strong> in the first place</span></div>
+
+      <!-- Row 3 -->
+      <div class="problem-row-cell good"><span class="icon">âœ“</span><span>Appointments <strong>booked directly</strong> into your calendar â€” zero chasing</span></div>
+      <div class="problem-row-cell bad"><span class="icon">âœ•</span><span><strong>Hours of chasing,</strong> qualifying, and following up â€” yourself</span></div>
+
+      <!-- Row 4 -->
+      <div class="problem-row-cell good"><span class="icon">âœ“</span><span>Exclusive to you â€” <strong>never shared</strong> with a competitor</span></div>
+      <div class="problem-row-cell bad"><span class="icon">âœ•</span><span>The <strong>same lead sold to 4 others</strong> in your area simultaneously</span></div>
+
+      <!-- Row 5 -->
+      <div class="problem-row-cell good"><span class="icon">âœ“</span><span>Your time spent <strong>closing deals,</strong> not filtering garbage</span></div>
+      <div class="problem-row-cell bad"><span class="icon">âœ•</span><span>Missed calls from people who <strong>submitted a form and moved on</strong></span></div>
+
+      <!-- Row 6 -->
+      <div class="problem-row-cell good last"><span class="icon">âœ“</span><span>Full transparency â€” <strong>you see every step</strong> of the process</span></div>
+      <div class="problem-row-cell bad last"><span class="icon">âœ•</span><span>Leads <strong>outside your service area</strong> wasting your drive time</span></div>
+
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      COMPARISON TABLE
-═══════════════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 
-<!-- ═══════════════════════════════════════════════
-     CAMPAIGNS STRIP
-═══════════════════════════════════════════════ -->
-<section id="campaigns">
-  <div class="campaigns-header reveal">
-    <span class="section-label">📣 Real Campaigns</span>
-    <h2>THE WORK THAT <span>FILLS CALENDARS.</span></h2>
-    <p>A glimpse into campaigns we've run — not theory, not templates. Actual ads that booked appointments for contractors just like you.</p>
-  </div>
-  <div class="campaigns-track-wrap">
-    <div class="campaigns-fade-left"></div>
-    <div class="campaigns-fade-right"></div>
-    <div class="campaigns-track">
-      <img src="images/1 (1).png" alt="Campaign screenshot" loading="lazy">
-      <img src="images/1 (2).png" alt="Campaign screenshot" loading="lazy">
-      <img src="images/1 (3).png" alt="Campaign screenshot" loading="lazy">
-      <img src="images/1 (4).png" alt="Campaign screenshot" loading="lazy">
-      <img src="images/1 (1).png" alt="Campaign screenshot" loading="lazy" aria-hidden="true">
-      <img src="images/1 (2).png" alt="Campaign screenshot" loading="lazy" aria-hidden="true">
-      <img src="images/1 (3).png" alt="Campaign screenshot" loading="lazy" aria-hidden="true">
-      <img src="images/1 (4).png" alt="Campaign screenshot" loading="lazy" aria-hidden="true">
-    </div>
-  </div>
-</section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      HOW IT WORKS
-═══════════════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="how">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">⛑️ The Process</span>
+      <span class="section-label">â›‘ï¸ The Process</span>
       <h2>THE <span>VAL SYSTEMS</span> PROCESS.</h2>
       <p>Four steps. One outcome: your calendar full of people who are actually ready to buy.</p>
     </div>
@@ -1849,44 +1830,44 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      WHAT YOU GET
-═══════════════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="features">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">📋 Included in Every Engagement</span>
+      <span class="section-label">ðŸ“‹ Included in Every Engagement</span>
       <h2>WHAT <span>YOU GET</span> WITH VAL SYSTEMS.</h2>
       <p>Everything you need to fill your calendar - nothing you don't.</p>
     </div>
     <div class="features-grid">
       <div class="feature-card reveal">
-        <div class="feature-icon">🔒</div>
+        <div class="feature-icon">ðŸ”’</div>
         <div><h3>EXCLUSIVE APPOINTMENTS</h3>
         <p>Never shared with another contractor in your area.</p></div>
       </div>
       <div class="feature-card reveal">
-        <div class="feature-icon">⛑️</div>
+        <div class="feature-icon">â›‘ï¸</div>
         <div><h3>PRE-QUALIFIED LEADS</h3>
-        <p>Right location, budget & timeline — already verified.</p></div>
+        <p>Right location, budget & timeline â€” already verified.</p></div>
       </div>
       <div class="feature-card reveal">
-        <div class="feature-icon">📋</div>
+        <div class="feature-icon">ðŸ“‹</div>
         <div><h3>BOOKED INTO YOUR CALENDAR</h3>
         <p>No chasing. Appointments land directly in your schedule.</p></div>
       </div>
       <div class="feature-card reveal">
-        <div class="feature-icon">🔧</div>
+        <div class="feature-icon">ðŸ”§</div>
         <div><h3>DEDICATED FILTERING TEAM</h3>
         <p>Real people qualify every lead before it reaches you.</p></div>
       </div>
       <div class="feature-card reveal">
-        <div class="feature-icon">🏗️</div>
+        <div class="feature-icon">ðŸ-ï¸</div>
         <div><h3>FULL TRANSPARENCY</h3>
         <p>You see the ads, the targeting, and every result.</p></div>
       </div>
       <div class="feature-card reveal">
-        <div class="feature-icon">🏠</div>
+        <div class="feature-icon">ðŸ </div>
         <div><h3>CANCEL ANYTIME</h3>
         <p>No contracts, no lock-ins, no cancellation fees.</p></div>
       </div>
@@ -1894,13 +1875,13 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      TESTIMONIALS
-═══════════════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="testimonials">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">⭐ Real Results</span>
+      <span class="section-label">â­ Real Results</span>
       <h2>WHAT <span>CONTRACTORS SAY.</span></h2>
       <p>Placeholder testimonials - replace with real quotes from your clients.</p>
     </div>
@@ -1913,7 +1894,7 @@
             <div class="tcard-avatar" style="background: #2563EB;">MR</div>
             <div class="tcard-meta">
               <div class="tcard-name">Mike R. - Texas</div>
-              <div class="tcard-stars">★★★★★</div>
+              <div class="tcard-stars">â˜…â˜…â˜…â˜…â˜…</div>
             </div>
           </div>
           <p>Running a roofing company in Texas is competitive. Before Val Systems, I was spending hours chasing leads that went nowhere. In the first month, I had 8 qualified appointments on my calendar. Closed 4 of them. That kind of ROI speaks for itself.</p>
@@ -1924,7 +1905,7 @@
             <div class="tcard-avatar" style="background: #16A34A;">JK</div>
             <div class="tcard-meta">
               <div class="tcard-name">Jason K. - Florida</div>
-              <div class="tcard-stars">★★★★★</div>
+              <div class="tcard-stars">â˜…â˜…â˜…â˜…â˜…</div>
             </div>
           </div>
           <p>I was skeptical at first - I'd been burned by lead agencies before. But this was different. Every appointment I got was a homeowner who actually needed the work done and had the budget for it. No time wasters, no chasing, no games.</p>
@@ -1935,7 +1916,7 @@
             <div class="tcard-avatar" style="background: #7C3AED;">DM</div>
             <div class="tcard-meta">
               <div class="tcard-name">Dave M. - Georgia</div>
-              <div class="tcard-stars">★★★★★</div>
+              <div class="tcard-stars">â˜…â˜…â˜…â˜…â˜…</div>
             </div>
           </div>
           <p>The filtering process is what sets Val Systems apart. By the time someone hits my calendar, they've already been checked for location, budget, and timeline. I just show up and do what I do best - close the deal.</p>
@@ -1946,7 +1927,7 @@
             <div class="tcard-avatar" style="background: #EA580C;">CB</div>
             <div class="tcard-meta">
               <div class="tcard-name">Chris B. - Ohio</div>
-              <div class="tcard-stars">★★★★★</div>
+              <div class="tcard-stars">â˜…â˜…â˜…â˜…â˜…</div>
             </div>
           </div>
           <p>I've tried every lead generation service out there. Nothing comes close to having actual appointments booked for you. My close rate went from 20% to over 40% because I'm only talking to people who are ready to move forward.</p>
@@ -1957,7 +1938,7 @@
             <div class="tcard-avatar" style="background: #DC2626;">TL</div>
             <div class="tcard-meta">
               <div class="tcard-name">Tony L. - Arizona</div>
-              <div class="tcard-stars">★★★★★</div>
+              <div class="tcard-stars">â˜…â˜…â˜…â˜…â˜…</div>
             </div>
           </div>
           <p>Val is responsive, transparent, and genuinely invested in your success. She doesn't just set appointments and disappear. She follows up, adjusts the system, and makes sure it's working for your specific market and service area.</p>
@@ -1968,7 +1949,7 @@
             <div class="tcard-avatar" style="background: #0891B2;">SH</div>
             <div class="tcard-meta">
               <div class="tcard-name">Steve H. - North Carolina</div>
-              <div class="tcard-stars">★★★★★</div>
+              <div class="tcard-stars">â˜…â˜…â˜…â˜…â˜…</div>
             </div>
           </div>
           <p>In the remodeling business, your time is money. Val Systems gave me back my time. I'm not on the phone chasing cold leads anymore - I'm on job sites closing deals. That's exactly where I need to be.</p>
@@ -1985,9 +1966,33 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- Campaigns Strip -->
+<section id="campaigns">
+  <div class="campaigns-header reveal">
+    <span class="section-label">ðŸ“£ Real Campaigns</span>
+    <h2>THE WORK THAT <span>FILLS CALENDARS.</span></h2>
+    <p>A glimpse into campaigns we've run â€” not theory, not templates. Actual ads that booked appointments for contractors just like you.</p>
+  </div>
+  <div class="campaigns-track-wrap">
+    <div class="campaigns-fade-left"></div>
+    <div class="campaigns-fade-right"></div>
+    <div class="campaigns-track">
+      <img src="images/1 (1).png" alt="Campaign screenshot" loading="lazy">
+      <img src="images/1 (2).png" alt="Campaign screenshot" loading="lazy">
+      <img src="images/1 (3).png" alt="Campaign screenshot" loading="lazy">
+      <img src="images/1 (4).png" alt="Campaign screenshot" loading="lazy">
+      <img src="images/1 (1).png" alt="Campaign screenshot" loading="lazy" aria-hidden="true">
+      <img src="images/1 (2).png" alt="Campaign screenshot" loading="lazy" aria-hidden="true">
+      <img src="images/1 (3).png" alt="Campaign screenshot" loading="lazy" aria-hidden="true">
+      <img src="images/1 (4).png" alt="Campaign screenshot" loading="lazy" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      ABOUT
-═══════════════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="about">
   <div class="container">
     <div class="about-inner reveal">
@@ -1998,7 +2003,7 @@
         <div class="about-img-badge">Founder - Val Systems</div>
       </div>
       <div class="about-content">
-        <span class="section-label">💡 למה חשבנו על סיסטם כזה</span>
+        <span class="section-label">ðŸ’¡ ×œ×ž×” ×-×©×‘× ×• ×¢×œ ×¡×™×¡×˜× ×›×–×”</span>
         <h2>WHY I ONLY WORK WITH THE <span>RIGHT CONTRACTORS.</span></h2>
         <div class="about-divider"></div>
         <p>
@@ -2021,15 +2026,15 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      SPECIAL OFFER
-═══════════════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="offer">
   <div class="container">
     <div class="offer-inner reveal">
       <div>
         <span class="offer-badge">Limited Availability</span>
-        <h2>FIRST MONTHS —<br>FREE SERVICE</h2>
+        <h2>FIRST MONTHS â€”<br>FREE SERVICE</h2>
         <div class="offer-pills">
           <span>No Retainer</span>
           <span>No Setup Fees</span>
@@ -2038,13 +2043,13 @@
       </div>
       <div>
         <ul class="offer-list">
-          <li><span class="tick">✓</span> Cancel anytime</li>
-          <li><span class="tick">✓</span> No retainer for the first 2 months</li>
-          <li><span class="tick">✓</span> No long-term contracts</li>
-          <li><span class="tick">✓</span> No management costs</li>
+          <li><span class="tick">âœ“</span> Cancel anytime</li>
+          <li><span class="tick">âœ“</span> No retainer for the first 2 months</li>
+          <li><span class="tick">âœ“</span> No long-term contracts</li>
+          <li><span class="tick">âœ“</span> No management costs</li>
         </ul>
         <p class="offer-result-note">
-          In the first month, our fee is tied to <strong>actual results only</strong> —
+          In the first month, our fee is tied to <strong>actual results only</strong> â€”
           meaning we get paid only when a qualified, exclusive appointment lands in your calendar.
           No appointments, no fee.
         </p>
@@ -2059,13 +2064,13 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      FAQ
-═══════════════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="faq">
   <div class="container">
     <div class="section-header reveal">
-      <span class="section-label">⛑️ Common Questions</span>
+      <span class="section-label">â›‘ï¸ Common Questions</span>
       <h2>FREQUENTLY ASKED <span>QUESTIONS.</span></h2>
       <p>Everything you need to know before applying.</p>
     </div>
@@ -2125,19 +2130,19 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      SPOT RESERVATION
-═══════════════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="reserve">
   <div class="container">
     <div class="reserve-inner reveal">
 
-      <div class="reserve-badge">⚠️ LIMITED SPOTS PER AREA</div>
+      <div class="reserve-badge">âš ï¸ LIMITED SPOTS PER AREA</div>
 
       <h2 class="reserve-title">DON'T LET ANOTHER CONTRACTOR<br><span>TAKE YOUR TERRITORY.</span></h2>
 
       <p class="reserve-sub">
-        We work with a <strong>limited number of contractors per area</strong> — by design.
+        We work with a <strong>limited number of contractors per area</strong> â€” by design.
         When your area fills up, it's closed. No exceptions.
       </p>
 
@@ -2147,19 +2152,19 @@
           <span class="reserve-price-label">one-time spot hold</span>
         </div>
         <ul class="reserve-list">
-          <li>✓ Locks your area exclusively while we verify fit</li>
-          <li>✓ No one else from your area can claim your spot</li>
-          <li>✓ Full refund if we determine you're not a match</li>
-          <li>✓ Applied toward your first month if you move forward</li>
+          <li>âœ“ Locks your area exclusively while we verify fit</li>
+          <li>âœ“ No one else from your area can claim your spot</li>
+          <li>âœ“ Full refund if we determine you're not a match</li>
+          <li>âœ“ Applied toward your first month if you move forward</li>
         </ul>
         <p class="reserve-disclaimer">
-          This is a <em>spot reservation only</em> — not a service commitment.
+          This is a <em>spot reservation only</em> â€” not a service commitment.
           If after our eligibility review it's not the right fit, you get every dollar back. No questions asked.
         </p>
         <div class="reserve-btns">
           <a href="https://buy.stripe.com/5kQeVdfVWaMZ8e0fpt4ZG00" target="_blank" class="btn btn-yellow reserve-btn-main stripe-pay-btn">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="display:inline;vertical-align:middle;margin-right:6px;"><rect width="14" height="14" rx="3" fill="#635BFF"/><path d="M5.8 5.2c0-.4.3-.5.8-.5.7 0 1.5.2 2.2.6V3.5C8.1 3.2 7.4 3 6.6 3 4.9 3 3.8 3.9 3.8 5.3c0 2.2 3 1.8 3 2.8 0 .4-.4.6-.9.6-.8 0-1.7-.3-2.4-.8v1.9c.7.3 1.5.5 2.4.5 1.7 0 2.9-.9 2.9-2.3C8.8 5.7 5.8 6.2 5.8 5.2z" fill="white"/></svg>
-            Pay Securely — $25
+            Pay Securely â€” $25
           </a>
           <a href="#contact" class="btn btn-black reserve-btn-secondary">I Need More Info First</a>
         </div>
@@ -2173,9 +2178,9 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      CONTACT FORM
-═══════════════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <section id="contact">
   <div class="container">
     <div class="contact-inner">
@@ -2218,7 +2223,7 @@
           <button type="submit" class="btn btn-yellow form-submit">Apply Now &rarr;</button>
         </form>
         <div id="formSuccess" class="form-success" style="display:none;">
-          <div class="form-success-icon">✓</div>
+          <div class="form-success-icon">âœ“</div>
           <h3>Application Received</h3>
           <p>We'll be in touch within 24 hours.</p>
         </div>
@@ -2227,9 +2232,9 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      FOOTER
-═══════════════════════════════════════════════ -->
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 <footer>
   <div class="container">
     <div class="footer-inner">
@@ -2263,12 +2268,12 @@
       Val Systems is not affiliated with Meta, Google, or any third-party platform mentioned.
     </p>
 
-    <p class="footer-copy">© 2026 Val Systems. All rights reserved.</p>
+    <p class="footer-copy">Â© 2026 Val Systems. All rights reserved.</p>
   </div>
 </footer>
 
 <script>
-  /* ── FAQ accordion ── */
+  /* â”€â”€ FAQ accordion â”€â”€ */
   function toggleFaq(btn) {
     var answer = btn.nextElementSibling;
     var isOpen = btn.classList.contains('open');
@@ -2279,7 +2284,7 @@
     if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
   }
 
-  /* ── Active nav highlight on scroll ── */
+  /* â”€â”€ Active nav highlight on scroll â”€â”€ */
   var sections = document.querySelectorAll('section[id]');
   var navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', function() {
@@ -2292,7 +2297,7 @@
     });
   }, { passive: true });
 
-  /* ── Scroll reveal ── */
+  /* â”€â”€ Scroll reveal â”€â”€ */
   var revealObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
@@ -2306,7 +2311,7 @@
     revealObserver.observe(el);
   });
 
-  /* ── Testimonials carousel ── */
+  /* â”€â”€ Testimonials carousel â”€â”€ */
   (function() {
     var track  = document.getElementById('testimonialsTrack');
     var cards  = track.querySelectorAll('.tcard');
@@ -2421,7 +2426,7 @@
     startAuto();
   })();
 
-  /* ── Testimonials carousel 2 ── */
+  /* â”€â”€ Testimonials carousel 2 â”€â”€ */
   (function() {
     var track  = document.getElementById('testimonialsTrack2');
     var cards  = track.querySelectorAll('.tcard');
@@ -2536,7 +2541,7 @@
     startAuto();
   })();
 
-  /* ── Contact form submit ── */
+  /* â”€â”€ Contact form submit â”€â”€ */
   document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const form = this;
@@ -2557,37 +2562,18 @@
         form.style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
       } else {
-        btn.textContent = 'Apply Now →';
+        btn.textContent = 'Apply Now â†’';
         btn.disabled = false;
         alert('Something went wrong. Please try again.');
       }
     } catch (err) {
-      btn.textContent = 'Apply Now →';
+      btn.textContent = 'Apply Now â†’';
       btn.disabled = false;
       alert('Something went wrong. Please try again.');
     }
   });
 </script>
 
-<!-- ── Cookie Banner ── -->
-<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#0a0a0a;border-top:1px solid #222;padding:16px 24px;z-index:9999;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-  <p style="font-size:0.72rem;color:#666;line-height:1.6;max-width:720px;margin:0;">
-    This website uses cookies and similar technologies to improve your experience, analyze traffic, measure advertising performance, and support our marketing efforts. By continuing to use this website, you consent to our use of cookies.
-    <a href="privacy-policy.html" style="color:#888;text-decoration:underline;">Privacy Policy</a>
-  </p>
-  <button id="cookieAccept" style="background:var(--yellow);color:#111;border:none;padding:10px 24px;font-family:'Montserrat',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.06em;border-radius:4px;cursor:pointer;flex-shrink:0;">Accept</button>
-</div>
-<script>
-  (function() {
-    if (!localStorage.getItem('cookiesAccepted')) {
-      document.getElementById('cookieBanner').style.display = 'flex';
-    }
-    document.getElementById('cookieAccept').addEventListener('click', function() {
-      localStorage.setItem('cookiesAccepted', '1');
-      document.getElementById('cookieBanner').style.display = 'none';
-    });
-  })();
-</script>
-
 </body>
 </html>
+
