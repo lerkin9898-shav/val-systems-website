@@ -574,71 +574,102 @@
     /* Global centering */
     .feature-card { text-align: center; }
     .feature-icon { display: flex; justify-content: center; }
-    .step-content { text-align: center; }
+    /* ─── PROCESS TIMELINE ─── */
+    #how { background: #0d0d0d; padding: 80px 0; }
 
-    .steps-row {
+    .process-timeline {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .process-step {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
+      grid-template-columns: 52px 1fr;
+      gap: 0 28px;
       position: relative;
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .process-step.visible { opacity: 1; transform: translateX(0); }
+    .process-step:nth-child(2) { transition-delay: 0.12s; }
+    .process-step:nth-child(3) { transition-delay: 0.08s; }
+    .process-step:nth-child(4) { transition-delay: 0.08s; }
+
+    .ps-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .step {
-      padding: 36px 28px;
-      background: var(--black);
-      border: 1px solid #2e2e2e;
-      position: relative;
-      text-align: center;
-      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-    }
-
-    .step:hover {
-      border-color: var(--yellow);
-      transform: translateY(-4px);
-      box-shadow: 0 14px 36px rgba(0,0,0,0.45);
-      z-index: 1;
-    }
-
-    .step:not(:last-child)::after {
-      content: '→';
-      position: absolute;
-      right: -14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--yellow);
-      font-size: 1.4rem;
-      z-index: 2;
-    }
-
-    .step-num {
+    .ps-num {
       font-family: 'Anton', sans-serif;
-      font-size: 3.5rem;
-      color: rgba(242, 183, 5, 0.12);
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-
-    .step-icon {
-      width: 72px;
-      height: 72px;
-      border-radius: 14px;
-      background: rgba(242, 183, 5, 0.08);
-      border: 1.5px solid rgba(242, 183, 5, 0.2);
+      font-size: 0.95rem;
+      color: #111;
+      background: var(--yellow);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 18px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 0 4px #0d0d0d, 0 0 0 5px rgba(242,183,5,0.25);
+    }
+
+    .ps-line {
+      flex: 1;
+      width: 2px;
+      background: #1e1e1e;
+      margin: 6px 0 0;
+      position: relative;
       overflow: hidden;
-      transition: background 0.2s, border-color 0.2s;
+    }
+    .ps-line::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 0%;
+      background: linear-gradient(to bottom, var(--yellow), rgba(242,183,5,0.3));
+      transition: height 1s ease 0.4s;
+    }
+    .process-step.visible .ps-line::after { height: 100%; }
+    .process-step:last-child .ps-line { display: none; }
+
+    .ps-content {
+      padding: 8px 0 52px;
     }
 
-    .step:hover .step-icon {
-      background: rgba(242, 183, 5, 0.18);
-      border-color: rgba(242, 183, 5, 0.55);
+    .ps-tool {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      display: block;
+      filter: grayscale(0.2);
     }
 
-    .step h3 { font-size: 0.78rem; margin-bottom: 10px; color: var(--yellow); }
-    .step p { font-size: 0.85rem; color: #999; line-height: 1.6; }
+    .ps-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.05rem;
+      color: var(--off-white);
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
+
+    .ps-text {
+      font-size: 0.87rem;
+      color: #888;
+      line-height: 1.75;
+    }
+
+    @media (max-width: 600px) {
+      .process-step { grid-template-columns: 40px 1fr; gap: 0 18px; }
+      .ps-num { width: 38px; height: 38px; font-size: 0.85rem; }
+      .ps-content { padding-bottom: 40px; }
+      .ps-title { font-size: 0.95rem; }
+    }
 
     /* ─── WHAT YOU GET ─── */
     #features {
@@ -1497,6 +1528,7 @@
       .hero-img-box { max-width: 480px; }
       .steps-row { grid-template-columns: repeat(2, 1fr); }
       .step:nth-child(2)::after { display: none; }
+      /* process-step responsive handled by ps- media query above */
       .features-grid { grid-template-columns: repeat(2, 1fr); }
       .tcard { width: calc(70% - 12px); }
       .about-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -1708,10 +1740,41 @@
       <h2>THE <span>VAL SYSTEMS</span> PROCESS.</h2>
       <p>We do the heavy lifting. You show up and close.</p>
     </div>
-    <div class="steps-row">
-      <div class="step reveal">
-        <div class="step-num">01</div>
-        <div class="step-icon">
+    <div class="process-timeline">
+      <div class="process-step">
+        <div class="ps-left"><div class="ps-num">01</div><div class="ps-line"></div></div>
+        <div class="ps-content">
+          <span class="ps-tool">🔧</span>
+          <div class="ps-title">We Get You Set Up</div>
+          <p class="ps-text">We connect to your accounts and check that everything is ready. If anything is missing - we handle it. We open every account needed and take care of all the technical setup ourselves. You don't touch a thing.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="ps-left"><div class="ps-num">02</div><div class="ps-line"></div></div>
+        <div class="ps-content">
+          <span class="ps-tool">📋</span>
+          <div class="ps-title">We Learn Your Business Inside Out</div>
+          <p class="ps-text">You tell us everything - your services, area, pricing, what makes you different. We train our dedicated team on it so every person they speak to already knows exactly who you are. They qualify every lead - real homeowners, real budget, real need. By the time an appointment is set, that person knows who they're meeting.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="ps-left"><div class="ps-num">03</div><div class="ps-line"></div></div>
+        <div class="ps-content">
+          <span class="ps-tool">📐</span>
+          <div class="ps-title">We Build Your Campaign Around You</div>
+          <p class="ps-text">Send us your content - photos, past jobs, videos, anything. We use it to build a campaign that shows clients exactly what you do and creates real trust. Trust is what gets people to say yes. Once an appointment is confirmed, it lands straight in your calendar.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="ps-left"><div class="ps-num">04</div><div class="ps-line"></div></div>
+        <div class="ps-content">
+          <span class="ps-tool">🔨</span>
+          <div class="ps-title">You Just Show Up and Close</div>
+          <p class="ps-text">Honestly - you barely have to do anything. We handle everything. Your only job is to protect your energy for the appointments and do what you do best - walk in, present your work, and close the deal. No chasing. No cold calls. Just you, growing your business.</p>
+        </div>
+      </div>
+    </div>
+    <!-- hidden old steps placeholder --><div style="display:none"><div class="step-icon">
           <svg width="100%" height="100%" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="12" y="2" width="40" height="60" rx="6" fill="#1C1C1C" stroke="#3a3a3a" stroke-width="1.5"/>
             <rect x="14" y="6" width="36" height="52" rx="2" fill="#111"/>
@@ -1842,10 +1905,7 @@
             <rect x="18" y="54" width="28" height="3" rx="1.5" fill="#b88a03"/>
           </svg>
         </div>
-        <h3>You Just Show Up and Close</h3>
-        <p>Honestly - you barely have to do anything. We handle everything. Your only job is to protect your energy for the appointments and do what you do best - walk in, present your work, and close the deal. No chasing. No cold calls. Just you, growing your business.</p>
-      </div>
-    </div>
+        </div></div><!-- end hidden -->
   </div>
 </section>
 
@@ -2304,6 +2364,19 @@
 
   document.querySelectorAll('.reveal').forEach(function(el) {
     revealObserver.observe(el);
+  });
+
+  /* ── Process timeline steps ── */
+  var stepObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        stepObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.process-step').forEach(function(el) {
+    stepObserver.observe(el);
   });
 
   /* ── Testimonials carousel ── */
