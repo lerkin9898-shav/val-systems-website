@@ -4,1649 +4,1043 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Val Systems - Appointment Setting for Roofing & Remodeling Contractors</title>
+  <meta name="description" content="Val Systems fills your calendar with pre-qualified, exclusive appointments - no chasing, no shared leads, pay only per result in month one.">
+  <meta property="og:title" content="Val Systems - Appointment Setting for Contractors">
+  <meta property="og:description" content="Your calendar should be full. We handle everything - you just show up and close.">
+  <meta property="og:type" content="website">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
+  <style>
+    /* ── VARIABLES ── */
     :root {
-      --yellow: #F2B705;
-      --yellow-dark: #d9a204;
-      --black: #1C1C1C;
-      --black-light: #242424;
-      --black-mid: #2e2e2e;
-      --off-white: #F5F5F5;
-      --gray-light: #3a3a3a;
-      --gray-muted: #888;
-      --red-tint: rgba(200, 50, 50, 0.12);
-      --green-tint: rgba(50, 180, 100, 0.12);
-      --red-border: rgba(220, 60, 60, 0.4);
-      --green-border: rgba(50, 200, 100, 0.4);
+      --accent:       #F2B705;
+      --accent-dark:  #c99900;
+      --bg:           #161616;
+      --bg-surface:   #1e1e1e;
+      --bg-raised:    #252525;
+      --text:         #F0F0F0;
+      --text-muted:   #888;
+      --border:       #2a2a2a;
+      --red-tint:     rgba(200,50,50,.1);
+      --green-tint:   rgba(50,180,100,.1);
+      --red-border:   rgba(220,60,60,.35);
+      --green-border: rgba(50,200,100,.35);
     }
 
-    html, body { scroll-behavior: smooth; overflow-x: hidden; }
-
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: auto; }
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: var(--black);
-      color: var(--off-white);
+      background: var(--bg);
+      color: var(--text);
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ── NOISE GRAIN OVERLAY ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
     }
 
+    /* ── LAYOUT ── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── TYPOGRAPHY ── */
     h1, h2 {
       font-family: 'Anton', sans-serif;
       font-weight: 400;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
-      line-height: 1.1;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
     }
-
-    h3, h4 {
+    h3 {
       font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      letter-spacing: 0.07em;
       line-height: 1.2;
     }
+    .accent { color: var(--accent); }
 
-    a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; display: block; }
-
-    .container {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ─── BUTTONS ─── */
+    /* ── BUTTONS ── */
     .btn {
       display: inline-block;
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 14px 32px;
-      border-radius: 8px;
+      padding: 15px 36px;
+      border-radius: 4px;
       cursor: pointer;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
       border: none;
       position: relative;
+      transition: transform 0.25s cubic-bezier(.22,1,.36,1), box-shadow 0.25s cubic-bezier(.22,1,.36,1);
+      will-change: transform;
     }
+    .btn:active { transform: scale(0.97) !important; }
 
-    @keyframes pulseCta {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(242,183,5,0.45); }
-      55%       { box-shadow: 0 0 0 14px rgba(242,183,5,0); }
+    .btn-primary {
+      background: var(--accent);
+      color: #111;
+      box-shadow: 0 2px 8px rgba(242,183,5,.2), 0 8px 24px rgba(242,183,5,.1);
     }
-
-    .btn-yellow { background: var(--yellow); color: var(--black); }
-    .btn-yellow:hover {
-      background: var(--yellow-dark);
-      transform: translateY(-2px);
-      animation: pulseCta 1.5s ease-in-out infinite;
+    .btn-primary:hover {
+      background: #ffc40d;
+      box-shadow: 0 4px 16px rgba(242,183,5,.35), 0 16px 40px rgba(242,183,5,.18);
     }
-
     .btn-outline {
       background: transparent;
-      color: var(--yellow);
-      border: 2px solid var(--yellow);
+      color: var(--accent);
+      border: 1.5px solid var(--accent);
     }
-    .btn-outline:hover { background: var(--yellow); color: var(--black); transform: translateY(-2px); }
-
-    .btn-black {
-      background: var(--black);
-      color: var(--yellow);
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 12px 24px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      display: inline-block;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      position: relative;
-    }
-    .btn-black:hover {
+    .btn-outline:hover { background: var(--accent); color: #111; }
+    .btn-dark {
       background: #111;
-      transform: translateY(-2px);
-      animation: pulseCta 1.5s ease-in-out infinite;
+      color: var(--accent);
+      border: 1.5px solid #333;
     }
+    .btn-dark:hover { border-color: var(--accent); }
 
-    /* ─── SECTION LABEL ─── */
+    /* ── SECTION LABEL ── */
     .section-label {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.2em;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 16px;
-      display: block;
+      color: var(--accent);
+      margin-bottom: 18px;
     }
-
-    .placeholder-img {
-      background: #2a2a2a;
-      border: 2px dashed #555;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: var(--gray-muted);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      padding: 16px;
-      border-radius: 4px;
-    }
-
-    /* ─── LOGO ─── */
-    .logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      line-height: 1;
-      cursor: pointer;
-    }
-
-    .logo-v {
-      width: 36px;
-      height: 22px;
-      position: relative;
-    }
-    .logo-v::before {
+    .section-label::before {
       content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: var(--yellow);
-      clip-path: polygon(0 100%, 50% 0%, 100% 100%, 85% 100%, 50% 24%, 15% 100%);
+      display: block;
+      width: 2px;
+      height: 16px;
+      background: rgba(242,183,5,0.45);
+      flex-shrink: 0;
+      border-radius: 1px;
     }
 
-    .logo-text {
-      font-family: 'Anton', sans-serif;
-      font-weight: 400;
-      font-size: 1.1rem;
-      letter-spacing: 0.12em;
-      color: var(--yellow);
-    }
-
-    /* ─── NAVBAR ─── */
+    /* ── NAVBAR ── */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(28, 28, 28, 0.97);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid #2e2e2e;
-      padding: 16px 0;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 20px 0;
+      transition: background 0.4s, border-color 0.4s, padding 0.4s;
     }
-
+    nav.scrolled {
+      background: rgba(22,22,22,0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 24px;
     }
-
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .logo-v {
+      width: 34px; height: 22px;
+      position: relative; flex-shrink: 0;
+    }
+    .logo-v::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--accent);
+      clip-path: polygon(0 100%, 50% 0%, 100% 100%, 84% 100%, 50% 22%, 16% 100%);
+    }
+    .logo-text {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+    }
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 36px;
       list-style: none;
-      font-size: 0.82rem;
-      font-weight: 400;
+      font-size: 0.75rem;
+      font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
-
-    .nav-links a { color: var(--off-white); transition: color 0.2s; }
-    .nav-links a:hover { color: var(--yellow); }
-
-    .nav-inner .btn { font-size: 0.75rem; padding: 11px 20px; letter-spacing: 0.06em; }
-
-    /* ─── SINGLE REVIEW ─── */
-    #single-review {
-      background: var(--black);
-      padding: 60px 0;
-      border-bottom: 1px solid #2e2e2e;
+    .nav-links a {
+      color: rgba(240,240,240,.6);
+      transition: color 0.2s;
+      position: relative;
     }
-
-    .review-card {
-      background: var(--off-white);
-      border-radius: 16px;
-      padding: 32px 28px;
-      max-width: 560px;
-      margin: 0 auto;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--accent);
+      transition: width 0.3s cubic-bezier(.22,1,.36,1);
     }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-inner .btn { font-size: 0.72rem; padding: 11px 20px; }
 
-    .review-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 16px;
-    }
-
-    .review-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--yellow);
-      color: var(--black);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Anton', sans-serif;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-
-    .review-title {
-      font-family: 'Anton', sans-serif;
-      font-weight: 400;
-      font-size: 1rem;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      color: var(--black);
-      line-height: 1.25;
-    }
-
-    .review-stars {
-      color: var(--yellow);
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      margin-top: 4px;
-    }
-
-    .review-quote {
-      font-size: 0.95rem;
-      line-height: 1.7;
-      color: #333;
-      margin-bottom: 18px;
-    }
-
-    .review-footer {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .review-name {
-      font-weight: 700;
-      color: var(--black);
-      font-size: 0.92rem;
-    }
-
-    .review-badge {
-      background: rgba(242,183,5,0.15);
-      color: #a07a00;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      padding: 4px 10px;
-      border-radius: 20px;
-      text-transform: uppercase;
-    }
-
-    .review-cta {
-      display: block;
-      max-width: 340px;
-      margin: 28px auto 0;
-      text-align: center;
-    }
-
-    /* ─── DIFFERENTIATOR ─── */
-    .problem-main-title {
-      font-family: 'Anton', sans-serif;
-      font-weight: 400;
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
-      color: var(--off-white);
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      margin: 0 0 16px;
-      line-height: 1;
-    }
-    .problem-main-title span { color: var(--yellow); }
-
-    .problem-subtitle {
-      font-size: clamp(1.1rem, 2.2vw, 1.5rem);
-      color: var(--yellow);
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      margin: 0 auto 0;
-      max-width: 640px;
-      border-left: 3px solid var(--yellow);
-      padding-left: 16px;
-      text-align: left;
-      display: inline-block;
-    }
-
-    /* ─── HERO ─── */
+    /* ── HERO ── */
     #hero {
-      background: var(--black);
-      padding: 100px 0 80px;
-      border-bottom: 1px solid #2e2e2e;
-    }
-
-    .hero-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 28px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .hero-copy { width: 100%; text-align: center; }
-
-    .hero-eyebrow {
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 20px;
+      min-height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .hero-eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 28px;
-      height: 2px;
-      background: var(--yellow);
-      flex-shrink: 0;
-    }
-
-    .hero-headline {
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      color: var(--off-white);
-      margin-bottom: 24px;
-    }
-    .hero-headline span { color: var(--yellow); }
-
-    .hero-mark {
       position: relative;
-      color: var(--off-white);
-      display: inline-block;
+      overflow: hidden;
+      background: var(--bg);
+      padding: 140px 0 100px;
     }
-    .hero-mark::after {
+
+    /* Ambient glow */
+    #hero::before {
       content: '';
       position: absolute;
-      left: 2px;
-      right: 2px;
-      bottom: -8px;
-      height: 4px;
-      background: var(--yellow);
-      border-radius: 50px;
-    }
-
-    .hero-sub {
-      font-size: 0.85rem;
-      color: #aaa;
-      margin-bottom: 28px;
-      max-width: 480px;
-      line-height: 1.6;
-    }
-
-    .hero-video-box {
-      width: 100%;
-      max-width: 360px;
-      aspect-ratio: 9/16;
-      margin-bottom: 24px;
-    }
-
-    .hero-cta-row {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .hero-trust {
-      font-size: 0.78rem;
-      color: #666;
-      letter-spacing: 0.05em;
-    }
-
-    .hero-img-box {
-      width: 100%;
-      aspect-ratio: 4/3;
-      border-radius: 6px;
-      border: 2px solid #333;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-img-box .placeholder-img {
-      height: 100%;
-      border: none;
-      border-radius: 4px;
-      font-size: 0.85rem;
-    }
-
-    .hero-badge {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      background: var(--yellow);
-      color: var(--black);
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 400;
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 8px 14px;
-      border-radius: 2px;
-    }
-
-    /* ─── PROBLEM ─── */
-    #problem {
-      background: var(--black-light);
-      padding: 48px 0 80px;
-    }
-
-    .problem-header {
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
-
-    .problem-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      border: 1px solid #333;
-      border-radius: 6px;
-      overflow: hidden;
-    }
-
-    .problem-col { padding: 40px 36px; }
-    .problem-col.good { background: var(--green-tint); border-right: 2px solid var(--green-border); }
-    .problem-col.bad { background: var(--red-tint); }
-
-    .problem-col-label {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 0.82rem;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-      padding-bottom: 14px;
-      border-bottom: 2px solid;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .problem-col.bad .problem-col-label { color: #e05555; border-color: var(--red-border); }
-    .problem-col.good .problem-col-label { color: #55c87e; border-color: var(--green-border); }
-
-    .problem-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-
-    .problem-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 0.92rem;
-      color: #ccc;
-      line-height: 1.5;
-    }
-
-    .problem-list li .icon {
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      font-weight: 400;
-      margin-top: 1px;
-    }
-
-    .bad .icon { background: rgba(220,60,60,0.2); color: #e05555; }
-    .good .icon { background: rgba(50,200,100,0.2); color: #55c87e; }
-
-    /* ─── COMPARISON TABLE ─── */
-    #comparison {
-      background: var(--black);
-      padding: 100px 0;
-    }
-
-    /* ─── HOW IT WORKS ─── */
-    #how {
-      background: #0d0d0d;
-      padding: 80px 0 60px;
-    }
-
-    .section-header { text-align: center; margin-bottom: 64px; }
-    .section-header h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 12px; }
-    .section-header h2 span { color: var(--yellow); }
-    .section-header p { color: #999; max-width: 520px; margin: 0 auto; font-size: 0.95rem; }
-
-    /* Global centering */
-    .feature-card { text-align: center; }
-    .feature-icon { display: flex; justify-content: center; }
-    /* ─── PROCESS TIMELINE ─── */
-    #how { background: #0d0d0d; padding: 80px 0; }
-
-    .process-timeline {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .process-step {
-      display: grid;
-      grid-template-columns: 52px 1fr;
-      gap: 0 28px;
-      position: relative;
-      opacity: 0;
-      transform: translateX(36px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .process-step.visible { opacity: 1; transform: translateX(0); }
-    .process-step:nth-child(2) { transition-delay: 0.12s; }
-    .process-step:nth-child(3) { transition-delay: 0.08s; }
-    .process-step:nth-child(4) { transition-delay: 0.08s; }
-
-    .ps-left {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .ps-num {
-      font-family: 'Anton', sans-serif;
-      font-size: 0.95rem;
-      color: #111;
-      background: var(--yellow);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      position: relative;
-      z-index: 1;
-      box-shadow: 0 0 0 4px #0d0d0d, 0 0 0 5px rgba(242,183,5,0.25);
-    }
-
-    .ps-line {
-      flex: 1;
-      width: 2px;
-      background: #1e1e1e;
-      margin: 6px 0 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .ps-line::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 0%;
-      background: linear-gradient(to bottom, var(--yellow), rgba(242,183,5,0.3));
-      transition: height 1s ease 0.4s;
-    }
-    .process-step.visible .ps-line::after { height: 100%; }
-    .process-step:last-child .ps-line { display: none; }
-
-    .ps-content {
-      padding: 8px 0 52px;
-    }
-
-    .ps-tool {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      display: block;
-      filter: grayscale(0.2);
-    }
-
-    .ps-title {
-      font-family: 'Anton', sans-serif;
-      font-size: 1.05rem;
-      color: var(--off-white);
-      letter-spacing: 0.04em;
-      margin-bottom: 10px;
-    }
-
-    .ps-text {
-      font-size: 0.87rem;
-      color: #888;
-      line-height: 1.75;
-    }
-
-    /* ─── CONTRACTOR BANNER ─── */
-    #contractor-banner {
-      background-image: url('images/bg-contractor.png');
-      background-size: cover;
-      background-position: center 30%;
-      background-attachment: fixed;
-      position: relative;
-    }
-    .contractor-overlay {
-      background: rgba(0,0,0,0.72);
-      padding: 100px 24px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-    .contractor-eyebrow {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      color: var(--yellow);
-      font-weight: 600;
-    }
-    .contractor-headline {
-      font-family: 'Anton', sans-serif;
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      color: var(--off-white);
-      line-height: 1.1;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.6);
-    }
-    .contractor-headline span { color: var(--yellow); }
-    .contractor-sub {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.6);
-      max-width: 400px;
-      line-height: 1.7;
-    }
-    @media (max-width: 640px) {
-      #contractor-banner { background-attachment: scroll; }
-      .contractor-overlay { padding: 70px 24px; }
-    }
-
-    /* ─── CALENDAR SECTION ─── */
-    .cal-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-    .cal-svg {
-      width: 100%;
-      max-width: 480px;
-      height: auto;
-      border-radius: 14px;
-      border: 1px solid #2e2e2e;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-    }
-    .cal-legend {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .cal-legend-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      color: #777;
-      font-family: 'Montserrat', sans-serif;
-    }
-    .cal-dot {
-      width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex-shrink: 0;
-    }
-    .cal-dot.green { background: #22c55e; }
-    .cal-dot.yellow { background: #F2B705; }
-    .cal-caption {
-      font-size: 0.82rem;
-      color: #555;
-      max-width: 420px;
-      text-align: center;
-      line-height: 1.6;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    @media (max-width: 600px) {
-      .process-step { grid-template-columns: 40px 1fr; gap: 0 18px; }
-      .ps-num { width: 38px; height: 38px; font-size: 0.85rem; }
-      .ps-content { padding-bottom: 40px; }
-      .ps-title { font-size: 0.95rem; }
-    }
-
-    /* ─── WHAT YOU GET ─── */
-    #features {
-      background: var(--black);
-      padding: 60px 0;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .feature-card {
-      background: var(--black-light);
-      border: 1px solid #2a2a2a;
-      border-left: 3px solid var(--yellow);
-      padding: 18px 20px;
-      border-radius: 4px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--yellow);
-    }
-
-    .feature-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
-    .feature-card h3 { font-size: 0.78rem; margin-bottom: 4px; color: var(--off-white); }
-    .feature-card p { font-size: 0.78rem; color: #777; line-height: 1.5; margin: 0; }
-
-    /* ─── TESTIMONIALS ─── */
-    #testimonials {
-      background: var(--black-light);
-      padding: 100px 0;
-      overflow: hidden;
-    }
-
-    .testimonials-clip { overflow: hidden; }
-    .testimonials-viewport { overflow: visible; }
-
-    .testimonials-track {
-      display: flex;
-      gap: 24px;
-      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      will-change: transform;
-    }
-
-    .tcard {
-      flex-shrink: 0;
-      width: calc(33.333% - 16px);
-      background: var(--black);
-      border: 1px solid rgba(242,183,5,0.3);
-      border-radius: 6px;
-      padding: 32px 28px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .tcard:hover {
-      border-color: var(--yellow);
-      transform: translateY(-3px);
-    }
-
-    .tcard-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .tcard-avatar {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Anton', sans-serif;
-      font-weight: 400;
-      font-size: 1rem;
-      color: #fff;
-      flex-shrink: 0;
-      letter-spacing: 0.05em;
-    }
-
-    .tcard-meta { flex: 1; }
-
-    .tcard-name {
-      font-family: 'Anton', sans-serif;
-      font-weight: 400;
-      font-size: 0.95rem;
-      letter-spacing: 0.04em;
-      color: var(--off-white);
-      line-height: 1.2;
-      text-transform: uppercase;
-    }
-
-    .tcard-stars {
-      color: var(--yellow);
-      font-size: 0.82rem;
-      letter-spacing: 2px;
-      margin-top: 4px;
-    }
-
-    .tcard p {
-      font-size: 0.87rem;
-      color: #aaa;
-      line-height: 1.75;
-    }
-
-    .tcarousel-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 44px;
-    }
-
-    .tcarousel-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 2px solid #333;
-      background: none;
-      color: var(--off-white);
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
-      flex-shrink: 0;
-    }
-
-    .tcarousel-btn:hover { border-color: var(--yellow); color: var(--yellow); }
-
-    .tcarousel-dots { display: flex; gap: 8px; align-items: center; }
-
-    .tcarousel-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 20px;
-      background: #444;
-      transition: background 0.3s, width 0.3s, transform 0.25s;
-      cursor: pointer;
-      border: none;
-    }
-
-    .tcarousel-dot.active { background: var(--yellow); width: 24px; }
-
-    /* ─── CAMPAIGNS STRIP ─── */
-    #campaigns {
-      background: var(--black);
-      padding: 80px 0 0;
-      overflow: hidden;
-    }
-
-    .campaigns-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 52px;
-      padding: 0 24px;
-    }
-
-    .campaigns-header h2 { margin-bottom: 14px; }
-
-    .campaigns-header p {
-      color: #888;
-      font-size: 0.9rem;
-      line-height: 1.7;
-    }
-
-    .campaigns-track-wrap {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .campaigns-fade-left,
-    .campaigns-fade-right {
-      position: absolute;
-      top: 0;
-      width: 120px;
-      height: 100%;
-      z-index: 2;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 600px;
+      background: radial-gradient(ellipse at center, rgba(242,183,5,.055) 0%, transparent 68%);
       pointer-events: none;
     }
 
-    .campaigns-fade-left {
-      left: 0;
-      background: linear-gradient(to right, var(--black), transparent);
+    /* Signature element: roof-pitch diagonal lines */
+    .hero-diagonals {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      will-change: transform;
+    }
+    .hero-diagonals svg {
+      width: 100%; height: 100%;
+      position: absolute; top: 0; left: 0;
     }
 
-    .campaigns-fade-right {
-      right: 0;
-      background: linear-gradient(to left, var(--black), transparent);
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 880px;
+      margin: 0 auto;
+      text-align: center;
     }
 
-    .campaigns-track {
-      display: flex;
-      gap: 20px;
-      width: max-content;
-      animation: campaignsScroll 22s linear infinite;
-      padding: 12px 0 40px;
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(242,183,5,.1);
+      border: 1px solid rgba(242,183,5,.32);
+      color: var(--accent);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding: 6px 14px;
+      border-radius: 24px;
+      margin-bottom: 32px;
+      opacity: 0;
+    }
+    .hero-eyebrow::before { display: none; }
+    .hero-eyebrow .ey-line { display: none; }
+
+    .hero-headline {
+      font-size: clamp(3rem, 7vw, 5.2rem);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 32px;
+    }
+    .h-line { display: block; overflow: hidden; }
+    .h-line-inner { display: block; transform: translateY(110%); }
+    .h-line-inner em { font-style: normal; color: var(--accent); }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+      opacity: 0;
+      transform: translateY(20px);
     }
 
-    .campaigns-track:hover { animation-play-state: paused; }
-
-    .campaigns-track img {
-      height: 320px;
-      width: auto;
+    .hero-video-wrap {
+      width: 100%;
+      max-width: 480px;
+      aspect-ratio: 16/9;
+      margin: 0 auto 40px;
       border-radius: 10px;
-      opacity: 1;
-      transition: opacity 0.3s, transform 0.3s;
-      object-fit: cover;
-      flex-shrink: 0;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #444;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(20px);
     }
 
-    .campaigns-track img:hover {
-      opacity: 1;
-      transform: scale(1.03);
+    .hero-cta-wrap {
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .hero-trust {
+      font-size: 0.72rem;
+      color: #555;
+      letter-spacing: 0.06em;
     }
 
+    /* ── REVIEW STRIP ── */
+    #single-review {
+      background: var(--bg-surface);
+      padding: 72px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .review-card {
+      background: var(--text);
+      border-radius: 12px;
+      padding: 36px 32px;
+      max-width: 580px;
+      margin: 0 auto;
+      box-shadow: 0 4px 16px rgba(0,0,0,.3), 0 20px 48px rgba(0,0,0,.25);
+    }
+    .review-header { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .review-avatar {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: var(--accent); color: #111;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Anton', sans-serif; font-size: 1rem; flex-shrink: 0;
+    }
+    .review-title {
+      font-family: 'Anton', sans-serif; font-size: 0.92rem;
+      letter-spacing: 0.02em; text-transform: uppercase; color: #111; line-height: 1.3;
+    }
+    .review-stars { color: var(--accent); font-size: 0.85rem; letter-spacing: 2px; margin-top: 3px; }
+    .review-quote { font-size: 0.93rem; line-height: 1.78; color: #333; margin-bottom: 20px; }
+    .review-footer { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .review-name { font-weight: 700; color: #111; font-size: 0.88rem; }
+    .review-badge {
+      background: rgba(242,183,5,.15); color: #a07a00;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
+      padding: 4px 10px; border-radius: 20px; text-transform: uppercase;
+    }
+    .review-cta { display: block; max-width: 320px; margin: 32px auto 0; text-align: center; }
+
+    /* ── CAMPAIGNS STRIP ── */
+    #campaigns {
+      background: var(--bg);
+      padding: 88px 0 80px;
+    }
+    .campaigns-header { text-align: center; max-width: 700px; margin: 0 auto 52px; padding: 0 24px; }
+    .campaigns-header h2 { font-size: clamp(1.9rem, 4vw, 3rem); margin-bottom: 14px; }
+    .campaigns-header p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.78; }
+    .campaigns-track-wrap { position: relative; overflow: hidden; padding: 12px 0 20px; }
+    .campaigns-fade-left,
+    .campaigns-fade-right {
+      position: absolute; top: 0; height: 100%; width: 140px; z-index: 2; pointer-events: none;
+    }
+    .campaigns-fade-left  { left: 0;  background: linear-gradient(to right, var(--bg), transparent); }
+    .campaigns-fade-right { right: 0; background: linear-gradient(to left,  var(--bg), transparent); }
+    .campaigns-track {
+      display: flex; gap: 20px;
+      width: max-content;
+      animation: campaignsScroll 26s linear infinite;
+      padding: 4px 0;
+    }
+    .campaigns-track:hover { animation-play-state: paused; }
+    .campaigns-track img {
+      height: 320px; width: auto; border-radius: 10px;
+      object-fit: cover; flex-shrink: 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,.5);
+      transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+    }
+    .campaigns-track img:hover { transform: scale(1.04); }
     @keyframes campaignsScroll {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
-    @media (max-width: 640px) {
-      .campaigns-track img { height: 220px; }
-      .campaigns-fade-left,
-      .campaigns-fade-right { width: 60px; }
+    @media (min-width: 769px) {
+      .campaigns-track-wrap { overflow: visible; }
+      .campaigns-track {
+        animation: none;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 16px;
+        padding: 4px 24px;
+      }
+      .campaigns-fade-left, .campaigns-fade-right { display: none; }
     }
 
-    /* ─── ABOUT ─── */
-    #about {
-      background: var(--black);
+    /* ── PROBLEM ── */
+    #problem {
+      background: var(--bg-surface);
       padding: 100px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
+    .problem-header { text-align: center; margin-bottom: 52px; }
+    .problem-main-title { font-size: clamp(2.6rem, 6vw, 4.5rem); margin-bottom: 14px; }
+    .problem-subtitle {
+      font-size: clamp(1rem, 2vw, 1.3rem); color: var(--accent);
+      font-weight: 600; letter-spacing: 0.02em;
+      display: inline-block;
+      border-left: 3px solid var(--accent); padding-left: 16px; text-align: left;
+    }
+    .problem-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3px; border-radius: 6px; overflow: hidden; border: 1px solid var(--border);
+    }
+    .problem-col { padding: 48px 40px; }
+    .problem-col.good { background: var(--green-tint); }
+    .problem-col.bad  { background: var(--red-tint); }
+    .problem-col-label {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1.5px solid;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .problem-col.bad  .problem-col-label { color: #e05555; border-color: var(--red-border); }
+    .problem-col.good .problem-col-label { color: #55c87e; border-color: var(--green-border); }
+    .problem-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .problem-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 0.9rem; color: #ccc; line-height: 1.55;
+    }
+    .problem-list li .icon {
+      flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 700; margin-top: 1px;
+    }
+    .bad  .icon { background: rgba(220,60,60,.2);  color: #e05555; }
+    .good .icon { background: rgba(50,200,100,.2); color: #55c87e; }
 
-    .about-inner {
+    /* ── HOW IT WORKS ── */
+    #how { background: #0e0e0e; padding: 100px 0 90px; }
+    .section-header { text-align: center; margin-bottom: 72px; }
+    .section-header h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 14px; }
+    .section-header p { color: var(--text-muted); max-width: 500px; margin: 0 auto; font-size: 0.92rem; line-height: 1.78; }
+
+    .process-timeline {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 0 8px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 48px;
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto;
+      gap: 0;
     }
-
-    .about-img { width: 280px; aspect-ratio: 3/4; border-radius: 4px; position: relative; }
-    .about-img .placeholder-img { height: 100%; border-radius: 4px; }
-
-    .about-img-badge {
+    .process-step {
+      position: relative;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      padding: 28px 28px 28px 28px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(32px);
+    }
+    .ps-bg-num {
       position: absolute;
-      bottom: -16px;
-      right: -16px;
-      background: var(--yellow);
-      color: var(--black);
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 500;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      padding: 10px 14px;
-      text-transform: uppercase;
-    }
-
-    .about-content { width: 100%; max-width: 680px; text-align: center; }
-    .about-content h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 28px; }
-    .about-content h2 span { color: var(--yellow); }
-
-    .about-content p {
-      font-size: 0.95rem;
-      color: #bbb;
-      line-height: 1.8;
-      margin-bottom: 18px;
-    }
-
-    .about-content strong { color: var(--off-white); }
-    .about-divider { width: 48px; height: 3px; background: var(--yellow); margin: 28px auto; }
-
-    .about-signature {
+      right: 16px;
+      bottom: -10px;
       font-family: 'Anton', sans-serif;
-      font-weight: 400;
+      font-size: 7.5rem;
+      color: var(--accent);
+      opacity: 0.055;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.04em;
+    }
+    .ps-connector {
+      width: 2px;
+      height: 22px;
+      background: linear-gradient(to bottom, rgba(242,183,5,.5), transparent);
+      margin: 0 0 0 28px;
+      flex-shrink: 0;
+    }
+    .process-step:last-child + .ps-connector { display: none; }
+    .ps-left { display: none; }
+    .ps-icon { display: none; }
+    .ps-content { padding: 0; }
+    .ps-title {
+      font-family: 'Anton', sans-serif;
       font-size: 1.2rem;
-      letter-spacing: 0.02em;
-      color: var(--yellow);
-    }
-
-    .about-title { font-size: 0.8rem; color: #666; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
-
-    /* ─── OFFER BANNER ─── */
-    #offer { background: var(--yellow); padding: 80px 0; }
-
-    .offer-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 36px;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    #offer h2 {
-      font-family: 'Anton', sans-serif;
-      font-weight: 400;
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--black);
-      text-transform: uppercase;
-      line-height: 1.1;
+      color: var(--text);
+      letter-spacing: 0.03em;
       margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .ps-text {
+      font-size: 0.87rem;
+      color: var(--text-muted);
+      line-height: 1.78;
+    }
+    @media (max-width: 600px) {
+      .process-step { padding: 22px 20px; }
+      .ps-bg-num { font-size: 5.5rem; }
+      .ps-title { font-size: 1.05rem; }
     }
 
+    /* ── CONTRACTOR BANNER ── */
+    #contractor-banner { position: relative; overflow: hidden; }
+    .banner-bg {
+      position: absolute;
+      inset: -25%;
+      background-image: url('images/bg-contractor.png');
+      background-size: cover;
+      background-position: center;
+      will-change: transform;
+    }
+    .contractor-overlay {
+      position: relative; z-index: 2;
+      background: rgba(0,0,0,.68);
+      padding: 120px 24px;
+      text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 18px;
+    }
+    .contractor-eyebrow {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em;
+      color: var(--accent); text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .contractor-eyebrow::before { content: ''; display: block; width: 2px; height: 16px; background: rgba(242,183,5,0.45); border-radius: 1px; }
+    .contractor-headline {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      color: var(--text); line-height: 1.04;
+      letter-spacing: -0.02em;
+      text-shadow: 0 4px 24px rgba(0,0,0,.5);
+    }
+    .contractor-headline span { color: var(--accent); }
+    .contractor-sub {
+      font-size: 0.95rem; color: rgba(255,255,255,.5);
+      max-width: 400px; line-height: 1.78;
+    }
+
+    /* ── CALENDAR ── */
+    #calendar-preview {
+      background: #111;
+      padding: 100px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .cal-wrap { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+    .cal-img {
+      width: 100%; max-width: 520px;
+      border-radius: 14px; border: 1px solid var(--border);
+      box-shadow: 0 8px 40px rgba(0,0,0,.6), 0 2px 8px rgba(0,0,0,.4);
+    }
+
+    /* ── VIDEO ── */
+    #intro-video { background: #0e0e0e; padding: 0 0 88px; }
+    .video-placeholder {
+      max-width: 560px; margin: 0 auto;
+      aspect-ratio: 16/9;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #444; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials {
+      background: var(--bg-surface); padding: 100px 0;
+      overflow: hidden; border-top: 1px solid var(--border);
+    }
+    .testimonials-clip { overflow: hidden; }
+    .testimonials-track {
+      display: flex; gap: 24px;
+      transition: transform 0.45s cubic-bezier(.25,.46,.45,.94);
+      will-change: transform;
+    }
+    .tcard {
+      flex-shrink: 0;
+      width: calc(33.333% - 16px);
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 6px; padding: 32px 28px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .tcard:hover { border-color: rgba(242,183,5,.35); transform: translateY(-4px); }
+    .tcard-header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .tcard-avatar {
+      width: 50px; height: 50px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Anton', sans-serif; font-size: 0.95rem;
+      color: #fff; flex-shrink: 0;
+    }
+    .tcard-name {
+      font-family: 'Anton', sans-serif; font-size: 0.88rem;
+      letter-spacing: 0.04em; text-transform: uppercase; color: var(--text); line-height: 1.2;
+    }
+    .tcard-stars { color: var(--accent); font-size: 0.8rem; letter-spacing: 2px; margin-top: 3px; }
+    .tcard p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; }
+    .tcarousel-controls {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; margin-top: 48px;
+    }
+    .tcarousel-btn {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1.5px solid #333; background: none; color: var(--text);
+      font-size: 1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .tcarousel-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .tcarousel-dots { display: flex; gap: 8px; align-items: center; }
+    .tcarousel-dot {
+      width: 8px; height: 8px; border-radius: 20px;
+      background: #444; cursor: pointer; border: none;
+      transition: background 0.3s, width 0.3s;
+    }
+    .tcarousel-dot.active { background: var(--accent); width: 24px; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg); padding: 100px 0; border-top: 1px solid var(--border); }
+    .about-inner {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 52px; text-align: center; max-width: 720px; margin: 0 auto;
+    }
+    .about-photo-wrap { position: relative; width: 260px; }
+    .about-photo-wrap img {
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover; border-radius: 4px; display: block; opacity: 0.88;
+    }
+    .about-badge {
+      position: absolute; bottom: -16px; right: -16px;
+      background: var(--accent); color: #111;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+      padding: 9px 14px; text-transform: uppercase;
+    }
+    .about-content h2 { font-size: clamp(1.6rem, 3.5vw, 2.5rem); margin-bottom: 28px; }
+    .about-content p { font-size: 0.93rem; color: #bbb; line-height: 1.88; margin-bottom: 18px; }
+    .about-content strong { color: var(--text); }
+    .about-divider { width: 44px; height: 2.5px; background: var(--accent); margin: 28px auto; }
+    .about-sig {
+      font-family: 'Anton', sans-serif; font-size: 1.3rem;
+      letter-spacing: 0.02em; color: var(--accent);
+    }
+    .about-role { font-size: 0.75rem; color: #555; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+
+    /* ── OFFER ── */
+    #offer { background: var(--accent); padding: 96px 0; }
+    .offer-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center; max-width: 920px; margin: 0 auto;
+    }
+    #offer h2 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); color: #111; line-height: 1.05; }
     .offer-badge {
       display: inline-block;
-      background: rgba(0,0,0,0.15);
-      color: var(--black);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 20px;
-      margin-bottom: 16px;
+      background: rgba(0,0,0,.15); color: #111;
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 18px;
     }
-
-    .offer-pills {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 18px;
-    }
+    .offer-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
     .offer-pills span {
-      background: rgba(0,0,0,0.12);
-      color: var(--black);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 20px;
+      background: rgba(0,0,0,.12); color: #111;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; padding: 6px 14px; border-radius: 20px;
     }
-
     .offer-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
-
     .offer-list li {
-      font-size: 0.95rem;
-      font-weight: 400;
-      color: var(--black);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-size: 0.92rem; font-weight: 500; color: #111;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .offer-list .tick { font-size: 0.9rem; color: #111; font-weight: 700; }
+    .offer-note-box {
+      font-size: 0.84rem; color: rgba(0,0,0,.72); line-height: 1.72;
+      background: rgba(0,0,0,.1); border-radius: 6px; padding: 16px;
+      border-left: 3px solid rgba(0,0,0,.25); margin-bottom: 20px;
+    }
+    .offer-note-box strong { color: #111; font-weight: 700; }
+    .offer-quote {
+      font-size: 0.84rem; font-style: italic; color: rgba(0,0,0,.55);
+      line-height: 1.72; border-top: 1px solid rgba(0,0,0,.2);
+      padding-top: 20px; margin-bottom: 28px;
     }
 
-    .offer-list li .tick { font-size: 1rem; color: var(--black); }
-
-    .offer-result-note {
-      font-size: 0.84rem;
-      color: rgba(28,28,28,0.85);
-      line-height: 1.7;
-      margin-top: 18px;
-      padding: 14px 16px;
-      background: rgba(0,0,0,0.08);
-      border-radius: 6px;
-      border-left: 3px solid rgba(0,0,0,0.25);
-    }
-
-    .offer-result-note strong {
-      color: var(--black);
-      font-weight: 700;
-      text-decoration: underline;
-      text-decoration-color: rgba(0,0,0,0.35);
-      text-underline-offset: 3px;
-    }
-
-    .offer-note {
-      font-size: 0.84rem;
-      color: rgba(28,28,28,0.7);
-      line-height: 1.7;
-      border-top: 1px solid rgba(28,28,28,0.2);
-      padding-top: 20px;
-      font-style: italic;
-    }
-
-    /* ─── FAQ ─── */
-    #faq { background: var(--black-light); padding: 100px 0; }
-
+    /* ── FAQ ── */
+    #faq { background: var(--bg-surface); padding: 100px 0; border-top: 1px solid var(--border); }
+    #faq .section-header { margin-bottom: 32px; }
     .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 2px; }
-
     .faq-item {
-      background: var(--black);
-      border: 1px solid #2e2e2e;
-      border-radius: 3px;
-      overflow: hidden;
-      transition: border-color 0.2s;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 3px; overflow: hidden; transition: border-color 0.2s;
     }
-
-    .faq-item:hover { border-color: #444; }
-
+    .faq-item:hover { border-color: #3a3a3a; }
     .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 22px 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      cursor: pointer;
-      text-align: left;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.92rem;
-      font-weight: 400;
-      color: var(--off-white);
-      letter-spacing: 0.02em;
-      transition: color 0.2s;
+      width: 100%; background: none; border: none; padding: 22px 28px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      cursor: pointer; text-align: left;
+      font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 500;
+      color: var(--text); letter-spacing: 0.01em; transition: color 0.2s;
     }
-
-    .faq-question:hover { color: var(--yellow); }
-    .faq-question.open { color: var(--yellow); }
-
+    .faq-question:hover, .faq-question.open { color: var(--accent); }
     .faq-icon {
-      flex-shrink: 0;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      border: 2px solid #444;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #777;
-      font-size: 1rem;
-      font-weight: 300;
+      flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+      border: 1.5px solid #444;
+      display: flex; align-items: center; justify-content: center;
+      color: #666; font-size: 1rem; font-weight: 300;
       transition: border-color 0.2s, color 0.2s, transform 0.3s;
     }
-
-    .faq-question.open .faq-icon {
-      border-color: var(--yellow);
-      color: var(--yellow);
-      transform: rotate(45deg);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease;
-      padding: 0 28px;
-    }
-
-    .faq-answer.open { max-height: 300px; padding: 0 28px 22px; }
-
+    .faq-question.open .faq-icon { border-color: var(--accent); color: var(--accent); transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; padding: 0 28px; transition: max-height 0.35s ease, padding 0.35s ease; }
+    .faq-answer.open { max-height: 320px; padding: 0 28px 22px; }
     .faq-answer p {
-      font-size: 0.88rem;
-      color: #999;
-      line-height: 1.75;
-      border-top: 1px solid #2e2e2e;
-      padding-top: 16px;
+      font-size: 0.87rem; color: #999; line-height: 1.8;
+      border-top: 1px solid var(--border); padding-top: 16px;
     }
 
-    /* ─── SPOT RESERVATION ─── */
-    #reserve {
-      background: var(--black-light);
-      padding: 80px 0;
-    }
-
-    .reserve-inner {
-      max-width: 620px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
+    /* ── RESERVE ── */
+    #reserve { background: var(--bg-surface); padding: 96px 0; border-top: 1px solid var(--border); }
+    .reserve-inner { max-width: 620px; margin: 0 auto; text-align: center; }
     .reserve-badge {
       display: inline-block;
-      background: rgba(242,183,5,0.15);
-      border: 1px solid rgba(242,183,5,0.4);
-      color: var(--yellow);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      padding: 6px 16px;
-      border-radius: 20px;
-      margin-bottom: 24px;
+      background: rgba(242,183,5,.12); border: 1px solid rgba(242,183,5,.35);
+      color: var(--accent); font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px;
     }
-
     .reserve-title {
-      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-
-    .reserve-title span { color: var(--yellow); }
-
-    .reserve-sub {
-      color: #999;
-      font-size: 0.9rem;
-      line-height: 1.7;
-      margin-bottom: 36px;
-    }
-
-    .reserve-sub strong { color: var(--off-white); }
-
-    .reserve-card {
-      background: var(--black);
-      border: 1px solid #2a2a2a;
-      border-top: 3px solid var(--yellow);
-      border-radius: 8px;
-      padding: 36px 32px;
-      text-align: left;
-    }
-
-    .reserve-card-top {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .reserve-price {
       font-family: 'Anton', sans-serif;
-      font-size: 3rem;
-      color: var(--yellow);
-      line-height: 1;
+      font-size: clamp(1.9rem, 4.5vw, 3rem);
+      line-height: 1.1; margin-bottom: 16px; letter-spacing: -0.02em;
     }
-
-    .reserve-price-label {
-      font-size: 0.8rem;
-      color: #666;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+    .reserve-title span { color: var(--accent); }
+    .reserve-sub { color: var(--text-muted); font-size: 0.9rem; line-height: 1.78; margin-bottom: 36px; }
+    .reserve-sub strong { color: var(--text); }
+    .reserve-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 8px; padding: 40px 36px; text-align: left;
     }
-
-    .reserve-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .reserve-list li {
-      font-size: 0.88rem;
-      color: var(--off-white);
-      display: flex;
-      gap: 10px;
-    }
-
-    .reserve-disclaimer {
-      font-size: 0.78rem;
-      color: #666;
-      line-height: 1.65;
-      border-top: 1px solid #222;
-      padding-top: 16px;
-      margin-bottom: 28px;
-    }
-
-    .reserve-disclaimer em {
-      color: #999;
-      font-style: normal;
-      font-weight: 600;
-    }
-
-    .reserve-btns {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
+    .reserve-card-top { display: flex; align-items: baseline; gap: 10px; margin-bottom: 26px; }
+    .reserve-price { font-family: 'Anton', sans-serif; font-size: 3.2rem; color: var(--accent); line-height: 1; }
+    .reserve-price-label { font-size: 0.78rem; color: #555; letter-spacing: 0.06em; text-transform: uppercase; }
+    .reserve-list { list-style: none; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; }
+    .reserve-list li { font-size: 0.88rem; color: var(--text); display: flex; gap: 10px; }
+    .reserve-disclaimer { font-size: 0.76rem; color: #555; line-height: 1.65; border-top: 1px solid #222; padding-top: 16px; margin-bottom: 28px; }
+    .reserve-disclaimer em { color: #888; font-style: normal; font-weight: 600; }
+    .reserve-btns { display: flex; gap: 14px; flex-wrap: wrap; }
     .reserve-btn-main { flex: 1; text-align: center; min-width: 200px; }
-    .reserve-btn-secondary { flex: 1; text-align: center; min-width: 180px; }
+    .reserve-btn-sec  { flex: 1; text-align: center; min-width: 180px; }
+    .stripe-trust { font-size: 0.7rem; color: #3a3a3a; margin-top: 12px; text-align: center; }
 
-    .stripe-trust {
-      font-size: 0.72rem;
-      color: #444;
-      margin-top: 12px;
-      text-align: center;
-    }
-
-    .stripe-pay-btn { display: flex; align-items: center; justify-content: center; }
-
-    @media (max-width: 640px) {
-      .reserve-card { padding: 24px 20px; }
-      .reserve-btns { flex-direction: column; }
-      .reserve-btn-main, .reserve-btn-secondary { width: 100%; }
-    }
-
-    /* ─── CONTACT FORM ─── */
-    #contact {
-      background: var(--black);
-      padding: 100px 0;
-      border-top: 1px solid #2e2e2e;
-    }
-
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); padding: 100px 0; border-top: 1px solid var(--border); }
     .contact-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 48px;
-      max-width: 640px;
-      margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 48px; max-width: 640px; margin: 0 auto; text-align: center;
     }
-
-    .contact-headline h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 16px; }
-    .contact-headline h2 span { color: var(--yellow); }
-
-    .contact-headline > p {
-      color: #999;
-      font-size: 0.92rem;
-      line-height: 1.7;
-      margin-bottom: 32px;
+    .contact-headline h2 { font-size: clamp(1.9rem, 4vw, 3rem); margin-bottom: 16px; }
+    .contact-headline > p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.78; margin-bottom: 20px; }
+    .contact-avail {
+      font-size: 0.9rem; font-weight: 600; color: var(--accent);
+      border-left: 3px solid var(--accent); padding-left: 14px; text-align: left; line-height: 1.65;
     }
-
-    .contact-availability {
-      margin-top: 20px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--yellow);
-      border-left: 3px solid var(--yellow);
-      padding-left: 14px;
-      line-height: 1.6;
-    }
-
-    .contact-trust { display: flex; flex-direction: column; gap: 10px; align-items: center; }
-
-    .contact-trust span {
-      font-size: 0.84rem;
-      color: #666;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .contact-trust span::before {
-      content: '✓';
-      color: var(--yellow);
-      font-weight: 700;
-    }
-
     .contact-form-wrap {
-      background: var(--black-light);
-      border: 1px solid #2e2e2e;
-      border-radius: 6px;
-      padding: 40px 36px;
+      width: 100%;
+      background: var(--bg-surface); border: 1px solid var(--border);
+      border-radius: 6px; padding: 40px 36px;
     }
-
     .contact-form { display: flex; flex-direction: column; gap: 20px; }
-
     .form-group { display: flex; flex-direction: column; gap: 6px; }
-
     .form-group label {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #888;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #777;
     }
-
     .form-group input,
     .form-group select {
-      background: var(--black);
-      border: 1px solid #333;
-      border-radius: 3px;
-      padding: 12px 16px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: var(--off-white);
-      transition: border-color 0.2s;
-      outline: none;
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
+      background: var(--bg); border: 1px solid #333; border-radius: 3px;
+      padding: 13px 16px;
+      font-family: 'Montserrat', sans-serif; font-size: 0.9rem;
+      color: var(--text); transition: border-color 0.2s; outline: none;
+      -webkit-appearance: none; appearance: none; width: 100%;
     }
-
-    .form-group input::placeholder { color: #555; }
-
-    .form-group input:focus,
-    .form-group select:focus { border-color: var(--yellow); }
-
+    .form-group input::placeholder { color: #444; }
+    .form-group input:focus, .form-group select:focus { border-color: var(--accent); }
     .form-group select {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      cursor: pointer;
+      background-repeat: no-repeat; background-position: right 14px center; cursor: pointer;
     }
-
-    .form-group select option { background: var(--black); color: var(--off-white); }
-
-    .form-submit {
-      margin-top: 8px;
-      width: 100%;
-      font-size: 0.92rem;
-      padding: 16px;
-      text-align: center;
-      letter-spacing: 0.1em;
-    }
-
-    .form-success {
-      text-align: center;
-      padding: 48px 24px;
-    }
-
+    .form-group select option { background: var(--bg); }
+    .form-submit { width: 100%; font-size: 0.92rem; padding: 16px; text-align: center; letter-spacing: 0.1em; margin-top: 6px; }
+    .form-legal { font-size: 0.66rem; color: #444; line-height: 1.65; }
+    .form-legal a { color: #555; }
+    .form-success { text-align: center; padding: 52px 24px; }
     .form-success-icon {
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      background: rgba(50,200,100,0.12);
-      border: 2px solid #55c87e;
-      color: #55c87e;
-      font-size: 1.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
+      width: 68px; height: 68px; border-radius: 50%;
+      background: rgba(50,200,100,.1); border: 2px solid #55c87e; color: #55c87e;
+      font-size: 1.8rem; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 22px;
     }
-
     .form-success h3 {
-      font-family: 'Anton', sans-serif;
-      font-weight: 400;
-      font-size: 1.2rem;
-      letter-spacing: 0.06em;
-      color: var(--off-white);
-      margin-bottom: 10px;
-      text-transform: uppercase;
+      font-family: 'Anton', sans-serif; font-size: 1.3rem;
+      letter-spacing: 0.06em; color: var(--text); margin-bottom: 10px; text-transform: uppercase;
     }
+    .form-success p { color: #777; font-size: 0.88rem; }
 
-    .form-success p { color: #888; font-size: 0.9rem; }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: #0a0a0a;
-      border-top: 1px solid #1e1e1e;
-      padding: 56px 0 0;
-    }
-
+    /* ── FOOTER ── */
+    footer { background: #0a0a0a; border-top: 1px solid #1a1a1a; padding: 56px 0 0; }
     .footer-inner {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 24px;
+      display: flex; align-items: flex-start;
+      justify-content: space-between; flex-wrap: wrap; gap: 28px;
     }
-
-    .footer-tagline { font-size: 0.78rem; color: #444; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 8px; }
-    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
-
+    .footer-tagline { font-size: 0.75rem; color: #3a3a3a; letter-spacing: 0.07em; text-transform: uppercase; margin-top: 8px; }
+    .footer-desc { font-size: 0.72rem; color: #2a2a2a; margin-top: 10px; max-width: 200px; line-height: 1.65; }
+    .footer-links { display: flex; gap: 28px; list-style: none; flex-wrap: wrap; }
     .footer-links a {
-      font-size: 0.78rem;
-      font-weight: 400;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: #555;
-      transition: color 0.2s;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #444; transition: color 0.2s;
     }
-    .footer-links a:hover { color: var(--yellow); }
-
+    .footer-links a:hover { color: var(--accent); }
     .footer-legal-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-top: 36px;
-      padding-top: 24px;
-      border-top: 1px solid #1e1e1e;
+      display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+      margin-top: 40px; padding-top: 24px; border-top: 1px solid #161616;
     }
-
     .footer-legal-links a {
-      font-size: 0.72rem;
-      color: #3a3a3a;
+      font-size: 0.7rem; color: #2e2e2e; letter-spacing: 0.05em;
+      text-transform: uppercase; transition: color 0.2s;
+    }
+    .footer-legal-links a:hover { color: #555; }
+    .footer-disclaimer { font-size: 0.68rem; color: #252525; text-align: center; line-height: 1.72; margin-top: 16px; padding: 0 20px; }
+    .footer-copy { font-size: 0.7rem; color: #2a2a2a; text-align: center; padding: 20px 0; border-top: 1px solid #141414; margin-top: 16px; }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 500;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(37,211,102,.4), 0 2px 6px rgba(0,0,0,.3);
+      transition: transform 0.25s cubic-bezier(.22,1,.36,1), box-shadow 0.25s;
       text-decoration: none;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      transition: color 0.2s;
+      animation: waPulse 6s ease-in-out infinite;
+    }
+    .wa-float:hover {
+      transform: scale(1.12) translateY(-3px);
+      box-shadow: 0 8px 28px rgba(37,211,102,.55), 0 4px 12px rgba(0,0,0,.3);
+      animation: none;
+    }
+    .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+    @keyframes waPulse {
+      0%,100% { box-shadow: 0 4px 16px rgba(37,211,102,.4), 0 0 0 0 rgba(37,211,102,.5); }
+      50%      { box-shadow: 0 4px 16px rgba(37,211,102,.4), 0 0 0 16px rgba(37,211,102,0); }
     }
 
-    .footer-legal-links a:hover { color: #666; }
-
-    .footer-disclaimer {
-      font-size: 0.7rem;
-      color: #2e2e2e;
-      text-align: center;
-      line-height: 1.7;
-      margin-top: 16px;
-      padding: 0 16px;
+    /* ── ACCESSIBILITY PANEL ── */
+    .a11y-trigger {
+      position: fixed;
+      bottom: 28px; left: 28px;
+      z-index: 500;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--text-muted);
+      transition: background 0.2s, border-color 0.2s;
     }
-
-    .footer-copy {
-      font-size: 0.72rem;
-      color: #333;
-      text-align: center;
-      margin-top: 16px;
-      padding: 20px 0;
-      border-top: 1px solid #161616;
+    .a11y-trigger:hover { background: var(--bg-raised); border-color: #555; }
+    .a11y-trigger svg { width: 22px; height: 22px; }
+    .a11y-panel {
+      position: fixed;
+      bottom: 88px; left: 28px;
+      z-index: 499;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      width: 224px;
+      display: none;
+      box-shadow: 0 8px 32px rgba(0,0,0,.5);
     }
-
-    /* ─── SCROLL REVEAL ANIMATIONS ─── */
-    @keyframes fadeSlideUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .a11y-panel.open { display: block; }
+    .a11y-panel h4 {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;
     }
-
-    @keyframes tagPop {
-      0%   { opacity: 0; transform: scale(0.5); }
-      65%  { transform: scale(1.15); }
-      100% { opacity: 1; transform: scale(1); }
+    .a11y-row {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;
     }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
+    .a11y-btn-group { display: flex; gap: 4px; }
+    .a11y-btn {
+      width: 28px; height: 28px; border-radius: 4px;
+      background: var(--bg); border: 1px solid var(--border);
+      color: var(--text); font-size: 0.78rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
     }
+    .a11y-btn:hover { background: var(--bg-raised); border-color: #555; }
+    .a11y-toggle {
+      width: 42px; height: 22px; border-radius: 20px;
+      background: #333; border: none; cursor: pointer;
+      position: relative; transition: background 0.3s;
+    }
+    .a11y-toggle::after {
+      content: ''; position: absolute; top: 3px; left: 3px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: #fff; transition: transform 0.3s;
+    }
+    .a11y-toggle.on { background: var(--accent); }
+    .a11y-toggle.on::after { transform: translateX(20px); }
 
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* ── GSAP INITIAL STATES ── */
+    .gs-reveal       { opacity: 0; }
+    .gs-reveal-up    { opacity: 0; transform: translateY(44px); }
+    .gs-reveal-left  { opacity: 0; transform: translateX(-44px); }
+    .gs-reveal-right { opacity: 0; transform: translateX(44px); }
 
-
-    /* Stagger delays - feature cards */
-    .feature-card.reveal:nth-child(1) { transition-delay: 0s; }
-    .feature-card.reveal:nth-child(2) { transition-delay: 0.08s; }
-    .feature-card.reveal:nth-child(3) { transition-delay: 0.16s; }
-    .feature-card.reveal:nth-child(4) { transition-delay: 0.24s; }
-    .feature-card.reveal:nth-child(5) { transition-delay: 0.32s; }
-    .feature-card.reveal:nth-child(6) { transition-delay: 0.40s; }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-img-box { max-width: 480px; }
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .offer-inner { grid-template-columns: 1fr; gap: 40px; }
+      .how-layout  { grid-template-columns: 1fr; gap: 40px; }
       .tcard { width: calc(70% - 12px); }
-      .about-inner { grid-template-columns: 1fr; gap: 40px; }
-      .about-img { max-width: 320px; }
-      .offer-inner { grid-template-columns: 1fr; gap: 36px; }
-      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
-      .contact-form-wrap { padding: 28px 24px; }
-      .footer-inner { justify-content: center; text-align: center; }
-      .footer-links { justify-content: center; }
     }
-
     @media (max-width: 640px) {
       .nav-links { display: none; }
-      .nav-inner .btn { font-size: 0.62rem; padding: 8px 10px; letter-spacing: 0.03em; white-space: nowrap; }
-      .logo { flex-direction: row; align-items: center; gap: 8px; }
-      .logo-v { flex-shrink: 0; }
-      .hero-img-box { display: none; }
-      #hero { padding: 40px 0 60px; }
-      .hero-copy { text-align: center; }
-      .hero-eyebrow { justify-content: center; }
-      .hero-cta-row { justify-content: center; margin-bottom: 16px; }
-      .hero-cta-row .btn { width: 100%; max-width: 340px; text-align: center; }
-      .hero-sub { margin-bottom: 24px; }
-      .hero-video-box { margin-bottom: 20px; }
+      .nav-inner .btn { font-size: 0.65rem; padding: 10px 14px; letter-spacing: 0.04em; }
       .problem-grid { grid-template-columns: 1fr 1fr; }
-      .problem-col { padding: 24px 18px; }
-      .problem-list li { font-size: 0.78rem; }
-      .features-grid { grid-template-columns: 1fr; }
-      .tcard { width: 76%; }
+      .problem-col { padding: 20px 14px; }
+      .problem-col-label { font-size: 0.7rem; gap: 6px; margin-bottom: 18px; padding-bottom: 12px; }
+      .problem-list { gap: 12px; }
+      .problem-list li { font-size: 0.78rem; gap: 8px; }
+      .problem-list li .icon { width: 18px; height: 18px; font-size: 0.6rem; flex-shrink: 0; }
+      .problem-col { padding: 28px 20px; }
+      .tcard { width: 82%; }
+      .contact-form-wrap { padding: 28px 20px; }
+      .reserve-card { padding: 28px 20px; }
+      .reserve-btns { flex-direction: column; }
+      .banner-bg { inset: -10%; }
+      .campaigns-track img { height: 220px; }
+      .contractor-overlay { padding: 80px 24px; }
+      .wa-float { bottom: 20px; right: 20px; }
+      .hero-video-wrap { max-width: 340px; aspect-ratio: 9/16; }
     }
 
+    /* ── REDUCED MOTION FALLBACK ── */
     @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
-      .btn-yellow:hover, .btn-black:hover { animation: none; }
+      .wa-float { animation: none; }
+      .gs-reveal, .gs-reveal-up, .gs-reveal-left, .gs-reveal-right {
+        opacity: 1 !important; transform: none !important;
+      }
+      .h-line-inner { transform: none !important; }
+      #heroEyebrow, #heroSub, .hero-video-wrap, .hero-cta-wrap { opacity: 1 !important; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════
-     NAVIGATION
-═══════════════════════════════════════════════ -->
-<nav>
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<nav id="mainNav">
   <div class="container">
     <div class="nav-inner">
-      <div class="logo">
+      <a href="#" class="logo">
         <div class="logo-v"></div>
         <span class="logo-text">VAL SYSTEMS</span>
-      </div>
+      </a>
       <ul class="nav-links">
         <li><a href="#how">How It Works</a></li>
         <li><a href="#offer">Offer</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <a href="#contact" class="btn btn-yellow">Check Your Eligibility</a>
+      <a href="#contact" class="btn btn-primary">Check Eligibility</a>
     </div>
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════════
-     HERO
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
 <section id="hero">
+  <!-- Signature element: roof-pitch diagonal lines (parallax target) -->
+  <div class="hero-diagonals" id="heroDiagonals">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="-200" y1="820" x2="1700" y2="60"  stroke="#F2B705" stroke-width="1.5" opacity="0.07"/>
+      <line x1="-200" y1="920" x2="1700" y2="160" stroke="#F2B705" stroke-width="1"   opacity="0.04"/>
+      <line x1="500"  y1="900" x2="1800" y2="180" stroke="#F2B705" stroke-width="1"   opacity="0.03"/>
+    </svg>
+  </div>
+
   <div class="container">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <div class="hero-eyebrow">🏗️ Appointment Setting for Contractors</div>
-        <h1 class="hero-headline">
-          YOUR CALENDAR SHOULD BE <span>FULL.</span><br>
-          <span class="hero-mark">Here's how it works:</span>
-        </h1>
-        <p class="hero-sub">
-          You've chased enough - LEADS ARE NOT APPOINTMENTS. It's time to fill your calendar
-        </p>
-        <div class="hero-video-box placeholder-img">
-          Video Placeholder
-        </div>
-        <div class="hero-cta-row">
-          <a href="#contact" class="btn btn-yellow">Get More Info</a>
-        </div>
-        <p class="hero-trust" style="margin-top: 20px;">In the first 30 days - PAY ONLY PER RESULT<br>No shared leads &nbsp;·&nbsp; Cancel anytime</p>
+    <div class="hero-content">
+      <div class="hero-eyebrow" id="heroEyebrow">
+        <span>Appointment Setting for Contractors</span>
+      </div>
+
+      <h1 class="hero-headline" id="heroHeadline">
+        <span class="h-line"><span class="h-line-inner">YOUR CALENDAR</span></span>
+        <span class="h-line"><span class="h-line-inner">SHOULD BE <em>FULL.</em></span></span>
+        <span class="h-line" style="font-size:clamp(1.5rem,3.8vw,3rem);letter-spacing:-0.01em;margin-top:8px;">
+          <span class="h-line-inner" style="color:var(--accent);">Here's How It Works:</span>
+        </span>
+      </h1>
+
+      <div class="hero-video-wrap" id="heroVideo">
+        Video Placeholder
+      </div>
+
+      <p class="hero-sub" id="heroSub">
+        You've chased enough - LEADS ARE NOT APPOINTMENTS.<br>It's time to fill your calendar.
+      </p>
+
+      <div class="hero-cta-wrap" id="heroCta">
+        <a href="#contact" class="btn btn-primary" style="font-size:0.88rem;padding:17px 44px;">Let's Get Started</a>
+        <p class="hero-trust">First 30 days - pay only per result &nbsp;·&nbsp; No shared leads &nbsp;·&nbsp; Cancel anytime</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SINGLE REVIEW
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════ SINGLE REVIEW ═══════════════════════ -->
 <section id="single-review">
   <div class="container">
-    <div class="review-card reveal">
+    <div class="review-card gs-reveal-up">
       <div class="review-header">
         <div class="review-avatar">JM</div>
-        <div class="review-meta">
+        <div>
           <div class="review-title">8 BOOKED APPOINTMENTS IN THE FIRST 30 DAYS</div>
           <div class="review-stars">★★★★★</div>
         </div>
@@ -1654,48 +1048,44 @@
       <p class="review-quote">"Val and her team had our calendar booked solid with appointments, setup and everything included, we were up and running within 6 weeks. Closed 4 remodeling jobs straight from those appointments, didn't have to go out hunting for a single lead. Straight to the point, no fluff. Solid service."</p>
       <div class="review-footer">
         <span class="review-name">Jake M.</span>
-        <span class="review-badge">✓ VERIFIED CLIENT</span>
+        <span class="review-badge">✓ Verified Client</span>
       </div>
     </div>
-    <a href="#contact" class="btn btn-yellow review-cta">Get More Info</a>
+    <a href="#contact" class="btn btn-primary review-cta gs-reveal-up">Let's Get Started</a>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     CAMPAIGNS STRIP
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════ CAMPAIGNS ═══════════════════════ -->
 <section id="campaigns">
-  <div class="campaigns-header reveal">
-    <span class="section-label">📣 Real Campaigns</span>
-    <h2>THE WORK THAT <span>FILLS CALENDARS.</span></h2>
-    <p>A glimpse into campaigns we've run - not theory, not templates. Actual ads that booked appointments for contractors just like you.</p>
+  <div class="campaigns-header gs-reveal-up">
+    <span class="section-label">Campaigns</span>
+    <h2>THE WORK THAT <span class="accent">FILLS CALENDARS.</span></h2>
+    <p>Real campaigns that filled real calendars. Every ad you see here was built for a contractor, ran in the field, and turned into booked appointments - not leads, not clicks. Appointments.</p>
   </div>
   <div class="campaigns-track-wrap">
     <div class="campaigns-fade-left"></div>
     <div class="campaigns-fade-right"></div>
     <div class="campaigns-track">
-      <img src="images/1 (1).png" alt="Campaign screenshot" loading="lazy">
-      <img src="images/1 (2).png" alt="Campaign screenshot" loading="lazy">
-      <img src="images/1 (3).png" alt="Campaign screenshot" loading="lazy">
-      <img src="images/1 (4).png" alt="Campaign screenshot" loading="lazy">
-      <img src="images/1 (1).png" alt="Campaign screenshot" loading="lazy" aria-hidden="true">
-      <img src="images/1 (2).png" alt="Campaign screenshot" loading="lazy" aria-hidden="true">
-      <img src="images/1 (3).png" alt="Campaign screenshot" loading="lazy" aria-hidden="true">
-      <img src="images/1 (4).png" alt="Campaign screenshot" loading="lazy" aria-hidden="true">
+      <img src="images/1 (1).png" alt="Real campaign screenshot" loading="lazy">
+      <img src="images/1 (2).png" alt="Real campaign screenshot" loading="lazy">
+      <img src="images/1 (3).png" alt="Real campaign screenshot" loading="lazy">
+      <img src="images/1 (4).png" alt="Real campaign screenshot" loading="lazy">
+      <img src="images/1 (1).png" alt="" loading="lazy" aria-hidden="true">
+      <img src="images/1 (2).png" alt="" loading="lazy" aria-hidden="true">
+      <img src="images/1 (3).png" alt="" loading="lazy" aria-hidden="true">
+      <img src="images/1 (4).png" alt="" loading="lazy" aria-hidden="true">
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     PROBLEM
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════ PROBLEM ═══════════════════════ -->
 <section id="problem">
   <div class="container">
-    <div class="problem-header reveal">
-      <h2 class="problem-main-title">LEADS <span>≠</span> APPOINTMENTS.</h2>
-      <p class="problem-subtitle">Why is it different from what you've tried before?</p>
+    <div class="problem-header">
+      <h2 class="problem-main-title gs-reveal-up">LEADS <span class="accent">≠</span> APPOINTMENTS.</h2>
+      <p class="problem-subtitle gs-reveal-up">Why is it different from what you've tried before?</p>
     </div>
-    <div class="problem-grid reveal">
+    <div class="problem-grid gs-reveal-up">
       <div class="problem-col good">
         <div class="problem-col-label"><span>✓</span> What Val Systems Gives You</div>
         <ul class="problem-list">
@@ -1722,220 +1112,142 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     HOW IT WORKS
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════ HOW IT WORKS ═══════════════════════ -->
 <section id="how">
   <div class="container">
-    <div class="section-header reveal">
-      <span class="section-label">⛑️ The Process</span>
-      <h2>THE <span>VAL SYSTEMS</span> PROCESS.</h2>
-      <p>We do the heavy lifting. You show up and close.</p>
+    <div class="section-header">
+      <span class="section-label gs-reveal">The Process</span>
+      <h2 class="gs-reveal-up">STEP <span class="accent">BY STEP.</span></h2>
+      <p class="gs-reveal-up">We do the heavy lifting. You show up and close.</p>
     </div>
+
     <div class="process-timeline">
+
       <div class="process-step">
-        <div class="ps-left"><div class="ps-num">01</div><div class="ps-line"></div></div>
+        <span class="ps-bg-num">01</span>
         <div class="ps-content">
-          <span class="ps-tool">🔧</span>
           <div class="ps-title">We Get You Set Up</div>
-          <p class="ps-text">We connect to your accounts and check that everything is ready. If anything is missing - we handle it. We open every account needed and take care of all the technical setup ourselves. You don't touch a thing.</p>
+          <p class="ps-text">We handle all the technical setup ourselves. Accounts, tools, everything - you don't touch a thing.</p>
         </div>
       </div>
+
+      <div class="ps-connector"></div>
+
       <div class="process-step">
-        <div class="ps-left"><div class="ps-num">02</div><div class="ps-line"></div></div>
+        <span class="ps-bg-num">02</span>
         <div class="ps-content">
-          <span class="ps-tool">📋</span>
           <div class="ps-title">We Learn Your Business Inside Out</div>
-          <p class="ps-text">You tell us everything - your services, area, pricing, what makes you different. We train our dedicated team on it so every person they speak to already knows exactly who you are. They qualify every lead - real homeowners, real budget, real need. By the time an appointment is set, that person knows who they're meeting.</p>
+          <p class="ps-text">We train our team on your services, area, and pricing. By the time an appointment is set, that person already knows exactly who they're meeting.</p>
         </div>
       </div>
+
+      <div class="ps-connector"></div>
+
       <div class="process-step">
-        <div class="ps-left"><div class="ps-num">03</div><div class="ps-line"></div></div>
+        <span class="ps-bg-num">03</span>
         <div class="ps-content">
-          <span class="ps-tool">📐</span>
           <div class="ps-title">We Build Your Campaign Around You</div>
-          <p class="ps-text">Send us your content - photos, past jobs, videos, anything. We use it to build a campaign that shows clients exactly what you do and creates real trust. Trust is what gets people to say yes. Once an appointment is confirmed, it lands straight in your calendar.</p>
+          <p class="ps-text">We take your content and build ads that create real trust. Confirmed appointments land straight in your calendar.</p>
         </div>
       </div>
+
+      <div class="ps-connector"></div>
+
       <div class="process-step">
-        <div class="ps-left"><div class="ps-num">04</div><div class="ps-line"></div></div>
+        <span class="ps-bg-num">04</span>
         <div class="ps-content">
-          <span class="ps-tool">🔨</span>
           <div class="ps-title">You Just Show Up and Close</div>
-          <p class="ps-text">Honestly - you barely have to do anything. We handle everything. Your only job is to protect your energy for the appointments and do what you do best - walk in, present your work, and close the deal. No chasing. No cold calls. Just you, growing your business.</p>
+          <p class="ps-text">No chasing. No cold calls. Your only job is to show up, present your work, and close the deal.</p>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     CONTRACTOR BANNER
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════ CONTRACTOR BANNER ═══════════════════════ -->
 <section id="contractor-banner">
+  <div class="banner-bg" id="bannerBg"></div>
   <div class="contractor-overlay">
-    <p class="contractor-eyebrow">THE MISSING PIECE</p>
-    <h2 class="contractor-headline">YOU'RE GREAT AT<br>WHAT YOU DO.<br><span>YOU JUST NEED A SYSTEM<br>WORKING FOR YOU.</span></h2>
+    <p class="contractor-eyebrow">The Missing Piece</p>
+    <h2 class="contractor-headline">
+      YOU'RE GREAT AT<br>WHAT YOU DO.
+    </h2>
     <p class="contractor-sub">Most contractors don't have a lead problem. They have a system problem. That's exactly what we fix.</p>
+    <a href="#contact" class="btn btn-primary" style="margin-top:12px;">Apply Now</a>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     CALENDAR SECTION
-═══════════════════════════════════════════════ -->
-<section id="calendar-preview" style="background:#111; padding:80px 0; text-align:center;">
+
+<!-- ═══════════════════════ CALENDAR ═══════════════════════ -->
+<section id="calendar-preview">
   <div class="container">
-    <div class="section-header reveal" style="margin-bottom:40px;">
-      <span class="section-label">📅 The Result</span>
-      <h2>YOUR CALENDAR <span>CAN LOOK LIKE THIS TOO.</span></h2>
-
+    <div class="section-header">
+      <span class="section-label gs-reveal">The Result</span>
+      <h2 class="gs-reveal-up">YOUR CALENDAR <span class="accent">CAN LOOK LIKE THIS TOO.</span></h2>
     </div>
-    <div class="cal-wrap reveal">
-      <img src="images/calendar-ready.jpeg" class="cal-svg" alt="Real booked appointment calendar">
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════
-     VIDEO PLACEHOLDER (ABOUT)
-═══════════════════════════════════════════════ -->
-<section id="intro-video" style="padding: 0 0 60px; background: #0d0d0d;">
-  <div class="container" style="display:flex; justify-content:center;">
-    <div class="hero-video-box placeholder-img" style="max-width:480px; width:100%; aspect-ratio:16/9; font-size:0.85rem; color:#555;">
-      Video Placeholder
+    <div class="cal-wrap gs-reveal-up">
+      <img src="images/calendar-ready.jpeg" class="cal-img" alt="Real booked appointment calendar" loading="lazy">
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     WHAT YOU GET - REMOVED
-═══════════════════════════════════════════════ -->
-<section id="features" style="display:none">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-label">📋 Included in Every Engagement</span>
-      <h2>WHAT <span>YOU GET</span> WITH VAL SYSTEMS.</h2>
-      <p>Everything you need to fill your calendar - nothing you don't.</p>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card reveal">
-        <div class="feature-icon">🔒</div>
-        <div><h3>EXCLUSIVE APPOINTMENTS</h3>
-        <p>Never shared with another contractor in your area.</p></div>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">⛑️</div>
-        <div><h3>PRE-QUALIFIED LEADS</h3>
-        <p>Right location, budget & timeline — already verified.</p></div>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">📋</div>
-        <div><h3>BOOKED INTO YOUR CALENDAR</h3>
-        <p>No chasing. Appointments land directly in your schedule.</p></div>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">🔧</div>
-        <div><h3>DEDICATED FILTERING TEAM</h3>
-        <p>Real people qualify every lead before it reaches you.</p></div>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">🏗️</div>
-        <div><h3>FULL TRANSPARENCY</h3>
-        <p>You see the ads, the targeting, and every result.</p></div>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-icon">🏠</div>
-        <div><h3>CANCEL ANYTIME</h3>
-        <p>No contracts, no lock-ins, no cancellation fees.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ═══════════════════════ INTRO VIDEO ═══════════════════════ -->
 
-<!-- ═══════════════════════════════════════════════
-     TESTIMONIALS
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════ TESTIMONIALS ═══════════════════════ -->
 <section id="testimonials">
   <div class="container">
-    <div class="section-header reveal">
-      <span class="section-label">⭐ Real Results</span>
-      <h2>WHAT <span>CONTRACTORS SAY.</span></h2>
-      <p>Placeholder testimonials - replace with real quotes from your clients.</p>
+    <div class="section-header">
+      <h2 class="gs-reveal-up">WHAT <span class="accent">PEOPLE SAY.</span></h2>
     </div>
     <div class="testimonials-clip">
-    <div class="testimonials-viewport reveal">
-      <div class="testimonials-track" id="testimonialsTrack">
-
-        <div class="tcard">
-          <div class="tcard-header">
-            <div class="tcard-avatar" style="background: #2563EB;">MR</div>
-            <div class="tcard-meta">
-              <div class="tcard-name">Mike R. - Texas</div>
-              <div class="tcard-stars">★★★★★</div>
+      <div class="testimonials-viewport gs-reveal">
+        <div class="testimonials-track" id="testimonialsTrack">
+          <div class="tcard">
+            <div class="tcard-header">
+              <div class="tcard-avatar" style="background:#2563EB;">MR</div>
+              <div><div class="tcard-name">Mike R. - Texas</div><div class="tcard-stars">★★★★★</div></div>
             </div>
+            <p>Running a roofing company in Texas is competitive. Before Val Systems, I was spending hours chasing leads that went nowhere. In the first month, I had 8 qualified appointments on my calendar. Closed 4 of them. That kind of ROI speaks for itself.</p>
           </div>
-          <p>Running a roofing company in Texas is competitive. Before Val Systems, I was spending hours chasing leads that went nowhere. In the first month, I had 8 qualified appointments on my calendar. Closed 4 of them. That kind of ROI speaks for itself.</p>
-        </div>
-
-        <div class="tcard">
-          <div class="tcard-header">
-            <div class="tcard-avatar" style="background: #16A34A;">JK</div>
-            <div class="tcard-meta">
-              <div class="tcard-name">Jason K. - Florida</div>
-              <div class="tcard-stars">★★★★★</div>
+          <div class="tcard">
+            <div class="tcard-header">
+              <div class="tcard-avatar" style="background:#16A34A;">JK</div>
+              <div><div class="tcard-name">Jason K. - Florida</div><div class="tcard-stars">★★★★★</div></div>
             </div>
+            <p>I was skeptical at first - I'd been burned by lead agencies before. But this was different. Every appointment I got was a homeowner who actually needed the work done and had the budget for it. No time wasters, no chasing, no games.</p>
           </div>
-          <p>I was skeptical at first - I'd been burned by lead agencies before. But this was different. Every appointment I got was a homeowner who actually needed the work done and had the budget for it. No time wasters, no chasing, no games.</p>
-        </div>
-
-        <div class="tcard">
-          <div class="tcard-header">
-            <div class="tcard-avatar" style="background: #7C3AED;">DM</div>
-            <div class="tcard-meta">
-              <div class="tcard-name">Dave M. - Georgia</div>
-              <div class="tcard-stars">★★★★★</div>
+          <div class="tcard">
+            <div class="tcard-header">
+              <div class="tcard-avatar" style="background:#7C3AED;">DM</div>
+              <div><div class="tcard-name">Dave M. - Georgia</div><div class="tcard-stars">★★★★★</div></div>
             </div>
+            <p>The filtering process is what sets Val Systems apart. By the time someone hits my calendar, they've already been checked for location, budget, and timeline. I just show up and do what I do best - close the deal.</p>
           </div>
-          <p>The filtering process is what sets Val Systems apart. By the time someone hits my calendar, they've already been checked for location, budget, and timeline. I just show up and do what I do best - close the deal.</p>
-        </div>
-
-        <div class="tcard">
-          <div class="tcard-header">
-            <div class="tcard-avatar" style="background: #EA580C;">CB</div>
-            <div class="tcard-meta">
-              <div class="tcard-name">Chris B. - Ohio</div>
-              <div class="tcard-stars">★★★★★</div>
+          <div class="tcard">
+            <div class="tcard-header">
+              <div class="tcard-avatar" style="background:#EA580C;">CB</div>
+              <div><div class="tcard-name">Chris B. - Ohio</div><div class="tcard-stars">★★★★★</div></div>
             </div>
+            <p>I've tried every lead generation service out there. Nothing comes close to having actual appointments booked for you. My close rate went from 20% to over 40% because I'm only talking to people who are ready to move forward.</p>
           </div>
-          <p>I've tried every lead generation service out there. Nothing comes close to having actual appointments booked for you. My close rate went from 20% to over 40% because I'm only talking to people who are ready to move forward.</p>
-        </div>
-
-        <div class="tcard">
-          <div class="tcard-header">
-            <div class="tcard-avatar" style="background: #DC2626;">TL</div>
-            <div class="tcard-meta">
-              <div class="tcard-name">Tony L. - Arizona</div>
-              <div class="tcard-stars">★★★★★</div>
+          <div class="tcard">
+            <div class="tcard-header">
+              <div class="tcard-avatar" style="background:#DC2626;">TL</div>
+              <div><div class="tcard-name">Tony L. - Arizona</div><div class="tcard-stars">★★★★★</div></div>
             </div>
+            <p>Val is responsive, transparent, and genuinely invested in your success. She doesn't just set appointments and disappear. She follows up, adjusts the system, and makes sure it's working for your specific market and service area.</p>
           </div>
-          <p>Val is responsive, transparent, and genuinely invested in your success. She doesn't just set appointments and disappear. She follows up, adjusts the system, and makes sure it's working for your specific market and service area.</p>
-        </div>
-
-        <div class="tcard">
-          <div class="tcard-header">
-            <div class="tcard-avatar" style="background: #0891B2;">SH</div>
-            <div class="tcard-meta">
-              <div class="tcard-name">Steve H. - North Carolina</div>
-              <div class="tcard-stars">★★★★★</div>
+          <div class="tcard">
+            <div class="tcard-header">
+              <div class="tcard-avatar" style="background:#0891B2;">SH</div>
+              <div><div class="tcard-name">Steve H. - North Carolina</div><div class="tcard-stars">★★★★★</div></div>
             </div>
+            <p>In the remodeling business, your time is money. Val Systems gave me back my time. I'm not on the phone chasing cold leads anymore - I'm on job sites closing deals. That's exactly where I need to be.</p>
           </div>
-          <p>In the remodeling business, your time is money. Val Systems gave me back my time. I'm not on the phone chasing cold leads anymore - I'm on job sites closing deals. That's exactly where I need to be.</p>
         </div>
-
       </div>
     </div>
-    </div><!-- /.testimonials-clip -->
     <div class="tcarousel-controls">
       <button class="tcarousel-btn" id="tPrev" aria-label="Previous">&#8592;</button>
       <div class="tcarousel-dots" id="tDots"></div>
@@ -1944,51 +1256,37 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     ABOUT
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════ ABOUT ═══════════════════════ -->
 <section id="about">
   <div class="container">
-    <div class="about-inner reveal">
-      <div style="position: relative;">
-        <div class="about-img">
-          <img src="images/valeria-about.png" alt="Valeria - Founder, Val Systems" style="width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.82;">
-        </div>
-        <div class="about-img-badge">Me - Val Systems</div>
+    <div class="about-inner">
+      <div class="about-photo-wrap gs-reveal-up">
+        <img src="images/valeria-about.png" alt="Valeria - Founder, Val Systems">
+        <div class="about-badge">Founder</div>
       </div>
-      <div class="about-content">
-        <span class="section-label">💡 Why We Built This System</span>
-        <h2>WHY I ONLY WORK WITH THE <span>RIGHT CONTRACTORS.</span></h2>
+      <div class="about-content gs-reveal-up">
+        <h2>WHY WE <span class="accent">DEVELOPED THIS SYSTEM.</span></h2>
         <div class="about-divider"></div>
-        <p>
-          I know how broken the leads market is. I've seen contractors <strong>waste thousands of dollars</strong> chasing garbage leads - unqualified homeowners, wrong areas, dead numbers, no-shows. It's not just frustrating. It destroys momentum and burns out good people.
-        </p>
-        <p>
-          I built This system because I've seen firsthand what a <strong>real appointment-setting system</strong> does to a contractor's business. The close rate changes. The revenue changes. The stress level changes.
-        </p>
-        <p>
-          And I only want to work with people who are serious about growing. <strong>I don't take every client. I take the right ones.</strong> Because this only works when both sides are committed to making it work.
-        </p>
-        <p>
-          This isn't a transaction. <strong>It's a long-term partnership.</strong> And I treat it that way.
-        </p>
+        <p>I know how broken the leads market is. I've seen contractors <strong>waste thousands of dollars</strong> chasing garbage leads - unqualified homeowners, wrong areas, dead numbers, no-shows. It's not just frustrating. It destroys momentum and burns out good people.</p>
+        <p>I built this system because I've seen firsthand what a <strong>real appointment-setting system</strong> does to a contractor's business. The close rate changes. The revenue changes. The stress level changes.</p>
+        <h2>WHY I ONLY WORK WITH THE <span class="accent">RIGHT CONTRACTORS.</span></h2>
+        <p>I'm looking for people who are serious and really want to grow their business. <strong>We take the right ones - it's very important to us.</strong> This works best when both sides are committed to making it work.</p>
+        <p>This isn't a transaction. <strong>It's a long-term partnership.</strong> And I treat it that way.</p>
         <div class="about-divider"></div>
-        <div class="about-signature">- Val</div>
-        <div class="about-title">Founder, Val Systems</div>
+        <div class="about-sig">- Val</div>
+        <div class="about-role">Founder, Val Systems</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SPECIAL OFFER
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════ OFFER ═══════════════════════ -->
 <section id="offer">
   <div class="container">
-    <div class="offer-inner reveal">
+    <div class="offer-inner gs-reveal-up">
       <div>
         <span class="offer-badge">Limited Availability</span>
-        <h2>FIRST MONTH —<br>FREE SERVICE</h2>
+        <h2>FIRST MONTH -<br>FREE SERVICE</h2>
         <div class="offer-pills">
           <span>No Retainer</span>
           <span>No Setup Fees</span>
@@ -2002,104 +1300,59 @@
           <li><span class="tick">✓</span> No long-term contracts</li>
           <li><span class="tick">✓</span> No management costs</li>
         </ul>
-        <p class="offer-result-note">
-          In the first month, our fee is tied to <strong>actual results only</strong> —
-          meaning we get paid only when a qualified, exclusive appointment lands in your calendar.
-          No appointments, no fee.
+        <p class="offer-note-box">
+          In the first month, our fee is tied to <strong>actual results only</strong> - meaning we get paid only when a qualified, exclusive appointment lands in your calendar. No appointments, no fee.
         </p>
-        <p class="offer-note">
-          "I do this because I believe in what I've built. And I want you to see it work before you commit to anything."
-        </p>
-        <div style="margin-top: 28px;">
-          <a href="#contact" class="btn-black">Apply Now</a>
-        </div>
+        <p class="offer-quote">"I do this because I believe in what I've built. And I want you to see it work before you commit to anything."</p>
+        <a href="#contact" class="btn btn-dark">Apply Now</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     FAQ
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════ FAQ ═══════════════════════ -->
 <section id="faq">
   <div class="container">
-    <div class="section-header reveal">
-      <span class="section-label">⛑️ Common Questions</span>
-      <h2>FREQUENTLY ASKED <span>QUESTIONS.</span></h2>
-      <p>Everything you need to know before applying.</p>
+    <div class="section-header">
+      <span class="section-label gs-reveal">Common Questions</span>
+      <h2 class="gs-reveal-up">FREQUENTLY ASKED <span class="accent">QUESTIONS.</span></h2>
+      <p class="gs-reveal-up">Everything you need to know before applying.</p>
     </div>
-    <div class="faq-list reveal">
-
+    <div class="faq-list gs-reveal-up">
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          How is this different from buying leads?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Lead agencies sell you contact information - a name and a phone number from someone who filled out a form online. You still have to call them, qualify them, and deal with the ones who aren't serious. Val Systems handles all of that. We only put people on your calendar after they've been verified for location, budget, timeline, and genuine intent. You skip straight to the appointment. No chasing. No filtering yourself.</p>
-        </div>
+        <button class="faq-question" onclick="toggleFaq(this)">How is this different from buying leads?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Lead agencies sell you contact information - a name and a phone number from someone who filled out a form online. You still have to call them, qualify them, and deal with the ones who aren't serious. Val Systems handles all of that. We only put people on your calendar after they've been verified for location, budget, timeline, and genuine intent. You skip straight to the appointment. No chasing. No filtering yourself.</p></div>
       </div>
-
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          What does the filtering process look like?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>After a homeowner responds to one of our ads, our team reaches out to verify key details: Are they in your service area? Do they have a realistic budget for the type of work you do? Do they have a timeline in mind? Are they the decision-maker? Only homeowners who pass every check get moved forward. The ones who don't make the cut never reach your calendar - period.</p>
-        </div>
+        <button class="faq-question" onclick="toggleFaq(this)">What does the filtering process look like?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>After a homeowner responds to one of our ads, our team reaches out to verify key details: Are they in your service area? Do they have a realistic budget for the type of work you do? Do they have a timeline in mind? Are they the decision-maker? Only homeowners who pass every check get moved forward. The ones who don't make the cut never reach your calendar - period.</p></div>
       </div>
-
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          How many appointments per month can I expect?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>The volume depends on your market, your service area, and the type of work you do. We set realistic expectations upfront based on your specific situation - we don't promise numbers we can't deliver. What we can promise is that every appointment that lands on your calendar has been properly qualified. Quality over quantity, always.</p>
-        </div>
+        <button class="faq-question" onclick="toggleFaq(this)">How many appointments per month can I expect?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>The volume depends on your market, your service area, and the type of work you do. We set realistic expectations upfront based on your specific situation - we don't promise numbers we can't deliver. What we can promise is that every appointment that lands on your calendar has been properly qualified. Quality over quantity, always.</p></div>
       </div>
-
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          What do I need to get started?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Very little. We start with a strategy call to understand your business, your service area, your ideal client, and what "qualified" means for you specifically. From there, we set up the ad campaigns and the filtering workflow - you don't need to do anything technical. You need an active calendar link (like Calendly) and a working phone. That's it.</p>
-        </div>
+        <button class="faq-question" onclick="toggleFaq(this)">What do I need to get started?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Very little. We start with a strategy call to understand your business, your service area, your ideal client, and what "qualified" means for you specifically. From there, we set up the ad campaigns and the filtering workflow - you don't need to do anything technical. You need an active calendar link (like Calendly) and a working phone. That's it.</p></div>
       </div>
-
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          What if I want to cancel?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>You can cancel anytime with no penalties, no fees, and no drama. We don't believe in trapping people in contracts. If the system isn't working for you - or if your situation changes - you're free to walk away. We'd rather you stay because the results are there, not because you're locked in.</p>
-        </div>
+        <button class="faq-question" onclick="toggleFaq(this)">What if I want to cancel?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>You can cancel anytime with no penalties, no fees, and no drama. We don't believe in trapping people in contracts. If the system isn't working for you - or if your situation changes - you're free to walk away. We'd rather you stay because the results are there, not because you're locked in.</p></div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SPOT RESERVATION
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════ RESERVE ═══════════════════════ -->
 <section id="reserve">
   <div class="container">
-    <div class="reserve-inner reveal">
-
-      <div class="reserve-badge">⚠️ LIMITED SPOTS PER AREA</div>
-
+    <div class="reserve-inner gs-reveal-up">
+      <div class="reserve-badge">Limited Spots Per Area</div>
       <h2 class="reserve-title">DON'T LET ANOTHER CONTRACTOR<br><span>TAKE YOUR TERRITORY.</span></h2>
-
       <p class="reserve-sub">
-        We work with a <strong>limited number of contractors per area</strong> — by design.
+        We work with a <strong>limited number of contractors per area</strong> - by design.
         When your area fills up, it's closed. No exceptions.
       </p>
-
       <div class="reserve-card">
         <div class="reserve-card-top">
           <span class="reserve-price">$25</span>
@@ -2112,38 +1365,34 @@
           <li>✓ Applied toward your first month if you move forward</li>
         </ul>
         <p class="reserve-disclaimer">
-          This is a <em>spot reservation only</em> — not a service commitment.
-          If after our eligibility review it's not the right fit, you get every dollar back. No questions asked.
+          This is a <em>spot reservation only</em> - not a service commitment. If after our eligibility review it's not the right fit, you get every dollar back. No questions asked.
         </p>
         <div class="reserve-btns">
-          <a href="https://buy.stripe.com/5kQeVdfVWaMZ8e0fpt4ZG00" target="_blank" class="btn btn-yellow reserve-btn-main stripe-pay-btn">
+          <a href="https://buy.stripe.com/5kQeVdfVWaMZ8e0fpt4ZG00" target="_blank" class="btn btn-primary reserve-btn-main">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="display:inline;vertical-align:middle;margin-right:6px;"><rect width="14" height="14" rx="3" fill="#635BFF"/><path d="M5.8 5.2c0-.4.3-.5.8-.5.7 0 1.5.2 2.2.6V3.5C8.1 3.2 7.4 3 6.6 3 4.9 3 3.8 3.9 3.8 5.3c0 2.2 3 1.8 3 2.8 0 .4-.4.6-.9.6-.8 0-1.7-.3-2.4-.8v1.9c.7.3 1.5.5 2.4.5 1.7 0 2.9-.9 2.9-2.3C8.8 5.7 5.8 6.2 5.8 5.2z" fill="white"/></svg>
-            Pay Securely — $25
+            Pay Securely - $25
           </a>
-          <a href="#contact" class="btn btn-black reserve-btn-secondary">I'd Prefer to Talk Personally</a>
+          <a href="#contact" class="btn btn-dark reserve-btn-sec">I'd Prefer to Talk First</a>
         </div>
         <p class="stripe-trust">
           <svg width="12" height="12" viewBox="0 0 14 14" fill="none" style="vertical-align:middle;margin-right:4px;"><rect width="14" height="14" rx="3" fill="#635BFF"/><path d="M5.8 5.2c0-.4.3-.5.8-.5.7 0 1.5.2 2.2.6V3.5C8.1 3.2 7.4 3 6.6 3 4.9 3 3.8 3.9 3.8 5.3c0 2.2 3 1.8 3 2.8 0 .4-.4.6-.9.6-.8 0-1.7-.3-2.4-.8v1.9c.7.3 1.5.5 2.4.5 1.7 0 2.9-.9 2.9-2.3C8.8 5.7 5.8 6.2 5.8 5.2z" fill="white"/></svg>
           Secured &amp; processed by Stripe. Your card info never touches our servers.
         </p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     CONTACT FORM
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════ CONTACT ═══════════════════════ -->
 <section id="contact">
   <div class="container">
     <div class="contact-inner">
-      <div class="contact-headline reveal">
-        <h2>READY TO STOP <span>CHASING</span> AND START <span>CLOSING?</span></h2>
+      <div class="contact-headline gs-reveal-up">
+        <h2>READY TO STOP <span class="accent">CHASING</span> AND START <span class="accent">CLOSING?</span></h2>
         <p>Fill out the form and we'll get back to you within 24 hours to see if you're a good fit for the system.</p>
-        <p class="contact-availability">We work each time with a limited number of contractors. Apply to see if your area is still available.</p>
+        <p class="contact-avail">We work each time with a limited number of contractors. Apply to see if your area is still available.</p>
       </div>
-      <div class="contact-form-wrap reveal">
+      <div class="contact-form-wrap gs-reveal-up">
         <form id="contactForm" class="contact-form" action="https://formspree.io/f/mgobjavj" method="POST" novalidate>
           <div class="form-group">
             <label for="f-name">Full Name</label>
@@ -2165,16 +1414,16 @@
             <label for="f-jobs">How many jobs do you close per month?</label>
             <select id="f-jobs" name="jobs" required>
               <option value="" disabled selected>Select...</option>
-              <option value="1-3">1-3 jobs</option>
-              <option value="4-8">4-8 jobs</option>
-              <option value="9-15">9-15 jobs</option>
+              <option value="1-3">1–3 jobs</option>
+              <option value="4-8">4–8 jobs</option>
+              <option value="9-15">9–15 jobs</option>
               <option value="15+">15+ jobs</option>
             </select>
           </div>
-          <p style="font-size:0.68rem;color:#555;line-height:1.6;margin-bottom:12px;">
-            By submitting this form, I agree to the <a href="privacy-policy.html" style="color:#666;">Privacy Policy</a> and <a href="terms-of-service.html" style="color:#666;">Terms of Service</a> and consent to receive phone calls, text messages, and emails from Val Systems regarding my inquiry, eligibility review, appointment scheduling, and services. Message and data rates may apply. Consent is not a condition of purchase.
+          <p class="form-legal">
+            By submitting this form, I agree to the <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-of-service.html">Terms of Service</a> and consent to receive communications from Val Systems regarding my inquiry, eligibility review, and services. Message and data rates may apply. Consent is not a condition of purchase.
           </p>
-          <button type="submit" class="btn btn-yellow form-submit">Apply Now &rarr;</button>
+          <button type="submit" class="btn btn-primary form-submit">Apply Now &rarr;</button>
         </form>
         <div id="formSuccess" class="form-success" style="display:none;">
           <div class="form-success-icon">✓</div>
@@ -2186,9 +1435,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════════ -->
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
 <footer>
   <div class="container">
     <div class="footer-inner">
@@ -2198,7 +1445,7 @@
           <span class="logo-text">VAL SYSTEMS</span>
         </div>
         <p class="footer-tagline">Appointment Setting for Contractors.</p>
-        <p style="font-size:0.75rem;color:#333;margin-top:10px;max-width:220px;line-height:1.6;">Serving roofing &amp; remodeling contractors across the United States.</p>
+        <p class="footer-desc">Serving roofing &amp; remodeling contractors across the United States.</p>
       </div>
       <ul class="footer-links">
         <li><a href="#how">How It Works</a></li>
@@ -2208,89 +1455,165 @@
         <li><a href="#contact">Apply Now</a></li>
       </ul>
     </div>
-
     <div class="footer-legal-links">
       <a href="privacy-policy.html">Privacy Policy</a>
       <a href="terms-of-service.html">Terms of Service</a>
       <a href="refund-policy.html">Refund Policy</a>
     </div>
-
     <p class="footer-disclaimer">
-      Results shared on this page reflect individual client experiences and are not a guarantee of future outcomes. Results vary based on market, service area, budget, and other factors.
-      The $25 spot reservation is fully refundable if you are determined not to be a fit after our eligibility review.
-      Val Systems is not affiliated with Meta, Google, or any third-party platform mentioned.
+      Results shared on this page reflect individual client experiences and are not a guarantee of future outcomes. Results vary based on market, service area, budget, and other factors. The $25 spot reservation is fully refundable if you are determined not to be a fit after our eligibility review. Val Systems is not affiliated with Meta, Google, or any third-party platform mentioned.
     </p>
-
     <p class="footer-copy">© 2026 Val Systems. All rights reserved.</p>
   </div>
 </footer>
 
+<!-- ═══════════════════════ WHATSAPP FLOAT ═══════════════════════ -->
+<a href="https://wa.link/cy5c3c" class="wa-float" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+
+<!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script>
-  /* ── FAQ accordion ── */
-  function toggleFaq(btn) {
+(function () {
+  'use strict';
+
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── LENIS SMOOTH SCROLL ── */
+  var lenis;
+  if (!prefersReduced) {
+    lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ── NAV SCROLL STATE ── */
+  window.addEventListener('scroll', function () {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  /* ── HERO LOAD SEQUENCE ── */
+  if (!prefersReduced) {
+    gsap.set('#heroSub', { y: 20 });
+    gsap.set('#heroVideo', { y: 20 });
+
+    var heroTl = gsap.timeline({ delay: 0.15 });
+    heroTl
+      .to('#heroEyebrow', { opacity: 1, duration: 0.55, ease: 'power2.out' })
+      .to('#heroHeadline .h-line-inner', { y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.14 }, '-=0.25')
+
+      .to('#heroSub',   { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.35')
+      .to('#heroVideo', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.3')
+      .to('#heroCta',   { opacity: 1,       duration: 0.6, ease: 'power2.out' }, '-=0.3');
+  }
+
+  /* ── SCRUB 1: HERO DIAGONAL PARALLAX ── */
+  if (!prefersReduced) {
+    gsap.to('#heroDiagonals', {
+      yPercent: -28,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1,
+      }
+    });
+  }
+
+  /* ── SCRUB 2: CONTRACTOR BANNER PARALLAX ── */
+  if (!prefersReduced) {
+    gsap.to('#bannerBg', {
+      y: '28%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#contractor-banner',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1,
+      }
+    });
+  }
+
+  /* ── SCROLL REVEALS ── */
+  function addReveal(selector, fromVars, toVars) {
+    document.querySelectorAll(selector).forEach(function (el, i) {
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 88%',
+        once: true,
+        onEnter: function () {
+          gsap.to(el, Object.assign({ duration: 0.88, ease: 'power2.out', delay: 0 }, toVars));
+        }
+      });
+    });
+  }
+
+  addReveal('.gs-reveal',       {}, { opacity: 1 });
+  addReveal('.gs-reveal-up',    {}, { opacity: 1, y: 0 });
+  addReveal('.gs-reveal-left',  {}, { opacity: 1, x: 0 });
+  addReveal('.gs-reveal-right', {}, { opacity: 1, x: 0 });
+
+  /* Process timeline step reveals */
+  document.querySelectorAll('.process-step').forEach(function (el, i) {
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 88%',
+      once: true,
+      onEnter: function () {
+        gsap.to(el, {
+          opacity: 1, y: 0,
+          duration: 0.65,
+          ease: 'power2.out',
+          delay: i * 0.1
+        });
+      }
+    });
+  });
+
+  /* ── BUTTON MICRO-INTERACTIONS ── */
+  document.querySelectorAll('.btn').forEach(function (btn) {
+    btn.addEventListener('mouseenter', function () { gsap.to(this, { scale: 1.04, duration: 0.22, ease: 'power2.out' }); });
+    btn.addEventListener('mouseleave', function () { gsap.to(this, { scale: 1,    duration: 0.22, ease: 'power2.out' }); });
+    btn.addEventListener('mousedown',  function () { gsap.to(this, { scale: 0.97, duration: 0.1  }); });
+    btn.addEventListener('mouseup',    function () { gsap.to(this, { scale: 1.04, duration: 0.15 }); });
+  });
+
+  /* ── REFRESH AFTER ASSETS LOAD ── */
+  window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+
+  /* ── FAQ ── */
+  window.toggleFaq = function (btn) {
     var answer = btn.nextElementSibling;
     var isOpen = btn.classList.contains('open');
-    document.querySelectorAll('.faq-question.open').forEach(function(b) {
+    document.querySelectorAll('.faq-question.open').forEach(function (b) {
       b.classList.remove('open');
       b.nextElementSibling.classList.remove('open');
     });
     if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
-  }
+  };
 
-  /* ── Active nav highlight on scroll ── */
-  var sections = document.querySelectorAll('section[id]');
-  var navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', function() {
-    var current = '';
-    sections.forEach(function(s) {
-      if (window.scrollY >= s.offsetTop - 120) current = s.id;
-    });
-    navLinks.forEach(function(a) {
-      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--yellow)' : '';
-    });
-  }, { passive: true });
-
-  /* ── Scroll reveal ── */
-  var revealObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.reveal').forEach(function(el) {
-    revealObserver.observe(el);
-  });
-
-  /* ── Process timeline steps ── */
-  var stepObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        stepObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  document.querySelectorAll('.process-step').forEach(function(el) {
-    stepObserver.observe(el);
-  });
-
-  /* ── Testimonials carousel ── */
-  (function() {
-    var track  = document.getElementById('testimonialsTrack');
-    var cards  = track.querySelectorAll('.tcard');
-    var dotsEl = document.getElementById('tDots');
-    var total  = cards.length;
+  /* ── TESTIMONIALS CAROUSEL ── */
+  (function () {
+    var track   = document.getElementById('testimonialsTrack');
+    var cards   = track.querySelectorAll('.tcard');
+    var dotsEl  = document.getElementById('tDots');
+    var total   = cards.length;
     var current = 0;
-    var autoTimer = null;
+    var autoTimer;
     var dots = [];
 
     function getVisible() {
-      if (window.innerWidth >= 900) return 3;
-      if (window.innerWidth >= 640) return 2;
-      return 1;
+      return window.innerWidth >= 900 ? 3 : window.innerWidth >= 640 ? 2 : 1;
     }
 
     function buildDots() {
@@ -2300,232 +1623,72 @@
       for (var i = 0; i < count; i++) {
         var d = document.createElement('button');
         d.className = 'tcarousel-dot' + (i === current ? ' active' : '');
-        d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-        (function(idx) { d.addEventListener('click', function() { goTo(idx); resetAuto(); }); })(i);
+        d.setAttribute('aria-label', 'Slide ' + (i + 1));
+        (function (idx) { d.addEventListener('click', function () { goTo(idx); resetAuto(); }); })(i);
         dotsEl.appendChild(d);
         dots.push(d);
       }
     }
 
     function updateDots() {
-      dots.forEach(function(d, i) {
-        d.classList.toggle('active', i === current);
-      });
+      dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
     }
 
     function goTo(n) {
-      var visible = getVisible();
-      var max = total - visible;
+      var vis = getVisible();
+      var max = total - vis;
       current = Math.max(0, Math.min(n, max));
-      var viewW = track.parentElement.getBoundingClientRect().width;
-      var cardW = cards[0].getBoundingClientRect().width;
-      var gap = 24;
-      var offset;
-      if (visible === 1) {
-        offset = (viewW - cardW) / 2 - current * (cardW + gap);
-      } else {
-        offset = -(current * (cardW + gap));
-      }
+      var vw = track.parentElement.getBoundingClientRect().width;
+      var cw = cards[0].getBoundingClientRect().width;
+      var offset = vis === 1 ? (vw - cw) / 2 - current * (cw + 24) : -(current * (cw + 24));
       track.style.transform = 'translateX(' + offset + 'px)';
       updateDots();
     }
 
-    function next() {
-      var max = total - getVisible();
-      goTo(current >= max ? 0 : current + 1);
-    }
+    function next() { var m = total - getVisible(); goTo(current >= m ? 0 : current + 1); }
+    function prev() { var m = total - getVisible(); goTo(current <= 0 ? m : current - 1); }
+    function startAuto() { autoTimer = setInterval(next, window.innerWidth < 768 ? 2600 : 4200); }
+    function resetAuto() { clearInterval(autoTimer); startAuto(); }
 
-    function prev() {
-      var max = total - getVisible();
-      goTo(current <= 0 ? max : current - 1);
-    }
+    document.getElementById('tPrev').addEventListener('click', function () { prev(); resetAuto(); });
+    document.getElementById('tNext').addEventListener('click', function () { next(); resetAuto(); });
 
-    function startAuto() {
-      autoTimer = setInterval(next, 4000);
-    }
+    var vp = document.querySelector('#testimonials .testimonials-viewport');
+    vp.addEventListener('mouseenter', function () { clearInterval(autoTimer); });
+    vp.addEventListener('mouseleave', startAuto);
 
-    function resetAuto() {
-      clearInterval(autoTimer);
-      startAuto();
-    }
-
-    document.getElementById('tPrev').addEventListener('click', function() { prev(); resetAuto(); });
-    document.getElementById('tNext').addEventListener('click', function() { next(); resetAuto(); });
-
-    var viewport = document.querySelector('#testimonials .testimonials-viewport');
-    viewport.addEventListener('mouseenter', function() { clearInterval(autoTimer); });
-    viewport.addEventListener('mouseleave', startAuto);
-
-    var touchStartX = 0;
-    var touchStartY = 0;
-    var isDragging = false;
-    viewport.addEventListener('touchstart', function(e) {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-      isDragging = false;
-    }, { passive: true });
-    viewport.addEventListener('touchmove', function(e) {
-      var dx = e.touches[0].clientX - touchStartX;
-      var dy = e.touches[0].clientY - touchStartY;
-      if (!isDragging && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 8) {
-        isDragging = true;
-      }
-      if (isDragging) e.preventDefault();
+    var tx = 0, ty = 0, dragging = false;
+    vp.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; dragging = false; }, { passive: true });
+    vp.addEventListener('touchmove', function (e) {
+      var dx = e.touches[0].clientX - tx, dy = e.touches[0].clientY - ty;
+      if (!dragging && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 8) dragging = true;
+      if (dragging) e.preventDefault();
     }, { passive: false });
-    viewport.addEventListener('touchend', function(e) {
-      if (!isDragging) return;
-      var dx = e.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(dx) > 40) {
-        if (dx < 0) next(); else prev();
-        resetAuto();
-      }
-      isDragging = false;
+    vp.addEventListener('touchend', function (e) {
+      if (!dragging) return;
+      var dx = e.changedTouches[0].clientX - tx;
+      if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); resetAuto(); }
+      dragging = false;
     }, { passive: true });
 
-    window.addEventListener('resize', function() {
-      buildDots();
-      goTo(current);
-    });
-
-    buildDots();
-    goTo(0);
-    startAuto();
+    window.addEventListener('resize', function () { buildDots(); goTo(current); });
+    buildDots(); goTo(0); startAuto();
   })();
 
-  /* ── Testimonials carousel 2 ── */
-  (function() {
-    var track  = document.getElementById('testimonialsTrack2');
-    var cards  = track.querySelectorAll('.tcard');
-    var dotsEl = document.getElementById('tDots2');
-    var total  = cards.length;
-    var current = 0;
-    var autoTimer = null;
-    var dots = [];
-
-    function getVisible() {
-      if (window.innerWidth >= 900) return 3;
-      if (window.innerWidth >= 640) return 2;
-      return 1;
-    }
-
-    function buildDots() {
-      dotsEl.innerHTML = '';
-      dots = [];
-      var count = total - getVisible() + 1;
-      for (var i = 0; i < count; i++) {
-        var d = document.createElement('button');
-        d.className = 'tcarousel-dot' + (i === current ? ' active' : '');
-        d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-        (function(idx) { d.addEventListener('click', function() { goTo(idx); resetAuto(); }); })(i);
-        dotsEl.appendChild(d);
-        dots.push(d);
-      }
-    }
-
-    function updateDots() {
-      dots.forEach(function(d, i) {
-        d.classList.toggle('active', i === current);
-      });
-    }
-
-    function goTo(n) {
-      var visible = getVisible();
-      var max = total - visible;
-      current = Math.max(0, Math.min(n, max));
-      var viewW = track.parentElement.getBoundingClientRect().width;
-      var cardW = cards[0].getBoundingClientRect().width;
-      var gap = 24;
-      var offset;
-      if (visible === 1) {
-        offset = (viewW - cardW) / 2 - current * (cardW + gap);
-      } else {
-        offset = -(current * (cardW + gap));
-      }
-      track.style.transform = 'translateX(' + offset + 'px)';
-      updateDots();
-    }
-
-    function next() {
-      var max = total - getVisible();
-      goTo(current >= max ? 0 : current + 1);
-    }
-
-    function prev() {
-      var max = total - getVisible();
-      goTo(current <= 0 ? max : current - 1);
-    }
-
-    function startAuto() {
-      autoTimer = setInterval(next, 4500);
-    }
-
-    function resetAuto() {
-      clearInterval(autoTimer);
-      startAuto();
-    }
-
-    document.getElementById('tPrev2').addEventListener('click', function() { prev(); resetAuto(); });
-    document.getElementById('tNext2').addEventListener('click', function() { next(); resetAuto(); });
-
-    var viewport2 = document.getElementById('testimonials2').querySelector('.testimonials-viewport');
-    viewport2.addEventListener('mouseenter', function() { clearInterval(autoTimer); });
-    viewport2.addEventListener('mouseleave', startAuto);
-
-    var t2StartX = 0;
-    var t2StartY = 0;
-    var t2Dragging = false;
-    viewport2.addEventListener('touchstart', function(e) {
-      t2StartX = e.touches[0].clientX;
-      t2StartY = e.touches[0].clientY;
-      t2Dragging = false;
-    }, { passive: true });
-    viewport2.addEventListener('touchmove', function(e) {
-      var dx = e.touches[0].clientX - t2StartX;
-      var dy = e.touches[0].clientY - t2StartY;
-      if (!t2Dragging && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 8) {
-        t2Dragging = true;
-      }
-      if (t2Dragging) e.preventDefault();
-    }, { passive: false });
-    viewport2.addEventListener('touchend', function(e) {
-      if (!t2Dragging) return;
-      var dx = e.changedTouches[0].clientX - t2StartX;
-      if (Math.abs(dx) > 40) {
-        if (dx < 0) next(); else prev();
-        resetAuto();
-      }
-      t2Dragging = false;
-    }, { passive: true });
-
-    window.addEventListener('resize', function() {
-      buildDots();
-      goTo(current);
-    });
-
-    buildDots();
-    goTo(0);
-    startAuto();
-  })();
-
-  /* ── Contact form submit ── */
-  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  /* ── CONTACT FORM ── */
+  document.getElementById('contactForm').addEventListener('submit', async function (e) {
     e.preventDefault();
-    const form = this;
-    const btn = form.querySelector('.form-submit');
+    var btn = this.querySelector('.form-submit');
     btn.textContent = 'Sending...';
     btn.disabled = true;
-
-    const data = new FormData(form);
-
     try {
-      const res = await fetch('https://formspree.io/f/mgobjavj', {
+      var res = await fetch('https://formspree.io/f/mgobjavj', {
         method: 'POST',
-        body: data,
+        body: new FormData(this),
         headers: { 'Accept': 'application/json' }
       });
-
       if (res.ok) {
-        form.style.display = 'none';
+        this.style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
       } else {
         btn.textContent = 'Apply Now →';
@@ -2538,8 +1701,10 @@
       alert('Something went wrong. Please try again.');
     }
   });
-</script>
 
+
+})();
+</script>
 
 </body>
 </html>
