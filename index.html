@@ -357,6 +357,24 @@
       text-shadow: 0 1px 6px rgba(0,0,0,0.7);
     }
 
+    .video-pause-hint {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.2s ease;
+      z-index: 3; cursor: pointer; background: transparent;
+    }
+    .hero-video-wrap:hover .video-pause-hint { opacity: 1; }
+    .pause-icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(0,0,0,0.55);
+      display: flex; align-items: center; justify-content: center;
+      gap: 5px;
+    }
+    .pause-icon span {
+      display: block; width: 4px; height: 18px;
+      background: #fff; border-radius: 2px;
+    }
+
     .hero-cta-wrap {
       opacity: 0;
       display: flex;
@@ -1077,6 +1095,9 @@
           </div>
           <span class="tap-to-play-label">Tap to Watch</span>
         </div>
+        <div class="video-pause-hint" id="videoPauseHint">
+          <div class="pause-icon"><span></span><span></span></div>
+        </div>
       </div>
 
       <p class="hero-sub" id="heroSub">
@@ -1573,22 +1594,29 @@
       .to('#heroCta',   { opacity: 1,       duration: 0.6, ease: 'power2.out' }, '-=0.3');
   }
 
-  /* ── HERO VIDEO PLAY ── */
-  var overlay = document.getElementById('videoOverlay');
-  var vid = document.getElementById('heroVid');
+  /* ── HERO VIDEO PLAY / PAUSE ── */
+  var overlay   = document.getElementById('videoOverlay');
+  var pauseHint = document.getElementById('videoPauseHint');
+  var vid       = document.getElementById('heroVid');
 
-  if (overlay && vid) {
+  if (overlay && vid && pauseHint) {
     overlay.addEventListener('click', function () {
       overlay.classList.add('hidden');
       vid.muted = false;
       var p = vid.play();
       if (p && typeof p.catch === 'function') {
-        p.catch(function () {
-          vid.muted = true;
-          vid.play();
-        });
+        p.catch(function () { vid.muted = true; vid.play(); });
       }
     });
+
+    pauseHint.addEventListener('click', function () {
+      if (vid.paused) {
+        vid.play();
+      } else {
+        vid.pause();
+      }
+    });
+
     vid.addEventListener('ended', function () {
       vid.currentTime = 0;
       overlay.classList.remove('hidden');
