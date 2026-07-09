@@ -293,22 +293,68 @@
 
     .hero-video-wrap {
       width: 100%;
-      max-width: 480px;
-      aspect-ratio: 16/9;
+      max-width: 320px;
+      aspect-ratio: 9/16;
       margin: 0 auto 40px;
-      border-radius: 10px;
+      border-radius: 16px;
       overflow: hidden;
       border: 1px solid var(--border);
-      background: var(--bg-surface);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #444;
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      background: #000;
+      position: relative;
       opacity: 0;
       transform: translateY(20px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    .hero-video-wrap video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-thumb-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.15);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: opacity 0.4s ease;
+      z-index: 2;
+    }
+
+    .video-thumb-overlay.hidden { opacity: 0; pointer-events: none; }
+
+    .video-thumb-overlay img.thumb-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .play-btn-circle {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 12px rgba(242,178,36,0.18), 0 8px 32px rgba(0,0,0,0.5);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .video-thumb-overlay:hover .play-btn-circle {
+      transform: scale(1.08);
+      box-shadow: 0 0 0 18px rgba(242,178,36,0.22), 0 8px 32px rgba(0,0,0,0.5);
+    }
+
+    .play-btn-circle svg { margin-left: 5px; }
+
+    .tap-to-play-label {
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.7);
     }
 
     .hero-cta-wrap {
@@ -958,7 +1004,7 @@
       .campaigns-track img { height: 220px; }
       .contractor-overlay { padding: 80px 24px; }
       .wa-float { bottom: 20px; right: 20px; }
-      .hero-video-wrap { max-width: 340px; aspect-ratio: 9/16; }
+      .hero-video-wrap { max-width: 280px; aspect-ratio: 9/16; }
     }
 
     /* ── REDUCED MOTION FALLBACK ── */
@@ -1019,7 +1065,18 @@
       </h1>
 
       <div class="hero-video-wrap" id="heroVideo">
-        Video Placeholder
+        <video id="heroVid" preload="none" playsinline webkit-playsinline>
+          <source src="images/סרטון 1.mov" type="video/mp4">
+        </video>
+        <div class="video-thumb-overlay" id="videoOverlay">
+          <img class="thumb-img" src="" alt="Watch how Val Systems works" style="background:#111;">
+          <div class="play-btn-circle">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <polygon points="8,4 24,14 8,24" fill="#1a1a1a"/>
+            </svg>
+          </div>
+          <span class="tap-to-play-label">Tap to Watch</span>
+        </div>
       </div>
 
       <p class="hero-sub" id="heroSub">
@@ -1514,6 +1571,49 @@
       .to('#heroSub',   { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.35')
       .to('#heroVideo', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.3')
       .to('#heroCta',   { opacity: 1,       duration: 0.6, ease: 'power2.out' }, '-=0.3');
+  }
+
+  /* ── HERO VIDEO PLAY + AUTO THUMBNAIL ── */
+  var overlay = document.getElementById('videoOverlay');
+  var vid = document.getElementById('heroVid');
+  var thumbImg = overlay ? overlay.querySelector('.thumb-img') : null;
+
+  if (vid && thumbImg) {
+    var canvas = document.createElement('canvas');
+    var thumbGenerated = false;
+
+    function captureThumbnail() {
+      if (thumbGenerated) return;
+      canvas.width = vid.videoWidth;
+      canvas.height = vid.videoHeight;
+      canvas.getContext('2d').drawImage(vid, 0, 0, canvas.width, canvas.height);
+      var dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+      if (dataUrl && dataUrl.length > 1000) {
+        thumbImg.src = dataUrl;
+        thumbGenerated = true;
+      }
+    }
+
+    vid.preload = 'metadata';
+    vid.muted = true;
+    vid.addEventListener('loadedmetadata', function () { vid.currentTime = 1.5; });
+    vid.addEventListener('seeked', function () {
+      captureThumbnail();
+      if (!thumbGenerated) vid.currentTime = 0.5;
+    });
+    vid.load();
+  }
+
+  if (overlay && vid) {
+    overlay.addEventListener('click', function () {
+      vid.muted = false;
+      vid.currentTime = 0;
+      vid.play();
+      overlay.classList.add('hidden');
+    });
+    vid.addEventListener('ended', function () {
+      overlay.classList.remove('hidden');
+    });
   }
 
   /* ── SCRUB 1: HERO DIAGONAL PARALLAX ── */
