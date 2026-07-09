@@ -1069,7 +1069,7 @@
           <source src="images/סרטון 1.mov" type="video/mp4">
         </video>
         <div class="video-thumb-overlay" id="videoOverlay">
-          <img class="thumb-img" src="" alt="Watch how Val Systems works" style="background:#111;">
+          <img class="thumb-img" src="images/THUMBNIL.png" alt="Watch how Val Systems works">
           <div class="play-btn-circle">
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
               <polygon points="8,4 24,14 8,24" fill="#1a1a1a"/>
@@ -1573,40 +1573,12 @@
       .to('#heroCta',   { opacity: 1,       duration: 0.6, ease: 'power2.out' }, '-=0.3');
   }
 
-  /* ── HERO VIDEO PLAY + AUTO THUMBNAIL ── */
+  /* ── HERO VIDEO PLAY ── */
   var overlay = document.getElementById('videoOverlay');
   var vid = document.getElementById('heroVid');
-  var thumbImg = overlay ? overlay.querySelector('.thumb-img') : null;
-
-  if (vid && thumbImg) {
-    var canvas = document.createElement('canvas');
-    var thumbGenerated = false;
-
-    function captureThumbnail() {
-      if (thumbGenerated) return;
-      canvas.width = vid.videoWidth;
-      canvas.height = vid.videoHeight;
-      canvas.getContext('2d').drawImage(vid, 0, 0, canvas.width, canvas.height);
-      var dataUrl = canvas.toDataURL('image/jpeg', 0.92);
-      if (dataUrl && dataUrl.length > 1000) {
-        thumbImg.src = dataUrl;
-        thumbGenerated = true;
-      }
-    }
-
-    vid.preload = 'metadata';
-    vid.muted = true;
-    vid.addEventListener('loadedmetadata', function () { vid.currentTime = 1.5; });
-    vid.addEventListener('seeked', function () {
-      captureThumbnail();
-      if (!thumbGenerated) vid.currentTime = 0.5;
-    });
-    vid.load();
-  }
 
   if (overlay && vid) {
     overlay.addEventListener('click', function () {
-      vid.muted = false;
       vid.currentTime = 0;
       vid.play();
       overlay.classList.add('hidden');
