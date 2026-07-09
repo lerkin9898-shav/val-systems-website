@@ -1579,9 +1579,13 @@
 
   if (overlay && vid) {
     overlay.addEventListener('click', function () {
-      vid.currentTime = 0;
-      vid.play();
-      overlay.classList.add('hidden');
+      vid.play().then(function() {
+        overlay.classList.add('hidden');
+      }).catch(function() {
+        vid.muted = true;
+        vid.play();
+        overlay.classList.add('hidden');
+      });
     });
     vid.addEventListener('ended', function () {
       overlay.classList.remove('hidden');
