@@ -1065,7 +1065,7 @@
       </h1>
 
       <div class="hero-video-wrap" id="heroVideo">
-        <video id="heroVid" preload="none" playsinline webkit-playsinline>
+        <video id="heroVid" preload="metadata" playsinline webkit-playsinline>
           <source src="images/video1.mp4" type="video/mp4">
         </video>
         <div class="video-thumb-overlay" id="videoOverlay">
@@ -1579,15 +1579,18 @@
 
   if (overlay && vid) {
     overlay.addEventListener('click', function () {
-      vid.play().then(function() {
-        overlay.classList.add('hidden');
-      }).catch(function() {
-        vid.muted = true;
-        vid.play();
-        overlay.classList.add('hidden');
-      });
+      overlay.classList.add('hidden');
+      vid.muted = false;
+      var p = vid.play();
+      if (p && typeof p.catch === 'function') {
+        p.catch(function () {
+          vid.muted = true;
+          vid.play();
+        });
+      }
     });
     vid.addEventListener('ended', function () {
+      vid.currentTime = 0;
       overlay.classList.remove('hidden');
     });
   }
