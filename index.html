@@ -270,11 +270,21 @@
     }
     .hero-eyebrow::before { display: none; }
     .hero-eyebrow .ey-line { display: none; }
+    .hero-eyebrow .ey-lead {
+      color: rgba(242,183,5,.6);
+      font-weight: 600;
+    }
+    .hero-eyebrow .ey-em {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+    }
 
     .hero-headline {
-      font-size: clamp(3rem, 7vw, 5.2rem);
+      font-size: clamp(2.4rem, 5.4vw, 4rem);
       letter-spacing: -0.03em;
-      line-height: 1;
+      line-height: 1.02;
       margin-bottom: 32px;
     }
     .h-line { display: block; overflow: hidden; }
@@ -310,6 +320,12 @@
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
+    }
+
+    .video-iframe-holder { position: absolute; inset: 0; }
+    .video-iframe-holder iframe {
+      width: 100%; height: 100%;
+      border: 0; display: block;
     }
 
     .video-thumb-overlay {
@@ -1071,7 +1087,7 @@
   <div class="container">
     <div class="hero-content">
       <div class="hero-eyebrow" id="heroEyebrow">
-        <span>Appointment Setting for Contractors</span>
+        <span class="ey-lead">Appointment Setting</span> <span class="ey-em">for Contractors</span>
       </div>
 
       <h1 class="hero-headline" id="heroHeadline">
@@ -1083,9 +1099,7 @@
       </h1>
 
       <div class="hero-video-wrap" id="heroVideo">
-        <video id="heroVid" preload="metadata" playsinline webkit-playsinline>
-          <source src="images/video1.mp4" type="video/mp4">
-        </video>
+        <div class="video-iframe-holder" id="videoHolder"></div>
         <div class="video-thumb-overlay" id="videoOverlay">
           <img class="thumb-img" src="images/THUMBNIL.png" alt="Watch how Val Systems works">
           <div class="play-btn-circle">
@@ -1095,9 +1109,6 @@
           </div>
           <span class="tap-to-play-label">Tap to Watch</span>
         </div>
-        <div class="video-pause-hint" id="videoPauseHint">
-          <div class="pause-icon"><span></span><span></span></div>
-        </div>
       </div>
 
       <p class="hero-sub" id="heroSub">
@@ -1105,7 +1116,7 @@
       </p>
 
       <div class="hero-cta-wrap" id="heroCta">
-        <a href="#contact" class="btn btn-primary" style="font-size:0.88rem;padding:17px 44px;">Let's Get Started</a>
+        <a href="#contact" class="btn btn-primary" style="font-size:0.88rem;padding:17px 44px;">I Want More Information</a>
         <p class="hero-trust">First 30 days - pay only per result &nbsp;·&nbsp; No shared leads &nbsp;·&nbsp; Cancel anytime</p>
       </div>
     </div>
@@ -1343,16 +1354,13 @@
         <div class="about-badge">Founder</div>
       </div>
       <div class="about-content gs-reveal-up">
-        <h2>WHY WE <span class="accent">DEVELOPED THIS SYSTEM.</span></h2>
+        <h2>WHY WE <span class="accent">DEVELOPED THIS SYSTEM?</span></h2>
         <div class="about-divider"></div>
         <p>I know how broken the leads market is. I've seen contractors <strong>waste thousands of dollars</strong> chasing garbage leads - unqualified homeowners, wrong areas, dead numbers, no-shows. It's not just frustrating. It destroys momentum and burns out good people.</p>
         <p>I built this system because I've seen firsthand what a <strong>real appointment-setting system</strong> does to a contractor's business. The close rate changes. The revenue changes. The stress level changes.</p>
         <h2>WHY I ONLY WORK WITH THE <span class="accent">RIGHT CONTRACTORS.</span></h2>
         <p>I'm looking for people who are serious and really want to grow their business. <strong>We take the right ones - it's very important to us.</strong> This works best when both sides are committed to making it work.</p>
         <p>This isn't a transaction. <strong>It's a long-term partnership.</strong> And I treat it that way.</p>
-        <div class="about-divider"></div>
-        <div class="about-sig">- Val</div>
-        <div class="about-role">Founder, Val Systems</div>
       </div>
     </div>
   </div>
@@ -1381,7 +1389,7 @@
         <p class="offer-note-box">
           In the first month, our fee is tied to <strong>actual results only</strong> - meaning we get paid only when a qualified, exclusive appointment lands in your calendar. No appointments, no fee.
         </p>
-        <p class="offer-quote">"I do this because I believe in what I've built. And I want you to see it work before you commit to anything."</p>
+        <p class="offer-quote">I believe in what I've built. And I want you to see it work before you commit to anything.</p>
         <a href="#contact" class="btn btn-dark">Apply Now</a>
       </div>
     </div>
@@ -1393,13 +1401,13 @@
   <div class="container">
     <div class="section-header">
       <span class="section-label gs-reveal">Common Questions</span>
-      <h2 class="gs-reveal-up">FREQUENTLY ASKED <span class="accent">QUESTIONS.</span></h2>
+      <h2 class="gs-reveal-up">You Ask?<br><span class="accent">We Answer.</span></h2>
       <p class="gs-reveal-up">Everything you need to know before applying.</p>
     </div>
     <div class="faq-list gs-reveal-up">
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">How is this different from buying leads?<span class="faq-icon">+</span></button>
-        <div class="faq-answer"><p>Lead agencies sell you contact information - a name and a phone number from someone who filled out a form online. You still have to call them, qualify them, and deal with the ones who aren't serious. Val Systems handles all of that. We only put people on your calendar after they've been verified for location, budget, timeline, and genuine intent. You skip straight to the appointment. No chasing. No filtering yourself.</p></div>
+        <div class="faq-answer"><p>Lead agencies sell you contact information - a name and a phone number from someone who filled out a form online. You still have to call them, qualify them, and deal with the ones who aren't serious. Our system handles all of that. We only put people on your calendar after they've been verified for location, budget, timeline, and genuine intent. You skip straight to the appointment. No chasing. No filtering yourself.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">What does the filtering process look like?<span class="faq-icon">+</span></button>
@@ -1415,7 +1423,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">What if I want to cancel?<span class="faq-icon">+</span></button>
-        <div class="faq-answer"><p>You can cancel anytime with no penalties, no fees, and no drama. We don't believe in trapping people in contracts. If the system isn't working for you - or if your situation changes - you're free to walk away. We'd rather you stay because the results are there, not because you're locked in.</p></div>
+        <div class="faq-answer"><p>You can cancel anytime. We don't believe in trapping people in contracts. If the system isn't working for you - or if your situation changes - you're free to walk away. We'd rather you stay because the results are there, not because you're locked in.</p></div>
       </div>
     </div>
   </div>
@@ -1594,32 +1602,20 @@
       .to('#heroCta',   { opacity: 1,       duration: 0.6, ease: 'power2.out' }, '-=0.3');
   }
 
-  /* ── HERO VIDEO PLAY / PAUSE ── */
-  var overlay   = document.getElementById('videoOverlay');
-  var pauseHint = document.getElementById('videoPauseHint');
-  var vid       = document.getElementById('heroVid');
+  /* ── HERO VIDEO (Vimeo, lazy-loaded on click) ── */
+  var overlay = document.getElementById('videoOverlay');
+  var holder  = document.getElementById('videoHolder');
 
-  if (overlay && vid && pauseHint) {
+  if (overlay && holder) {
     overlay.addEventListener('click', function () {
+      if (holder.getAttribute('data-loaded')) return;
+      holder.setAttribute('data-loaded', '1');
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://player.vimeo.com/video/1214695967?autoplay=1&title=0&byline=0&portrait=0&badge=0&dnt=1';
+      iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+      iframe.setAttribute('allowfullscreen', '');
+      holder.appendChild(iframe);
       overlay.classList.add('hidden');
-      vid.muted = false;
-      var p = vid.play();
-      if (p && typeof p.catch === 'function') {
-        p.catch(function () { vid.muted = true; vid.play(); });
-      }
-    });
-
-    pauseHint.addEventListener('click', function () {
-      if (vid.paused) {
-        vid.play();
-      } else {
-        vid.pause();
-      }
-    });
-
-    vid.addEventListener('ended', function () {
-      vid.currentTime = 0;
-      overlay.classList.remove('hidden');
     });
   }
 
