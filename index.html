@@ -433,6 +433,11 @@
     }
     .review-stars { color: var(--accent); font-size: 0.85rem; letter-spacing: 2px; margin-top: 3px; }
     .review-quote { font-size: 0.93rem; line-height: 1.78; color: #333; margin-bottom: 20px; }
+    .review-img {
+      display: block; width: 100%; height: auto;
+      border-radius: 10px; margin-bottom: 20px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.2);
+    }
     .review-footer { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .review-name { font-weight: 700; color: #111; font-size: 0.88rem; }
     .review-badge {
@@ -649,6 +654,13 @@
       width: 100%; max-width: 520px;
       border-radius: 14px; border: 1px solid var(--border);
       box-shadow: 0 8px 40px rgba(0,0,0,.6), 0 2px 8px rgba(0,0,0,.4);
+    }
+    /* stamp entrance: starts big, blurred & tilted, then slams into place */
+    .cal-stamp {
+      opacity: 0;
+      transform: scale(1.55) rotate(-7deg);
+      filter: blur(8px);
+      will-change: transform, opacity, filter;
     }
 
     /* ── VIDEO ── */
@@ -1044,8 +1056,8 @@
     /* ── REDUCED MOTION FALLBACK ── */
     @media (prefers-reduced-motion: reduce) {
       .wa-float { animation: none; }
-      .gs-reveal, .gs-reveal-up, .gs-reveal-left, .gs-reveal-right {
-        opacity: 1 !important; transform: none !important;
+      .gs-reveal, .gs-reveal-up, .gs-reveal-left, .gs-reveal-right, .cal-stamp {
+        opacity: 1 !important; transform: none !important; filter: none !important;
       }
       .h-line-inner { transform: none !important; }
       #heroEyebrow, #heroSub, .hero-video-wrap, .hero-cta-wrap { opacity: 1 !important; }
@@ -1134,7 +1146,7 @@
           <div class="review-stars">★★★★★</div>
         </div>
       </div>
-      <p class="review-quote">"Val and her team had our calendar booked solid with appointments, setup and everything included, we were up and running within 6 weeks. Closed 4 remodeling jobs straight from those appointments, didn't have to go out hunting for a single lead. Straight to the point, no fluff. Solid service."</p>
+      <img src="images/jake-review.jpeg" class="review-img" alt="Real WhatsApp testimonial from Jake M." loading="lazy">
       <div class="review-footer">
         <span class="review-name">Jake M.</span>
         <span class="review-badge">✓ Verified Client</span>
@@ -1275,8 +1287,8 @@
       <span class="section-label gs-reveal">The Result</span>
       <h2 class="gs-reveal-up">YOUR CALENDAR <span class="accent">CAN LOOK LIKE THIS TOO.</span></h2>
     </div>
-    <div class="cal-wrap gs-reveal-up">
-      <img src="images/calendar-ready.jpeg" class="cal-img" alt="Real booked appointment calendar" loading="lazy">
+    <div class="cal-wrap">
+      <img src="images/calendar-ready.jpeg" class="cal-img cal-stamp" alt="Real booked appointment calendar" loading="lazy">
     </div>
   </div>
 </section>
@@ -1665,6 +1677,26 @@
   addReveal('.gs-reveal-up',    {}, { opacity: 1, y: 0 });
   addReveal('.gs-reveal-left',  {}, { opacity: 1, x: 0 });
   addReveal('.gs-reveal-right', {}, { opacity: 1, x: 0 });
+
+  /* ── CALENDAR "STAMP" ENTRANCE ── */
+  var calStamp = document.querySelector('.cal-stamp');
+  if (calStamp) {
+    if (prefersReduced) {
+      gsap.set(calStamp, { opacity: 1, scale: 1, rotation: 0, filter: 'blur(0px)' });
+    } else {
+      ScrollTrigger.create({
+        trigger: calStamp,
+        start: 'top 80%',
+        once: true,
+        onEnter: function () {
+          gsap.to(calStamp, {
+            opacity: 1, scale: 1, rotation: 0, filter: 'blur(0px)',
+            duration: 0.7, ease: 'back.out(1.6)'
+          });
+        }
+      });
+    }
+  }
 
   /* Process timeline step reveals */
   document.querySelectorAll('.process-step').forEach(function (el, i) {
