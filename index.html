@@ -12,6 +12,12 @@
   <link rel="icon" type="image/png" href="images/FAVICON.png">
   <link rel="apple-touch-icon" href="images/FAVICON.png">
 
+  <!-- warm up Vimeo connection so the hero video is ready fast -->
+  <link rel="preconnect" href="https://player.vimeo.com" crossorigin>
+  <link rel="preconnect" href="https://i.vimeocdn.com" crossorigin>
+  <link rel="preconnect" href="https://f.vimeocdn.com" crossorigin>
+  <link rel="dns-prefetch" href="https://player.vimeo.com">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -1131,7 +1137,12 @@
       </h1>
 
       <div class="hero-video-wrap" id="heroVideo">
-        <div class="video-iframe-holder" id="videoHolder"></div>
+        <div class="video-iframe-holder" id="videoHolder">
+          <iframe id="heroVimeo"
+            src="https://player.vimeo.com/video/1214695967?autoplay=1&muted=1&playsinline=1&title=0&byline=0&portrait=0&badge=0&dnt=1"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen playsinline title="Val Systems intro"></iframe>
+        </div>
         <div class="video-thumb-overlay" id="videoOverlay">
           <img class="thumb-img" src="images/video-poster.jpg" alt="Watch how Val Systems works" width="640" height="1105">
           <div class="play-btn-circle">
@@ -1587,27 +1598,27 @@
       .to('#heroCta',   { opacity: 1,       duration: 0.6, ease: 'power2.out' }, '-=0.3');
   }
 
-  /* ── HERO VIDEO (Vimeo, lazy-loaded on click) ── */
-  var overlay = document.getElementById('videoOverlay');
-  var holder  = document.getElementById('videoHolder');
+  /* ── HERO VIDEO (Vimeo, preloaded muted, unmutes on tap) ── */
+  var overlay   = document.getElementById('videoOverlay');
+  var heroVimeo = document.getElementById('heroVimeo');
 
-  if (overlay && holder) {
+  if (overlay && heroVimeo) {
+    var heroPlayer = null;
+    function getHeroPlayer() {
+      if (!heroPlayer && window.Vimeo && Vimeo.Player) {
+        try { heroPlayer = new Vimeo.Player(heroVimeo); } catch (e) {}
+      }
+      return heroPlayer;
+    }
     overlay.addEventListener('click', function () {
-      if (holder.getAttribute('data-loaded')) return;
-      holder.setAttribute('data-loaded', '1');
-      var iframe = document.createElement('iframe');
-      iframe.src = 'https://player.vimeo.com/video/1214695967?autoplay=1&playsinline=1&title=0&byline=0&portrait=0&badge=0&dnt=1';
-      iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
-      iframe.setAttribute('allowfullscreen', '');
-      iframe.setAttribute('playsinline', '');
-      holder.appendChild(iframe);
       overlay.classList.add('hidden');
-      // Belt-and-suspenders: explicitly play via the Vimeo SDK if it loaded
-      if (window.Vimeo && Vimeo.Player) {
-        try {
-          var player = new Vimeo.Player(iframe);
-          player.play().catch(function () {});
-        } catch (e) {}
+      var p = getHeroPlayer();
+      if (p) {
+        // already buffered in the background - restart with sound, plays instantly
+        p.setMuted(false).catch(function () {});
+        p.setCurrentTime(0).catch(function () {}).then(function () {
+          p.play().catch(function () {});
+        });
       }
     });
   }
