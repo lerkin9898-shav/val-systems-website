@@ -9,6 +9,9 @@
   <meta property="og:description" content="Your calendar should be full. We handle everything - you just show up and close.">
   <meta property="og:type" content="website">
 
+  <link rel="icon" type="image/png" href="images/FAVICON.png">
+  <link rel="apple-touch-icon" href="images/FAVICON.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -412,14 +415,13 @@
       border-bottom: 1px solid var(--border);
     }
     .review-card {
-      background: var(--text);
-      border-radius: 12px;
-      padding: 36px 32px;
+      background: transparent;
+      padding: 0;
       max-width: 580px;
       margin: 0 auto;
-      box-shadow: 0 4px 16px rgba(0,0,0,.3), 0 20px 48px rgba(0,0,0,.25);
+      text-align: center;
     }
-    .review-header { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .review-header { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-bottom: 20px; }
     .review-avatar {
       width: 50px; height: 50px;
       border-radius: 50%;
@@ -429,17 +431,17 @@
     }
     .review-title {
       font-family: 'Anton', sans-serif; font-size: 0.92rem;
-      letter-spacing: 0.02em; text-transform: uppercase; color: #111; line-height: 1.3;
+      letter-spacing: 0.02em; text-transform: uppercase; color: var(--text); line-height: 1.3;
     }
     .review-stars { color: var(--accent); font-size: 0.85rem; letter-spacing: 2px; margin-top: 3px; }
     .review-quote { font-size: 0.93rem; line-height: 1.78; color: #333; margin-bottom: 20px; }
     .review-img {
-      display: block; width: 100%; height: auto;
-      border-radius: 10px; margin-bottom: 20px;
+      display: block; width: 100%; max-width: 400px; height: auto;
+      margin: 0 auto 20px; border-radius: 10px;
       box-shadow: 0 4px 18px rgba(0,0,0,.2);
     }
-    .review-footer { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .review-name { font-weight: 700; color: #111; font-size: 0.88rem; }
+    .review-footer { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .review-name { font-weight: 700; color: var(--text); font-size: 0.88rem; }
     .review-badge {
       background: rgba(242,183,5,.15); color: #a07a00;
       font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
@@ -648,6 +650,7 @@
       padding: 100px 0;
       text-align: center;
       border-top: 1px solid var(--border);
+      overflow: hidden;
     }
     .cal-wrap { display: flex; flex-direction: column; align-items: center; gap: 24px; }
     .cal-img {
@@ -679,6 +682,23 @@
     #testimonials {
       background: var(--bg-surface); padding: 100px 0;
       overflow: hidden; border-top: 1px solid var(--border);
+    }
+    /* real review screenshots - masonry */
+    .reviews-masonry {
+      columns: 2; column-gap: 22px;
+      max-width: 860px; margin: 0 auto;
+    }
+    .reviews-masonry img {
+      width: 100%; display: block;
+      margin: 0 0 22px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 24px rgba(0,0,0,.35);
+      break-inside: avoid;
+    }
+    @media (max-width: 640px) {
+      .reviews-masonry { columns: 1; }
+      .reviews-masonry img { margin-bottom: 16px; }
     }
     .testimonials-clip { overflow: hidden; }
     .testimonials-track {
@@ -1113,7 +1133,7 @@
       <div class="hero-video-wrap" id="heroVideo">
         <div class="video-iframe-holder" id="videoHolder"></div>
         <div class="video-thumb-overlay" id="videoOverlay">
-          <img class="thumb-img" src="images/THUMBNIL.png" alt="Watch how Val Systems works">
+          <img class="thumb-img" src="images/video-poster.jpg" alt="Watch how Val Systems works" width="640" height="1105">
           <div class="play-btn-circle">
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
               <polygon points="8,4 24,14 8,24" fill="#1a1a1a"/>
@@ -1140,7 +1160,6 @@
   <div class="container">
     <div class="review-card gs-reveal-up">
       <div class="review-header">
-        <div class="review-avatar">JM</div>
         <div>
           <div class="review-title">8 BOOKED APPOINTMENTS IN THE FIRST 30 DAYS</div>
           <div class="review-stars">★★★★★</div>
@@ -1149,7 +1168,6 @@
       <img src="images/jake-review.jpeg" class="review-img" alt="Real WhatsApp testimonial from Jake M." loading="lazy">
       <div class="review-footer">
         <span class="review-name">Jake M.</span>
-        <span class="review-badge">✓ Verified Client</span>
       </div>
     </div>
     <a href="#contact" class="btn btn-primary review-cta gs-reveal-up">Let's Get Started</a>
@@ -1301,58 +1319,12 @@
     <div class="section-header">
       <h2 class="gs-reveal-up">WHAT <span class="accent">PEOPLE SAY.</span></h2>
     </div>
-    <div class="testimonials-clip">
-      <div class="testimonials-viewport gs-reveal">
-        <div class="testimonials-track" id="testimonialsTrack">
-          <div class="tcard">
-            <div class="tcard-header">
-              <div class="tcard-avatar" style="background:#2563EB;">MR</div>
-              <div><div class="tcard-name">Mike R. - Texas</div><div class="tcard-stars">★★★★★</div></div>
-            </div>
-            <p>Running a roofing company in Texas is competitive. Before Val Systems, I was spending hours chasing leads that went nowhere. In the first month, I had 8 qualified appointments on my calendar. Closed 4 of them. That kind of ROI speaks for itself.</p>
-          </div>
-          <div class="tcard">
-            <div class="tcard-header">
-              <div class="tcard-avatar" style="background:#16A34A;">JK</div>
-              <div><div class="tcard-name">Jason K. - Florida</div><div class="tcard-stars">★★★★★</div></div>
-            </div>
-            <p>I was skeptical at first - I'd been burned by lead agencies before. But this was different. Every appointment I got was a homeowner who actually needed the work done and had the budget for it. No time wasters, no chasing, no games.</p>
-          </div>
-          <div class="tcard">
-            <div class="tcard-header">
-              <div class="tcard-avatar" style="background:#7C3AED;">DM</div>
-              <div><div class="tcard-name">Dave M. - Georgia</div><div class="tcard-stars">★★★★★</div></div>
-            </div>
-            <p>The filtering process is what sets Val Systems apart. By the time someone hits my calendar, they've already been checked for location, budget, and timeline. I just show up and do what I do best - close the deal.</p>
-          </div>
-          <div class="tcard">
-            <div class="tcard-header">
-              <div class="tcard-avatar" style="background:#EA580C;">CB</div>
-              <div><div class="tcard-name">Chris B. - Ohio</div><div class="tcard-stars">★★★★★</div></div>
-            </div>
-            <p>I've tried every lead generation service out there. Nothing comes close to having actual appointments booked for you. My close rate went from 20% to over 40% because I'm only talking to people who are ready to move forward.</p>
-          </div>
-          <div class="tcard">
-            <div class="tcard-header">
-              <div class="tcard-avatar" style="background:#DC2626;">TL</div>
-              <div><div class="tcard-name">Tony L. - Arizona</div><div class="tcard-stars">★★★★★</div></div>
-            </div>
-            <p>Val is responsive, transparent, and genuinely invested in your success. She doesn't just set appointments and disappear. She follows up, adjusts the system, and makes sure it's working for your specific market and service area.</p>
-          </div>
-          <div class="tcard">
-            <div class="tcard-header">
-              <div class="tcard-avatar" style="background:#0891B2;">SH</div>
-              <div><div class="tcard-name">Steve H. - North Carolina</div><div class="tcard-stars">★★★★★</div></div>
-            </div>
-            <p>In the remodeling business, your time is money. Val Systems gave me back my time. I'm not on the phone chasing cold leads anymore - I'm on job sites closing deals. That's exactly where I need to be.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="tcarousel-controls">
-      <button class="tcarousel-btn" id="tPrev" aria-label="Previous">&#8592;</button>
-      <div class="tcarousel-dots" id="tDots"></div>
-      <button class="tcarousel-btn" id="tNext" aria-label="Next">&#8594;</button>
+    <div class="reviews-masonry gs-reveal-up">
+      <img src="images/review-1.jpeg" alt="Real client review" loading="lazy">
+      <img src="images/review-2.jpeg" alt="Real client review" loading="lazy">
+      <img src="images/review-3.jpeg" alt="Real client review" loading="lazy">
+      <img src="images/review-4.jpeg" alt="Real client review" loading="lazy">
+      <img src="images/review-5.jpeg" alt="Real client review" loading="lazy">
     </div>
   </div>
 </section>
@@ -1577,6 +1549,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://player.vimeo.com/api/player.js" defer></script>
 <script>
 (function () {
   'use strict';
@@ -1623,11 +1596,19 @@
       if (holder.getAttribute('data-loaded')) return;
       holder.setAttribute('data-loaded', '1');
       var iframe = document.createElement('iframe');
-      iframe.src = 'https://player.vimeo.com/video/1214695967?autoplay=1&title=0&byline=0&portrait=0&badge=0&dnt=1';
+      iframe.src = 'https://player.vimeo.com/video/1214695967?autoplay=1&playsinline=1&title=0&byline=0&portrait=0&badge=0&dnt=1';
       iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
       iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('playsinline', '');
       holder.appendChild(iframe);
       overlay.classList.add('hidden');
+      // Belt-and-suspenders: explicitly play via the Vimeo SDK if it loaded
+      if (window.Vimeo && Vimeo.Player) {
+        try {
+          var player = new Vimeo.Player(iframe);
+          player.play().catch(function () {});
+        } catch (e) {}
+      }
     });
   }
 
@@ -1740,6 +1721,7 @@
   /* ── TESTIMONIALS CAROUSEL ── */
   (function () {
     var track   = document.getElementById('testimonialsTrack');
+    if (!track) return; // testimonials now use static review screenshots, no carousel
     var cards   = track.querySelectorAll('.tcard');
     var dotsEl  = document.getElementById('tDots');
     var total   = cards.length;
