@@ -1613,13 +1613,15 @@
     overlay.addEventListener('click', function () {
       overlay.classList.add('hidden');
       var p = getHeroPlayer();
-      if (p) {
-        // already buffered in the background - restart with sound, plays instantly
-        p.setMuted(false).catch(function () {});
-        p.setCurrentTime(0).catch(function () {}).then(function () {
-          p.play().catch(function () {});
-        });
-      }
+      if (!p) return;
+      // All calls fire synchronously inside the tap gesture so mobile allows sound.
+      // The video is already buffered (muted autoplay), so it restarts with sound instantly.
+      try {
+        p.setCurrentTime(0);
+        p.setVolume(1);
+        p.setMuted(false);
+        p.play();
+      } catch (e) {}
     });
   }
 
