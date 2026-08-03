@@ -91,10 +91,10 @@
       display: inline-block;
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 15px 36px;
+      padding: 13.5px 32px;
       border-radius: 4px;
       cursor: pointer;
       border: none;
@@ -192,6 +192,9 @@
       letter-spacing: 0.14em;
       color: var(--accent);
     }
+    .logo-img { height: 38px; width: auto; display: block; }
+    footer .logo-img { height: 46px; }
+    @media (max-width: 600px) { .logo-img { height: 28px; } footer .logo-img { height: 38px; } }
     .nav-links {
       display: flex;
       gap: 36px;
@@ -689,22 +692,38 @@
       background: var(--bg-surface); padding: 100px 0;
       overflow: hidden; border-top: 1px solid var(--border);
     }
-    /* real review screenshots - masonry */
-    .reviews-masonry {
-      columns: 2; column-gap: 22px;
-      max-width: 860px; margin: 0 auto;
+    /* real review screenshots - infinite center carousel */
+    .rev-carousel { position: relative; max-width: 1080px; margin: 0 auto; padding: 0 46px; }
+    .rev-viewport { overflow: hidden; }
+    .rev-track { display: flex; align-items: center; will-change: transform; }
+    .rev-slide {
+      flex: 0 0 300px; box-sizing: border-box; padding: 0 10px;
+      opacity: .4; transform: scale(.88);
+      transition: opacity .45s ease, transform .45s ease;
     }
-    .reviews-masonry img {
-      width: 100%; display: block;
-      margin: 0 0 22px;
-      border-radius: 12px;
+    .rev-slide.is-active { opacity: 1; transform: scale(1); }
+    .rev-slide img {
+      width: 100%; display: block; border-radius: 12px;
       border: 1px solid var(--border);
-      box-shadow: 0 6px 24px rgba(0,0,0,.35);
-      break-inside: avoid;
+      box-shadow: 0 8px 28px rgba(0,0,0,.4);
     }
-    @media (max-width: 640px) {
-      .reviews-masonry { columns: 1; }
-      .reviews-masonry img { margin-bottom: 16px; }
+    .rev-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 4;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(30,30,30,.92); border: 1px solid var(--border);
+      color: var(--accent); font-size: 1.6rem; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color .2s ease, background .2s ease;
+    }
+    .rev-arrow:hover { border-color: var(--accent); background: var(--bg-surface); }
+    .rev-prev { left: 0; } .rev-next { right: 0; }
+    .rev-dots { display: flex; justify-content: center; gap: 8px; margin-top: 28px; }
+    .rev-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.22); border: none; cursor: pointer; padding: 0; transition: all .25s ease; }
+    .rev-dot.active { background: var(--accent); width: 22px; border-radius: 4px; }
+    @media (max-width: 600px) {
+      .rev-carousel { padding: 0 26px; }
+      .rev-slide { flex-basis: 230px; }
+      .rev-arrow { width: 36px; height: 36px; font-size: 1.3rem; }
     }
     .testimonials-clip { overflow: hidden; }
     .testimonials-track {
@@ -874,6 +893,13 @@
     .reserve-card-top { display: flex; align-items: baseline; gap: 10px; margin-bottom: 26px; }
     .reserve-price { font-family: 'Anton', sans-serif; font-size: 3.2rem; color: var(--accent); line-height: 1; }
     .reserve-price-label { font-size: 0.78rem; color: #555; letter-spacing: 0.06em; text-transform: uppercase; }
+    .reserve-refundable {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(60,200,120,.12); border: 1px solid rgba(60,200,120,.45);
+      color: #6fe0a0; font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 9px 18px; border-radius: 50px; margin: 2px 0 22px;
+    }
     .reserve-list { list-style: none; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; }
     .reserve-list li { font-size: 0.88rem; color: var(--text); display: flex; gap: 10px; }
     .reserve-disclaimer { font-size: 0.76rem; color: #555; line-height: 1.65; border-top: 1px solid #222; padding-top: 16px; margin-bottom: 28px; }
@@ -921,7 +947,7 @@
       background-repeat: no-repeat; background-position: right 14px center; cursor: pointer;
     }
     .form-group select option { background: var(--bg); }
-    .form-submit { width: 100%; font-size: 0.92rem; padding: 16px; text-align: center; letter-spacing: 0.1em; margin-top: 6px; }
+    .form-submit { width: 100%; font-size: 0.72rem; padding: 13.5px; text-align: center; letter-spacing: 0.1em; margin-top: 6px; }
     .form-legal { font-size: 0.66rem; color: #444; line-height: 1.65; }
     .form-legal a { color: #555; }
     .form-success { text-align: center; padding: 52px 24px; }
@@ -1097,8 +1123,7 @@
   <div class="container">
     <div class="nav-inner">
       <a href="#" class="logo">
-        <div class="logo-v"></div>
-        <span class="logo-text">VAL SYSTEMS</span>
+        <img src="images/logo-white.png" class="logo-img" alt="Val Systems">
       </a>
       <ul class="nav-links">
         <li><a href="#how">How It Works</a></li>
@@ -1144,7 +1169,7 @@
             allowfullscreen playsinline title="Val Systems intro"></iframe>
         </div>
         <div class="video-thumb-overlay" id="videoOverlay">
-          <img class="thumb-img" src="images/video-poster.jpg" alt="Watch how Val Systems works" width="640" height="1105">
+          <img class="thumb-img" src="images/THUMBNIL.jpeg" alt="Watch how Val Systems works" width="344" height="608">
           <div class="play-btn-circle">
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
               <polygon points="8,4 24,14 8,24" fill="#1a1a1a"/>
@@ -1159,7 +1184,7 @@
       </p>
 
       <div class="hero-cta-wrap" id="heroCta">
-        <a href="#contact" class="btn btn-primary" style="font-size:0.88rem;padding:17px 44px;">I Want More Information</a>
+        <a href="#contact" class="btn btn-primary">I Want More Information</a>
         <p class="hero-trust">First 30 days - pay only per result &nbsp;·&nbsp; No shared leads &nbsp;·&nbsp; Cancel anytime</p>
       </div>
     </div>
@@ -1328,14 +1353,21 @@
 <section id="testimonials">
   <div class="container">
     <div class="section-header">
-      <h2 class="gs-reveal-up">WHAT <span class="accent">PEOPLE SAY.</span></h2>
+      <h2 class="gs-reveal-up">PEOPLE <span class="accent">SAY</span></h2>
     </div>
-    <div class="reviews-masonry gs-reveal-up">
-      <img src="images/review-1.jpeg" alt="Real client review" loading="lazy">
-      <img src="images/review-2.jpeg" alt="Real client review" loading="lazy">
-      <img src="images/review-3.jpeg" alt="Real client review" loading="lazy">
-      <img src="images/review-4.jpeg" alt="Real client review" loading="lazy">
-      <img src="images/review-5.jpeg" alt="Real client review" loading="lazy">
+    <div class="rev-carousel gs-reveal">
+      <button class="rev-arrow rev-prev" id="revPrev" aria-label="Previous review">&#8249;</button>
+      <div class="rev-viewport" id="revViewport">
+        <div class="rev-track" id="revTrack">
+          <div class="rev-slide"><img src="images/review-1.jpeg" alt="Real client review" loading="lazy"></div>
+          <div class="rev-slide"><img src="images/review-2.jpeg" alt="Real client review" loading="lazy"></div>
+          <div class="rev-slide"><img src="images/review-3.jpeg" alt="Real client review" loading="lazy"></div>
+          <div class="rev-slide"><img src="images/review-4.jpeg" alt="Real client review" loading="lazy"></div>
+          <div class="rev-slide"><img src="images/review-5.jpeg" alt="Real client review" loading="lazy"></div>
+        </div>
+      </div>
+      <button class="rev-arrow rev-next" id="revNext" aria-label="Next review">&#8250;</button>
+      <div class="rev-dots" id="revDots"></div>
     </div>
   </div>
 </section>
@@ -1437,21 +1469,22 @@
       <div class="reserve-card">
         <div class="reserve-card-top">
           <span class="reserve-price">$25</span>
-          <span class="reserve-price-label">one-time spot hold</span>
+          <span class="reserve-price-label">refundable good-faith deposit</span>
         </div>
+        <div class="reserve-refundable">↺ 100% Refundable - You Get It Back Either Way</div>
         <ul class="reserve-list">
-          <li>✓ Locks your area exclusively while we verify fit</li>
-          <li>✓ No one else from your area can claim your spot</li>
-          <li>✓ Full refund if we determine you're not a match</li>
-          <li>✓ Applied toward your first month if you move forward</li>
+          <li>✓ <strong>Fully refundable</strong> - it's a good-faith deposit, not a service fee</li>
+          <li>✓ Locks your area so no one else nearby can take your spot</li>
+          <li>✓ Refunded either way - whether we move forward or you're not a match</li>
+          <li>✓ Applied toward your first month if you do move forward</li>
         </ul>
         <p class="reserve-disclaimer">
-          This is a <em>spot reservation only</em> - not a service commitment. If after our eligibility review it's not the right fit, you get every dollar back. No questions asked.
+          A <em>fully refundable good-faith deposit</em> - not a payment for the service. It simply holds your area while we confirm we're a fit. Move forward or not, your <strong>$25 comes straight back to you</strong>. No questions asked.
         </p>
         <div class="reserve-btns">
           <a href="https://buy.stripe.com/5kQeVdfVWaMZ8e0fpt4ZG00" target="_blank" class="btn btn-primary reserve-btn-main">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="display:inline;vertical-align:middle;margin-right:6px;"><rect width="14" height="14" rx="3" fill="#635BFF"/><path d="M5.8 5.2c0-.4.3-.5.8-.5.7 0 1.5.2 2.2.6V3.5C8.1 3.2 7.4 3 6.6 3 4.9 3 3.8 3.9 3.8 5.3c0 2.2 3 1.8 3 2.8 0 .4-.4.6-.9.6-.8 0-1.7-.3-2.4-.8v1.9c.7.3 1.5.5 2.4.5 1.7 0 2.9-.9 2.9-2.3C8.8 5.7 5.8 6.2 5.8 5.2z" fill="white"/></svg>
-            Pay Securely - $25
+            Save My Spot - $25
           </a>
           <a href="#contact" class="btn btn-dark reserve-btn-sec">I'd Prefer to Talk First</a>
         </div>
@@ -1522,8 +1555,7 @@
     <div class="footer-inner">
       <div>
         <div class="logo">
-          <div class="logo-v"></div>
-          <span class="logo-text">VAL SYSTEMS</span>
+          <img src="images/logo-white.png" class="logo-img" alt="Val Systems">
         </div>
         <p class="footer-tagline">Appointment Setting for Contractors.</p>
         <p class="footer-desc">Serving roofing &amp; remodeling contractors across the United States.</p>
@@ -1539,10 +1571,9 @@
     <div class="footer-legal-links">
       <a href="privacy-policy.html">Privacy Policy</a>
       <a href="terms-of-service.html">Terms of Service</a>
-      <a href="refund-policy.html">Refund Policy</a>
     </div>
     <p class="footer-disclaimer">
-      Results shared on this page reflect individual client experiences and are not a guarantee of future outcomes. Results vary based on market, service area, budget, and other factors. The $25 spot reservation is fully refundable if you are determined not to be a fit after our eligibility review. Val Systems is not affiliated with Meta, Google, or any third-party platform mentioned.
+      Results shared on this page reflect individual client experiences and are not a guarantee of future outcomes. Results vary based on market, service area, budget, and other factors. The $25 reservation is a fully refundable good-faith deposit - it is refunded if you are not a match, or applied toward your first month if you move forward. Val Systems is not affiliated with Meta, Google, or any third-party platform mentioned.
     </p>
     <p class="footer-copy">© 2026 Val Systems. All rights reserved.</p>
   </div>
@@ -1685,7 +1716,7 @@
         onEnter: function () {
           gsap.to(calStamp, {
             opacity: 1, scale: 1, rotation: 0, filter: 'blur(0px)',
-            duration: 0.7, ease: 'back.out(1.6)'
+            duration: 1.5, ease: 'back.out(1.3)'
           });
         }
       });
@@ -1731,78 +1762,105 @@
     if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
   };
 
-  /* ── TESTIMONIALS CAROUSEL ── */
+  /* ── REVIEWS CAROUSEL (infinite loop, center focus) ── */
   (function () {
-    var track   = document.getElementById('testimonialsTrack');
-    if (!track) return; // testimonials now use static review screenshots, no carousel
-    var cards   = track.querySelectorAll('.tcard');
-    var dotsEl  = document.getElementById('tDots');
-    var total   = cards.length;
-    var current = 0;
-    var autoTimer;
+    var track    = document.getElementById('revTrack');
+    var viewport = document.getElementById('revViewport');
+    var dotsEl   = document.getElementById('revDots');
+    if (!track || !viewport) return;
+
+    var originals = Array.prototype.slice.call(track.children);
+    var n = originals.length;
+    if (!n) return;
+    var CLONES = 2;
+
+    for (var i = n - CLONES; i < n; i++) track.insertBefore(originals[i].cloneNode(true), track.firstChild);
+    for (var j = 0; j < CLONES; j++) track.appendChild(originals[j].cloneNode(true));
+    var slides = Array.prototype.slice.call(track.children);
+
+    var index = CLONES;
+    var stepPx = 0;
+    var animating = false;
     var dots = [];
 
-    function getVisible() {
-      return window.innerWidth >= 900 ? 3 : window.innerWidth >= 640 ? 2 : 1;
+    function measure() { stepPx = slides[0].offsetWidth; }
+    function centerOffset() { return (viewport.offsetWidth - stepPx) / 2; }
+    function realIndex() { return ((index - CLONES) % n + n) % n; }
+
+    function apply(withTransition) {
+      track.style.transition = withTransition ? 'transform .5s cubic-bezier(.22,1,.36,1)' : 'none';
+      track.style.transform = 'translateX(' + (centerOffset() - index * stepPx) + 'px)';
+      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === index); });
+      var ri = realIndex();
+      dots.forEach(function (b, k) { b.classList.toggle('active', k === ri); });
     }
 
-    function buildDots() {
-      dotsEl.innerHTML = '';
-      dots = [];
-      var count = total - getVisible() + 1;
-      for (var i = 0; i < count; i++) {
-        var d = document.createElement('button');
-        d.className = 'tcarousel-dot' + (i === current ? ' active' : '');
-        d.setAttribute('aria-label', 'Slide ' + (i + 1));
-        (function (idx) { d.addEventListener('click', function () { goTo(idx); resetAuto(); }); })(i);
-        dotsEl.appendChild(d);
-        dots.push(d);
+    var settleTimer;
+    function settle() {
+      if (index >= n + CLONES) { index -= n; apply(false); }
+      else if (index < CLONES) { index += n; apply(false); }
+      animating = false;
+    }
+    function scheduleSettle() { clearTimeout(settleTimer); settleTimer = setTimeout(settle, 540); }
+
+    function go(dir) {
+      if (animating) return;
+      animating = true;
+      index += dir;
+      apply(true);
+      scheduleSettle();
+    }
+
+    if (dotsEl) {
+      for (var d = 0; d < n; d++) {
+        (function (di) {
+          var b = document.createElement('button');
+          b.className = 'rev-dot';
+          b.setAttribute('aria-label', 'Review ' + (di + 1));
+          b.addEventListener('click', function () {
+            if (animating || index === CLONES + di) return;
+            animating = true;
+            index = CLONES + di;
+            apply(true);
+            scheduleSettle();
+            resetAuto();
+          });
+          dotsEl.appendChild(b);
+          dots.push(b);
+        })(d);
       }
     }
 
-    function updateDots() {
-      dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
-    }
+    var prevBtn = document.getElementById('revPrev');
+    var nextBtn = document.getElementById('revNext');
+    if (prevBtn) prevBtn.addEventListener('click', function () { go(-1); resetAuto(); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { go(1); resetAuto(); });
 
-    function goTo(n) {
-      var vis = getVisible();
-      var max = total - vis;
-      current = Math.max(0, Math.min(n, max));
-      var vw = track.parentElement.getBoundingClientRect().width;
-      var cw = cards[0].getBoundingClientRect().width;
-      var offset = vis === 1 ? (vw - cw) / 2 - current * (cw + 24) : -(current * (cw + 24));
-      track.style.transform = 'translateX(' + offset + 'px)';
-      updateDots();
-    }
+    var timer;
+    function startAuto() { timer = setInterval(function () { go(1); }, 4000); }
+    function resetAuto() { clearInterval(timer); startAuto(); }
+    viewport.addEventListener('mouseenter', function () { clearInterval(timer); });
+    viewport.addEventListener('mouseleave', startAuto);
 
-    function next() { var m = total - getVisible(); goTo(current >= m ? 0 : current + 1); }
-    function prev() { var m = total - getVisible(); goTo(current <= 0 ? m : current - 1); }
-    function startAuto() { autoTimer = setInterval(next, window.innerWidth < 768 ? 2600 : 4200); }
-    function resetAuto() { clearInterval(autoTimer); startAuto(); }
-
-    document.getElementById('tPrev').addEventListener('click', function () { prev(); resetAuto(); });
-    document.getElementById('tNext').addEventListener('click', function () { next(); resetAuto(); });
-
-    var vp = document.querySelector('#testimonials .testimonials-viewport');
-    vp.addEventListener('mouseenter', function () { clearInterval(autoTimer); });
-    vp.addEventListener('mouseleave', startAuto);
-
-    var tx = 0, ty = 0, dragging = false;
-    vp.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; dragging = false; }, { passive: true });
-    vp.addEventListener('touchmove', function (e) {
-      var dx = e.touches[0].clientX - tx, dy = e.touches[0].clientY - ty;
-      if (!dragging && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 8) dragging = true;
-      if (dragging) e.preventDefault();
-    }, { passive: false });
-    vp.addEventListener('touchend', function (e) {
-      if (!dragging) return;
-      var dx = e.changedTouches[0].clientX - tx;
-      if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); resetAuto(); }
-      dragging = false;
+    var sx = 0, sy = 0, drag = false;
+    viewport.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; drag = false; }, { passive: true });
+    viewport.addEventListener('touchmove', function (e) {
+      var dx = e.touches[0].clientX - sx, dy = e.touches[0].clientY - sy;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 8) drag = true;
     }, { passive: true });
+    viewport.addEventListener('touchend', function (e) {
+      if (!drag) return;
+      var dx = e.changedTouches[0].clientX - sx;
+      if (dx < -30) { go(1); resetAuto(); }
+      else if (dx > 30) { go(-1); resetAuto(); }
+    });
 
-    window.addEventListener('resize', function () { buildDots(); goTo(current); });
-    buildDots(); goTo(0); startAuto();
+    function initLayout() { measure(); apply(false); }
+    initLayout();
+    var firstImg = slides[CLONES].querySelector('img');
+    if (firstImg && !firstImg.complete) firstImg.addEventListener('load', initLayout);
+    window.addEventListener('resize', initLayout);
+    startAuto();
   })();
 
   /* ── CONTACT FORM ── */
